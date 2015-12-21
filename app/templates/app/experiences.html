@@ -1,5 +1,5 @@
 <ul>
 {% for experience in experiences %}
-  <li><a href='{{experience.id}}'>{{experience.name}}</a></li>
+<li><a href="{% url 'json_detail' experience.id %}">{{experience.name}}</a></li>
 {% endfor %}
 </ul>

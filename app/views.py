@@ -13,7 +13,7 @@ def experiences(request):
   context = {'experiences': experiences}
   return render(request, "app/experiences.html", context)
 
-def detail(request, experience_id):
+def json_detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
 
