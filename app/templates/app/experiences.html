@@ -1,5 +1,17 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+  <!-- Stylesheets go in here -->
+{% endblock %}
+
+{% block main_content %}
+
 <ul>
 {% for experience in experiences %}
 <li><a href="{% url 'json_detail' experience.id %}">{{experience.name}}</a></li>
 {% endfor %}
 </ul>
+
+{% endblock %}
