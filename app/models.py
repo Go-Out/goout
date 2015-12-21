@@ -23,9 +23,9 @@ class Experience(models.Model):
   availability = models.CharField(max_length=100)
   duration = models.DurationField(blank=True, help_text="Number of hours")
   participants = models.IntegerField(default=1)
-  requirements = models.TextField(help_text="Each one in a new line")
-  included = models.TextField(help_text="Each one in a new line")
-  additional = models.TextField(help_text="Each one in a new line")
+  requirements = models.TextField(blank=True, help_text="Each one in a new line")
+  included = models.TextField(blank=True, help_text="Each one in a new line")
+  additional = models.TextField(blank=True, help_text="Each one in a new line")
   categories = models.ManyToManyField(Category)
   demographics = models.ManyToManyField(Demographic)
 
