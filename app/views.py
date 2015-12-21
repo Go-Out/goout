@@ -17,6 +17,7 @@ def detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
 
+  experience["description"] = json.loads(experience_model.description)
   experience["price"] = float(experience_model.price)
   experience["duration"] = experience_model.duration.seconds / 3600
   experience["requirements"] = json.loads(experience_model.requirements)

@@ -18,9 +18,9 @@ class Demographic(models.Model):
 class Experience(models.Model):
   name = models.CharField(max_length=50)
   price = models.DecimalField(max_digits=6, decimal_places=2)
-  description = models.TextField()
-  location = models.CharField(max_length=100)
-  availability = models.CharField(max_length=100)
+  description = models.TextField(blank=True, help_text="Each one in a new line")
+  location = models.CharField(max_length=250)
+  availability = models.CharField(max_length=250)
   duration = models.DurationField(blank=True, help_text="Number of hours")
   participants = models.IntegerField(default=1)
   requirements = models.TextField(blank=True, help_text="Each one in a new line")

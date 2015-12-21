@@ -9,6 +9,7 @@ class ExperienceForm(forms.ModelForm):
   def __init__(self, *args, **kwargs):
     super(ExperienceForm, self).__init__(*args, **kwargs)
     if self.instance.duration is not None:
+      self.initial['description'] = json_as_text(self.instance.description)
       self.initial['duration'] = self.instance.duration.seconds / 3600
       self.initial['requirements'] = json_as_text(self.instance.requirements)
       self.initial['included'] = json_as_text(self.instance.included)
@@ -19,6 +20,7 @@ class ExperienceAdmin(admin.ModelAdmin):
   form = ExperienceForm
 
   def save_model(self, request, obj, form, change):
+    obj.description = text_as_json(obj.description)
     obj.duration = timedelta(hours=obj.duration.seconds)
     obj.requirements = text_as_json(obj.requirements)
     obj.included = text_as_json(obj.included)
@@ -31,9 +33,11 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 def text_as_json(text):
   elements = text.splitlines()
-  json = "[\"" + elements[0] + "\""
-  for i in range(1, len(elements)):
-    json += ",\"" + elements[i] + "\""
+  json = "["
+  for element in elements:
+    json += "\"" + element + "\","
+  if len(json) > 1:
+    json = json[0:len(json) - 1]
   json += "]"
   return json
 
