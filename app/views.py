@@ -15,17 +15,13 @@ def experiences(request):
 
 def detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
-  duration = experience_model.duration.seconds / 3600
-  requirements = json.loads(experience_model.requirements)
-  included = json.loads(experience_model.included)
-  additional = json.loads(experience_model.additional)
-
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
 
-  experience["duration"] = duration
-  experience["requirements"] = requirements
-  experience["included"] = included
-  experience["additional"] = additional 
+  experience["price"] = float(experience_model.price)
+  experience["duration"] = experience_model.duration.seconds / 3600
+  experience["requirements"] = json.loads(experience_model.requirements)
+  experience["included"] = json.loads(experience_model.included)
+  experience["additional"] = json.loads(experience_model.additional) 
 
   categories = []
   category_pks = experience["categories"]
