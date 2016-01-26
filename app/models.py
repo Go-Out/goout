@@ -9,12 +9,6 @@ class Category(models.Model):
   def __str__(self):
     return self.name
 
-class Demographic(models.Model):
-  name = models.CharField(max_length=30)
-
-  def __str__(self):
-    return self.name
-
 class Experience(models.Model):
   name = models.CharField(max_length=50)
   price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -26,8 +20,9 @@ class Experience(models.Model):
   requirements = models.TextField(blank=True, help_text="Each one in a new line")
   included = models.TextField(blank=True, help_text="Each one in a new line")
   additional = models.TextField(blank=True, help_text="Each one in a new line")
+  benefits = models.TextField(blank=True, help_text="Each one in a new line")
+  gear = models.TextField(blank=True, help_text="Each one in a new line")
   categories = models.ManyToManyField(Category)
-  demographics = models.ManyToManyField(Demographic)
 
   def __str__(self):
     return self.name

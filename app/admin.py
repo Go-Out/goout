@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Experience, Category, Demographic
+from .models import Experience, Category
 from datetime import timedelta
 from django import forms
 
@@ -46,4 +46,3 @@ def json_as_text(json):
 
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(Category)
-admin.site.register(Demographic)

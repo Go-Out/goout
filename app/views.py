@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Experience, Category, Demographic
+from .models import Experience, Category
 from django.core import serializers
 import json
 
@@ -30,12 +30,5 @@ def json_detail(request, experience_id):
     category = Category.objects.get(pk=category_pk).name
     categories.append(category)
   experience["categories"] = categories
-
-  demographics = []
-  demographic_pks = experience["demographics"]
-  for demographic_pk in demographic_pks:
-    demographic = Demographic.objects.get(pk=demographic_pk).name
-    demographics.append(demographic)
-  experience["demographics"] = demographics 
 
   return JsonResponse(experience)
