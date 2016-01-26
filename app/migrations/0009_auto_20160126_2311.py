@@ -27,6 +27,20 @@ def insert_experiences(apps, schema_editor):
     experience.save()
     experience.categories.add(category)
 
+def delete_experiences(apps, schema_editor):
+  experience_lines = read_lines_from_file(EXPERIENCES_FILE)[1:]
+
+  Experience = apps.get_model("app", "Experience")
+  Category = apps.get_model("app", "Category")
+
+  for line in experience_lines:
+    fields = line.decode('utf8').split("\t")
+
+    experience = Experience.objects.get(name=fields[0])
+    category = Categories.objects.get(name=fields[10])
+    experience.categories.remove(category)
+    experience.delete()
+
 def read_lines_from_file(file_name):
   with open(file_name) as f:
     return f.readlines()
