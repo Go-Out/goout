@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import migrations
 from datetime import timedelta
 from django.core.exceptions import ObjectDoesNotExist
+from .. utils import text_as_json
 
 
 EXPERIENCES_FILE = "app/migrations/0009_data/experiences_es.tsv"

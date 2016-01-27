@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Experience, Category
 from datetime import timedelta
 from django import forms
+from .utils import text_as_json, json_as_text
 
 # Register your models here.
 
@@ -30,19 +31,6 @@ class ExperienceAdmin(admin.ModelAdmin):
   def get_form(self, request, obj=None, **kwargs):
     print "Hello!" 
     return super(ExperienceAdmin, self).get_form(request, obj, **kwargs)
-
-def text_as_json(text):
-  elements = text.splitlines()
-  json = "["
-  for element in elements:
-    json += "\"" + element + "\","
-  if len(json) > 1:
-    json = json[0:len(json) - 1]
-  json += "]"
-  return json
-
-def json_as_text(json):
-  return json[2:len(json) - 2].replace("\",\"", "\n")
 
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(Category)
