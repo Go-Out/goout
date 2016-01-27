@@ -37,7 +37,7 @@ def delete_experiences(apps, schema_editor):
     fields = line.decode('utf8').split("\t")
 
     experience = Experience.objects.get(name=fields[0])
-    category = Categories.objects.get(name=fields[10])
+    category = Category.objects.get(name=fields[10])
     experience.categories.remove(category)
     experience.delete()
 
@@ -53,5 +53,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(insert_experiences),
+        migrations.RunPython(insert_experiences, delete_experiences),
     ]
