@@ -24,7 +24,20 @@ def insert_experiences(apps, schema_editor):
       category = Category(name=fields[10])
       category.save()
     
-    experience = Experience(name=fields[0], price=float(fields[1]), description=fields[2], location=fields[3], availability=fields[4], duration=timedelta(hours=float(fields[5])), participants=int(fields[6]), requirements=fields[7], included=fields[8], additional=fields[9], benefits=fields[11], gear=fields[12])
+    experience = Experience(
+        name=fields[0],
+        price=float(fields[1]),
+        description=text_as_json(fields[2]),
+        location=fields[3],
+        availability=fields[4],
+        duration=timedelta(hours=float(fields[5])),
+        participants=int(fields[6]),
+        requirements=text_as_json(fields[7]),
+        included=text_as_json(fields[8]),
+        additional=text_as_json(fields[9]),
+        benefits=text_as_json(fields[11]),
+        gear=text_as_json(fields[12])
+    )
     experience.save()
     experience.categories.add(category)
 

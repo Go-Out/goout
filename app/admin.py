@@ -15,6 +15,8 @@ class ExperienceForm(forms.ModelForm):
       self.initial['requirements'] = json_as_text(self.instance.requirements)
       self.initial['included'] = json_as_text(self.instance.included)
       self.initial['additional'] = json_as_text(self.instance.additional)
+      self.initial['benefits'] = json_as_text(self.instance.additional)
+      self.initial['gear'] = json_as_text(self.instance.additional)
 
 class ExperienceAdmin(admin.ModelAdmin):
   list_display = ('name', 'price', 'location')
@@ -26,6 +28,8 @@ class ExperienceAdmin(admin.ModelAdmin):
     obj.requirements = text_as_json(obj.requirements)
     obj.included = text_as_json(obj.included)
     obj.additional = text_as_json(obj.additional)
+    obj.benefits = text_as_json(obj.benefits)
+    obj.gear = text_as_json(obj.gear)
     obj.save()
 
   def get_form(self, request, obj=None, **kwargs):
