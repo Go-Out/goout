@@ -6,9 +6,6 @@ import json
 
 # Create your views here.
 def index(request):
-  return HttpResponse('Welcome to goout!')
-
-def experiences(request):
   experiences = Experience.objects.all()
   context = {'experiences': experiences}
   return render(request, "app/experiences.html", context)
