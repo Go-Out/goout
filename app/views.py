@@ -20,6 +20,8 @@ def json_detail(request, experience_id):
   experience["requirements"] = json.loads(experience_model.requirements)
   experience["included"] = json.loads(experience_model.included)
   experience["additional"] = json.loads(experience_model.additional) 
+  experience["benefits"] = json.loads(experience_model.additional)
+  experience["gear"] = json.loads(experience_model.additional)
 
   categories = []
   category_pks = experience["categories"]
