@@ -15,25 +15,26 @@ class ExperienceForm(forms.ModelForm):
       self.initial['requirements'] = json_as_text(self.instance.requirements)
       self.initial['included'] = json_as_text(self.instance.included)
       self.initial['additional'] = json_as_text(self.instance.additional)
-      self.initial['benefits'] = json_as_text(self.instance.additional)
-      self.initial['gear'] = json_as_text(self.instance.additional)
+      self.initial['benefits'] = json_as_text(self.instance.benefits)
+      self.initial['gear'] = json_as_text(self.instance.gear)
 
 class ExperienceAdmin(admin.ModelAdmin):
   list_display = ('name', 'price', 'location')
   form = ExperienceForm
 
   def save_model(self, request, obj, form, change):
-    obj.description = text_as_json(obj.description)
+    NEW_LINE_DELIMITER = "\r\n"
+
+    obj.description = text_as_json(obj.description, NEW_LINE_DELIMITER)
     obj.duration = timedelta(hours=obj.duration.seconds)
-    obj.requirements = text_as_json(obj.requirements)
-    obj.included = text_as_json(obj.included)
-    obj.additional = text_as_json(obj.additional)
-    obj.benefits = text_as_json(obj.benefits)
-    obj.gear = text_as_json(obj.gear)
+    obj.requirements = text_as_json(obj.requirements, NEW_LINE_DELIMITER)
+    obj.included = text_as_json(obj.included, NEW_LINE_DELIMITER)
+    obj.additional = text_as_json(obj.additional, NEW_LINE_DELIMITER)
+    obj.benefits = text_as_json(obj.benefits, NEW_LINE_DELIMITER)
+    obj.gear = text_as_json(obj.gear, NEW_LINE_DELIMITER)
     obj.save()
 
   def get_form(self, request, obj=None, **kwargs):
-    print "Hello!" 
     return super(ExperienceAdmin, self).get_form(request, obj, **kwargs)
 
 admin.site.register(Experience, ExperienceAdmin)

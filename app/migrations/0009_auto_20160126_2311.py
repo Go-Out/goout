@@ -8,6 +8,7 @@ from .. utils import text_as_json
 
 
 EXPERIENCES_FILE = "app/migrations/0009_data/experiences_es.tsv"
+NEW_LINE_DELIMITER = "|"
 
 def insert_experiences(apps, schema_editor):
   experience_lines = read_lines_from_file(EXPERIENCES_FILE)[1:]
@@ -16,7 +17,7 @@ def insert_experiences(apps, schema_editor):
   Category = apps.get_model("app", "Category")
 
   for line in experience_lines:
-    fields = line.decode('utf8').split("\t")
+    fields = line.decode('utf8').rstrip().split("\t")
 
     try:
       category = Category.objects.get(name=fields[10])
@@ -27,16 +28,16 @@ def insert_experiences(apps, schema_editor):
     experience = Experience(
         name=fields[0],
         price=float(fields[1]),
-        description=text_as_json(fields[2]),
+        description=text_as_json(fields[2], NEW_LINE_DELIMITER),
         location=fields[3],
         availability=fields[4],
         duration=timedelta(hours=float(fields[5])),
         participants=int(fields[6]),
-        requirements=text_as_json(fields[7]),
-        included=text_as_json(fields[8]),
-        additional=text_as_json(fields[9]),
-        benefits=text_as_json(fields[11]),
-        gear=text_as_json(fields[12])
+        requirements=text_as_json(fields[7], NEW_LINE_DELIMITER),
+        included=text_as_json(fields[8], NEW_LINE_DELIMITER),
+        additional=text_as_json(fields[9], NEW_LINE_DELIMITER),
+        benefits=text_as_json(fields[11], NEW_LINE_DELIMITER),
+        gear=text_as_json(fields[12], NEW_LINE_DELIMITER)
     )
     experience.save()
     experience.categories.add(category)
