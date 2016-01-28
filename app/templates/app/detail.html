@@ -1,0 +1,11 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+  <!-- Stylesheets go in here -->
+{% endblock %}
+
+{% block main_content %}
+  <a href="{% url 'json_detail' experience_id %}">experiences/{{experience_id}}/json</a>
+{% endblock %}
