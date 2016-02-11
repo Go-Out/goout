@@ -1,9 +1,74 @@
 {% extends "app/base.html" %}
 
+{% load staticfiles %}
+
 {% block stylesheets %}
-  <!-- Stylesheets go in here -->
+ <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
 {% endblock %}
 
 {% block main_content %}
-  <a href="{% url 'json_detail' experience_id %}">experiences/{{experience_id}}/json</a>
+  <div class="jumbotron">
+    <div class="hard-facts">
+      <p class="title">{{experience.name}}</p>
+      <p class="location">{{experience.location}}</p>
+      <p class="call-to-action">${{experience.price}} <button>Reservar</button></p>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="description">
+          {% for text in experience.description %}
+            <li>{{text}}</li>
+          {% endfor %}
+        </ul>
+        <p class="call-to-action">${{experience.price}} <button>Reservar</button></p>
+      </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+
+    <div class="row main-facts">
+      <div class="col-md-4"><strong>Location:</strong> {{experience.location}}</div>
+      <div class="col-md-4"><strong>Availability:</strong> {{experience.availability}}</div>
+      <div class="col-md-4"><strong>Minimum participants:</strong> {{experience.participants}}</div>
+    </div>
+
+    <div class="row other-facts">
+      <div class="col-md-4">
+        <p><strong>What's included</strong></p>
+        <ul class="included">
+          {% for includ in experience.included %}
+            <li>{{includ}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <p><strong>Requirements</strong></p>
+        <ul class="requirements">
+          {% for requirement in experience.requirements %}
+            <li>{{requirement}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <p><strong>Additional</strong></p>
+        <ul class="additional">
+          {% for addition in experience.additional %}
+            <li>{{addition}}</li>
+          {% endfor %}
+        </ul>
+
+        <p><strong>Gear</strong></p>
+        <ul class="additional">
+          {% for gea in experience.gear %}
+            <li>{{gea}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
 {% endblock %}

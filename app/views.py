@@ -11,11 +11,18 @@ def index(request):
   return render(request, "app/experiences.html", context)
 
 def detail(request, experience_id):
-  context = {'experience_id': experience_id}
+  experience_model = Experience.objects.get(pk=experience_id)
+
+  context = {'experience': experience_as_json(experience_model)}
   return render(request, "app/detail.html", context)
 
 def json_detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
+
+  return JsonResponse(experience_as_json(experience_model))
+
+
+def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
 
   experience["description"] = json.loads(experience_model.description)
@@ -34,4 +41,4 @@ def json_detail(request, experience_id):
     categories.append(category)
   experience["categories"] = categories
 
-  return JsonResponse(experience)
+  return experience

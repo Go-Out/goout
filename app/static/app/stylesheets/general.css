@@ -1,3 +1,10 @@
 .navbar {
   border-radius: 0;
+  margin: 0;
+}
+.footer {
+  background: #eeeeee;
+  padding: 20px 0;
+  color: black;
+  text-align: center;
 }
