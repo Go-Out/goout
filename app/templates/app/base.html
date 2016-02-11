@@ -1,8 +1,11 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Go Out</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/bootstrap.min.css' %}" />
   {% block stylesheets %}
   {% endblock %}
 </head>
@@ -15,5 +18,7 @@
 
   {% include "app/footer.html" %}
 
+  <script type="text/javascript" src="{% static 'app/javascripts/jquery-2.2.0.min.js' %}" ></script>
+  <script type="text/javascript" src="{% static 'app/javascripts/bootstrap.min.js' %}" ></script>
 </body>
 </html>
