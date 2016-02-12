@@ -21,6 +21,9 @@ def json_detail(request, experience_id):
 
   return JsonResponse(experience_as_json(experience_model))
 
+def payment(request, experience_id):
+  return render(request, "app/payment.html", {})
+
 
 def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
