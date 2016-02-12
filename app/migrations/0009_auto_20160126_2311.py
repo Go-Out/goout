@@ -7,11 +7,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from .. utils import text_as_json
 
 
-EXPERIENCES_FILE = "app/migrations/0009_data/experiences_es.tsv"
+EXPERIENCES_FILE_NEW = "app/migrations/0009_data/experiences_es_new.tsv"
+EXPERIENCES_FILE_OLD = "app/migrations/0009_data/experiences_es_old.tsv"
 NEW_LINE_DELIMITER = "|"
 
 def insert_experiences(apps, schema_editor):
-  experience_lines = read_lines_from_file(EXPERIENCES_FILE)[1:]
+  experience_lines = read_lines_from_file(EXPERIENCES_FILE_NEW)[1:]
 
   Experience = apps.get_model("app", "Experience")
   Category = apps.get_model("app", "Category")
@@ -43,7 +44,7 @@ def insert_experiences(apps, schema_editor):
     experience.categories.add(category)
 
 def delete_experiences(apps, schema_editor):
-  experience_lines = read_lines_from_file(EXPERIENCES_FILE)[1:]
+  experience_lines = read_lines_from_file(EXPERIENCES_FILE_OLD)[1:]
 
   Experience = apps.get_model("app", "Experience")
   Category = apps.get_model("app", "Category")
