@@ -11,7 +11,7 @@
     <div class="hard-facts">
       <p class="title">{{experience.name}}</p>
       <p class="location">{{experience.location}}</p>
-      <p class="call-to-action">${{experience.price}} <button>Reservar</button></p>
+      <p class="call-to-action">${{experience.price}} <a href="{% url 'payment' experience.id %}">Reservar</a></p>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
             <li>{{text}}</li>
           {% endfor %}
         </ul>
-        <p class="call-to-action">${{experience.price}} <button>Reservar</button></p>
+        <p class="call-to-action">${{experience.price}} <a href="{% url 'payment' experience.id %}">Reservar</a></p>
       </div>
       <div class="col-md-6">
       </div>
