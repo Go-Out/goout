@@ -1,7 +1,26 @@
+/*** Bootstrap overriding ***/
 .navbar {
   border-radius: 0;
   margin: 0;
+  color: #81807e;
 }
+.nav>li>.navbar-element {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.navbar-nav>li>.navbar-element {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+@media (min-width: 768px) {
+  .navbar-nav>li>.navbar-element {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
 .footer {
   background: #eeeeee;
   padding: 20px 0;

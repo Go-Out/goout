@@ -14,12 +14,13 @@
 
   {% include "app/header.html" %}
 
+  <script type="text/javascript" src="{% static 'app/javascripts/jquery-2.2.0.min.js' %}" ></script>
+
   {% block main_content %}
   {% endblock %}
 
   {% include "app/footer.html" %}
 
-  <script type="text/javascript" src="{% static 'app/javascripts/jquery-2.2.0.min.js' %}" ></script>
   <script type="text/javascript" src="{% static 'app/javascripts/bootstrap.min.js' %}" ></script>
 </body>
 </html>

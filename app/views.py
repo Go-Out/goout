@@ -9,7 +9,7 @@ import conekta
 def index(request):
   experiences = Experience.objects.all()
   context = {'experiences': experiences}
-  return render(request, "app/experiences.html", context)
+  return render(request, "app/index.html", context)
 
 def detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
