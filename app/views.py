@@ -11,6 +11,11 @@ def index(request):
   context = {'experiences': experiences}
   return render(request, "app/index.html", context)
 
+def experiences_json(request):
+  date = request.GET.get('date')
+  experiences = map(experience_as_json, Experience.objects.all())
+  return JsonResponse(experiences, safe=False)
+
 def detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
 
