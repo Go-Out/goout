@@ -11,6 +11,7 @@ class ExperienceForm(forms.ModelForm):
     super(ExperienceForm, self).__init__(*args, **kwargs)
     if self.instance.duration is not None:
       self.initial['description'] = json_as_text(self.instance.description)
+      self.initial['availability'] = json_as_text(self.instance.availability)
       self.initial['duration'] = self.instance.duration.seconds / 3600
       self.initial['requirements'] = json_as_text(self.instance.requirements)
       self.initial['included'] = json_as_text(self.instance.included)
@@ -26,6 +27,7 @@ class ExperienceAdmin(admin.ModelAdmin):
     NEW_LINE_DELIMITER = "\r\n"
 
     obj.description = text_as_json(obj.description, NEW_LINE_DELIMITER)
+    obj.availability = text_as_json(obj.availability, NEW_LINE_DELIMITER)
     obj.duration = timedelta(hours=obj.duration.seconds)
     obj.requirements = text_as_json(obj.requirements, NEW_LINE_DELIMITER)
     obj.included = text_as_json(obj.included, NEW_LINE_DELIMITER)

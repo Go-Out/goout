@@ -80,6 +80,7 @@ def experience_as_json(experience_model):
 
   experience["id"] = experience_model.id
   experience["description"] = json.loads(experience_model.description)
+  experience["availability"] = json.loads(experience_model.availability)
   experience["price"] = float(experience_model.price)
   experience["duration"] = experience_model.duration.seconds / 3600
   experience["requirements"] = json.loads(experience_model.requirements)

@@ -14,7 +14,7 @@ class Experience(models.Model):
   price = models.DecimalField(max_digits=6, decimal_places=2)
   description = models.TextField(blank=True, help_text="Each paragraph in a new line")
   location = models.CharField(max_length=250)
-  availability = models.CharField(max_length=250)
+  availability = models.TextField(blank=True, help_text="Each day in a new line")
   duration = models.DurationField(blank=True, help_text="Number of hours")
   participants = models.IntegerField(default=1)
   requirements = models.TextField(blank=True, help_text="Each one in a new line")

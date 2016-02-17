@@ -31,7 +31,7 @@ def insert_experiences(apps, schema_editor):
         price=float(fields[1]),
         description=text_as_json(fields[2], NEW_LINE_DELIMITER),
         location=fields[3],
-        availability=fields[4],
+        availability=text_as_json(fields[4], NEW_LINE_DELIMITER),
         duration=timedelta(hours=float(fields[5])),
         participants=int(fields[6]),
         requirements=text_as_json(fields[7], NEW_LINE_DELIMITER),
