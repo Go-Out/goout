@@ -38,7 +38,9 @@ $(function() {
 
   var dateInput = $("#datepicker");
   dateInput.datepicker({
-    dateFormat: "dd M yy",
+    dateFormat: "DD dd MM",
+    dayNames: [ "Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado" ],
+    monthNames: [ "Enero","Febrero","Marzo","Abril","Mayo","Junio", "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre" ],
     onSelect: function(date, inst) {
       getExperiences(date);
     }
