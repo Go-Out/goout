@@ -1,5 +1,6 @@
 def text_as_json(text, delimiter):
   elements = text.split(delimiter)
+  elements = filter(None, elements)
   json = "["
   for element in elements:
     json += "\"" + element + "\","
