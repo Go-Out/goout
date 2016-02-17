@@ -1,5 +1,6 @@
 $(function() {
   var dateToStr = function(date) {
+    console.log(date);
     return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
   };
 
@@ -38,7 +39,8 @@ $(function() {
 
   var dateInput = $("#datepicker");
   dateInput.datepicker({
-    dateFormat: "DD dd MM",
+    dateFormat: "DD dd MM yy",
+    minDate: +1,
     dayNames: [ "Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado" ],
     monthNames: [ "Enero","Febrero","Marzo","Abril","Mayo","Junio", "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre" ],
     onSelect: function(date, inst) {
