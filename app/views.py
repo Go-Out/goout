@@ -4,6 +4,7 @@ from .models import Experience, Category
 from django.core import serializers
 import json
 import conekta
+from datetime import date
 
 # Create your views here.
 def index(request):
@@ -12,8 +13,16 @@ def index(request):
   return render(request, "app/index.html", context)
 
 def experiences_json(request):
-  date = request.GET.get('date')
-  experiences = map(experience_as_json, Experience.objects.all())
+  days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+  date_str = request.GET.get('date').split("-")
+  d = date(int(date_str[0]), int(date_str[1]), int(date_str[2]))
+  day = days[d.weekday()]
+
+  experience_models = Experience.objects.all()
+  experiences = map(experience_as_json, experience_models)
+
+  experiences = filter(lambda experience: day in experience["availability"] or not experience["availability"], experiences)
+
   return JsonResponse(experiences, safe=False)
 
 def detail(request, experience_id):
