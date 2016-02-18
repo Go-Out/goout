@@ -13,9 +13,13 @@ $(function() {
       html += "<div class='col-md-3 experience-col'>";
       html += "<a href='" + experience_url.replace("123", experience.id) + "'>";
       html += "<div class='experience'>";
+      html += "<span class='experience-price'>";
+      html += "$ " + experience.price;
+      html += "</span>";
       html += "</div>";
       html += "<div class='experience-description'>";
       html += "<p>" + experience.name + "</p>";
+      html += "<p>" + experience.location + "</p>";
       html += "</div>";
       html += "</a>";
       html += "</div>";

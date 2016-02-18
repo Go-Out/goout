@@ -26,6 +26,15 @@
 .experience {
   background-color: #ddd;
   height: 250px;
+  position: relative;
+}
+.experience-price {
+  background-color: rgba(60,63,64,0.9);
+  padding: 7px 10px;
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  bottom: 40px;
 }
 .experience-description {
   padding: 10px;
