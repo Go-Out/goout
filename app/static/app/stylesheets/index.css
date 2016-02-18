@@ -36,9 +36,15 @@
   position: absolute;
   bottom: 40px;
 }
-.experience-description {
-  padding: 10px;
+.experience-name {
+  margin-bottom: 0;
+  padding-left: 10px;
+  font-size: 16px;
 }
-.experience-description p {
-  margin: 0;
+.experience-location {
+  margin-top: 0;
+  padding-left: 10px;
+}
+.experience-location a {
+  text-decoration: none;
 }

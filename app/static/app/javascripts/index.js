@@ -17,11 +17,9 @@ $(function() {
       html += "$ " + experience.price;
       html += "</span>";
       html += "</div>";
-      html += "<div class='experience-description'>";
-      html += "<p>" + experience.name + "</p>";
-      html += "<p>" + experience.location + "</p>";
-      html += "</div>";
+      html += "<p class='experience-name'>" + experience.name + "</p>";
       html += "</a>";
+      html += "<p class='experience-location'><a href='" + experience_url.replace("123", experience.id) + "'>" + experience.location + "</a></p>";
       html += "</div>";
 
       if((i + 1) % 4 == 0 || (i + 1) == data.length)
