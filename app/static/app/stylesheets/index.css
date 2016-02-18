@@ -1,9 +1,17 @@
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 .top-banner {
   text-align: center;
-}
-.top-banner a {
-  color: inherit;
-  text-decoration: none;
+  padding: 60px 0;
+  background-color: #ddd;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 #datepicker {
@@ -20,9 +28,6 @@
 .experience-col {
   margin-bottom: 20px;
 }
-.experience-col a {
-  color: inherit;
-}
 .experience {
   background-color: #ddd;
   height: 250px;
@@ -36,15 +41,20 @@
   position: absolute;
   bottom: 40px;
 }
+.experience-description {
+  padding: 10px;
+  position: relative;
+}
+.experience-description p {
+  margin: 0;
+}
 .experience-name {
-  margin-bottom: 0;
-  padding-left: 10px;
   font-size: 16px;
 }
-.experience-location {
-  margin-top: 0;
-  padding-left: 10px;
+.experience-name a {
+  color: inherit;
 }
 .experience-location a {
+  color: inherit;
   text-decoration: none;
 }

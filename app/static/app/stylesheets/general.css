@@ -21,6 +21,11 @@
   }
 }
 
+
+.body {
+  padding-top: 70px;
+}
+
 .footer {
   background: #eeeeee;
   padding: 20px 0;

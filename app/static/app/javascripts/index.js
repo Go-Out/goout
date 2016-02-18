@@ -11,15 +11,16 @@ $(function() {
         html += "<div class='row'>";
 
       html += "<div class='col-md-3 experience-col'>";
-      html += "<a href='" + experience_url.replace("123", experience.id) + "'>";
       html += "<div class='experience'>";
+      html += "<a class='fill' href='" + experience_url.replace("123", experience.id) + "'></a>";
       html += "<span class='experience-price'>";
       html += "$ " + experience.price;
       html += "</span>";
       html += "</div>";
-      html += "<p class='experience-name'>" + experience.name + "</p>";
-      html += "</a>";
+      html += "<div class='experience-description'>";
+      html += "<p class='experience-name'><a href='" + experience_url.replace("123", experience.id) + "'>" + experience.name + "</a></p>";
       html += "<p class='experience-location'><a href='" + experience_url.replace("123", experience.id) + "'>" + experience.location + "</a></p>";
+      html += "</div>";
       html += "</div>";
 
       if((i + 1) % 4 == 0 || (i + 1) == data.length)
