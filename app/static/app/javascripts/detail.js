@@ -12,7 +12,7 @@
       }
       else {
         priceBox.removeClass("stick"); 
-        priceBox.css("width", auto);
+        priceBox.css("width", "auto");
       }
     });
   });
