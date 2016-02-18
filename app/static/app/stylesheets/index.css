@@ -17,9 +17,10 @@
 #datepicker {
   cursor: pointer;
   background-color: transparent;
-  border: none;
+  padding: 9px 6px;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
   outline: none;
-  text-decoration: underline;
   font-size: 1.5em;
 
   margin-bottom: 30px;
