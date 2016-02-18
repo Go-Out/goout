@@ -3,72 +3,111 @@
 {% load staticfiles %}
 
 {% block stylesheets %}
- <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
 {% endblock %}
 
 {% block main_content %}
-  <div class="jumbotron">
-    <div class="hard-facts">
-      <p class="title">{{experience.name}}</p>
-      <p class="location">{{experience.location}}</p>
-      <p class="call-to-action">${{experience.price}} <a href="{% url 'payment' experience.id %}">Reservar</a></p>
+<div class="top-banner">
+  
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="section section-first">
+        <h1>{{experience.name}}</h1>
+        {% for paragraph in experience.description %}
+          <p>{{paragraph}}</p>
+        {% endfor %}
+      </div>
+
+      {% if experience.included %}
+        <div class="row section">
+          <div class="col-md-2">
+            <p><strong>Incluído</strong></p>
+          </div>
+          <div class="col-md-10">
+            <ul>
+              {% for included in experience.included %}
+                <li>{{included}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if experience.required %}
+        <div class="row section">
+          <div class="col-md-2">
+            <p><strong>Requisitos</strong></p>
+          </div>
+          <div class="col-md-10">
+            <ul>
+              {% for requirement in experience.required %}
+                <li>{{requirement}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if experience.additional %}
+        <div class="row section">
+          <div class="col-md-2">
+            <p><strong>Adicional</strong></p>
+          </div>
+          <div class="col-md-10">
+            <ul>
+              {% for additional in experience.additional %}
+                <li>{{additional}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if experience.gear %}
+        <div class="row section">
+          <div class="col-md-2">
+            <p><strong>Equipo</strong></p>
+          </div>
+          <div class="col-md-10">
+            <ul>
+              {% for gear in experience.gear %}
+                <li>{{gear}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="col-md-4">
+      <div id="hardBox">
+        <div class="price box-row">$ {{experience.price}}</div>
+        <div class="row box-row">
+          <div class="col-xs-8">
+            <p class="editables-header">Fecha</p>
+            <div class="editable">Sábado 20 Febrero 2016</div>
+          </div>
+          <div class="col-xs-4">
+            <p class="editables-header">Personas</p>
+            <select class="editable">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        <div class="box-row">
+          <strong><a class="payment-link" href="{% url 'payment' experience.id %}">Reservar</a></strong>
+        </div>
+        <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <ul class="description">
-          {% for text in experience.description %}
-            <li>{{text}}</li>
-          {% endfor %}
-        </ul>
-        <p class="call-to-action">${{experience.price}} <a href="{% url 'payment' experience.id %}">Reservar</a></p>
-      </div>
-      <div class="col-md-6">
-      </div>
-    </div>
-
-    <div class="row main-facts">
-      <div class="col-md-4"><strong>Location:</strong> {{experience.location}}</div>
-      <div class="col-md-4"><strong>Availability:</strong> {{experience.availability}}</div>
-      <div class="col-md-4"><strong>Minimum participants:</strong> {{experience.participants}}</div>
-    </div>
-
-    <div class="row other-facts">
-      <div class="col-md-4">
-        <p><strong>What's included</strong></p>
-        <ul class="included">
-          {% for includ in experience.included %}
-            <li>{{includ}}</li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <div class="col-md-4">
-        <p><strong>Requirements</strong></p>
-        <ul class="requirements">
-          {% for requirement in experience.requirements %}
-            <li>{{requirement}}</li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <div class="col-md-4">
-        <p><strong>Additional</strong></p>
-        <ul class="additional">
-          {% for addition in experience.additional %}
-            <li>{{addition}}</li>
-          {% endfor %}
-        </ul>
-
-        <p><strong>Gear</strong></p>
-        <ul class="additional">
-          {% for gea in experience.gear %}
-            <li>{{gea}}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
+<script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
 {% endblock %}

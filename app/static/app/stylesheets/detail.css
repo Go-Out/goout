@@ -1,4 +1,62 @@
-.main-facts {
-  background: black;
-  color: white;
+.top-banner {
+  padding: 60px 0;
+  background-color: #ddd;
+  position: relative;
+  margin-bottom: 30px;
+  height: 300px;
+}
+
+.box-row {
+  padding: 10px 20px;
+}
+.price {
+  font-size: 24px;
+  border-bottom: 1px solid #dce0e0;
+}
+.editables-header {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.editable {
+  padding: 9px 6px;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+  color: #565a5c;
+  font-size: 13px;
+  background-color: #fff;
+}
+.payment-link {
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+}
+.payment-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.doubts {
+  border-top: 1px solid #dce0e0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.section {
+  border-top: 1px solid #dce0e0;
+}
+.section-first {
+  border-top: none;
+}
+
+#hardBox {
+  border: 1px solid #dce0e0;
+}
+.stick {
+  position:fixed;
+  top:51px;
+  margin-top: 20px;
 }
