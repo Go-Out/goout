@@ -4,6 +4,7 @@
   position: relative;
   margin-bottom: 30px;
   height: 300px;
+  cursor: pointer;
 }
 
 .box-row {
@@ -59,4 +60,65 @@
   position:fixed;
   top:51px;
   margin-top: 20px;
+}
+
+#picturesContainer {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+}
+#picturesClose {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  z-index: 2001;
+}
+.picture {
+  position: absolute;
+  background-color: #ddd;
+  width: 400px;
+  height: 400px;
+  top: 15%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.picture-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+}
+.picture-left-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  left: 0;
+  cursor: pointer;
+}
+.picture-right-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  right: 0;
+  cursor: pointer;
+}
+.picture-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 10px;
+}
+.no-overflow {
+  overflow: hidden;
 }
