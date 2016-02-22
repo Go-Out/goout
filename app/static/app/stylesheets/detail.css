@@ -45,6 +45,16 @@
   font-size: 16px;
   text-align: center;
 }
+.booking {
+  border-top: 1px solid #dce0e0;
+  text-align: center;
+}
+.booking p {
+  margin: 0;
+}
+.booking-number {
+  font-size: 18px;
+}
 
 .section {
   border-top: 1px solid #dce0e0;
