@@ -47,7 +47,6 @@
 }
 .booking {
   border-top: 1px solid #dce0e0;
-  text-align: center;
 }
 .booking p {
   margin: 0;
@@ -65,6 +64,7 @@
 
 #hardBox {
   border: 1px solid #dce0e0;
+  text-align: center;
 }
 .stick {
   position:fixed;
