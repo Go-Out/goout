@@ -1,43 +1,44 @@
 $(function() {
-  var dateToStr = function(date) {
-    console.log(date);
-    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-  };
+  var insertExperienceData = function(experienceElem, experience) {
+    experienceElem.find("a").attr("href", experienceUrl.replace("123", experience.id));
+    experienceElem.find("#experiencePrice").text("$ " + experience.price);
+    experienceElem.find("#experienceNameLink").text(experience.name);
+    experienceElem.find("#experienceLocationLink").text(experience.location);
+  }
 
   var renderExperiences = function(data) {
-    var html = "";
+    var experiencesContainer = $("#experiencesContainer");
+    experiencesContainer.empty();
+
+    var row = $("<div class='row'></div>");
     $.each(data, function(i, experience) {
       if(i % 4 == 0)
-        html += "<div class='row'>";
+        experiencesContainer.append(row);
 
-      html += "<div class='col-md-3 experience-col'>";
-      html += "<div class='experience'>";
-      html += "<a class='fill' href='" + experience_url.replace("123", experience.id) + "'></a>";
-      html += "<span class='experience-price'>";
-      html += "$ " + experience.price;
-      html += "</span>";
-      html += "</div>";
-      html += "<div class='experience-description'>";
-      html += "<p class='experience-name'><a href='" + experience_url.replace("123", experience.id) + "'>" + experience.name + "</a></p>";
-      html += "<p class='experience-location'><a href='" + experience_url.replace("123", experience.id) + "'>" + experience.location + "</a></p>";
-      html += "</div>";
-      html += "</div>";
+      var experienceElem = $("<div>");
+      experienceElem.load(experienceHtml, function() {
+        insertExperienceData(experienceElem, experience);
+      });
+      row.append(experienceElem);
 
       if((i + 1) % 4 == 0 || (i + 1) == data.length)
-        html += "</div>";
+        row = $("<div class='row'></div>");
     });
-    $("#experiences_container").html(html);
   };
 
   var getExperiences = function(date) {
     $.ajax({
-      url: experiences_url + "?date=" + dateToStr(new Date(date)),
+      url: experiencesUrl + "?date=" + dateToStr(new Date(date)),
       method: "GET",
       dataType: "json",
       success: function(data) {
         renderExperiences(data);
       }
     });
+  };
+
+  var dateToStr = function(date) {
+    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
   };
 
   var dateInput = $("#datepicker");

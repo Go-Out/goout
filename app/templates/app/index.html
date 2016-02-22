@@ -19,13 +19,14 @@
 <div id="experiences" class="container-fluid">
   <input type="text" id="datepicker" readonly>
 
-  <div id="experiences_container"></div>
+  <div id="experiencesContainer"></div>
 </div>
 
 <script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>
-  var experiences_url = "{% url 'experiences_json' %}";
-  var experience_url = "{% url 'detail' experience_id=123 %}";
+  var experiencesUrl = "{% url 'experiences_json' %}";
+  var experienceUrl = "{% url 'detail' experience_id=123 %}";
+  var experienceHtml = "{% static 'app/html/experience.html' %}";
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/index.js' %}"></script>
 

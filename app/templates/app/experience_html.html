@@ -1,0 +1,10 @@
+<div class="col-md-3 experience-col">
+  <div class="experience">
+    <a class="fill experience-link" href="{% url 'detail' experience_id=123 %}"></a>
+    <span class="experience-price">$ {{experience.price}}</span>
+  </div>
+  <div class="experience-description">
+    <p class="experience-name"><a class="experience-link" href="{% url 'detail' experience_id=123 %}">{{experience.name}}</a></p>
+    <p class='experience-location'><a class="experience-link" href="{% url 'detail' experience_id=123 %}">{{experience.location}}</a></p>
+  </div>
+</div>
