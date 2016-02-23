@@ -61,15 +61,32 @@
 .section-first {
   border-top: none;
 }
+.section li {
+  list-style-type: none;
+}
 
 #hardBox {
   border: 1px solid #dce0e0;
   text-align: center;
+  display: none;
 }
 .stick {
   position:fixed;
   top:51px;
   margin-top: 20px;
+}
+.hard-box-hidden {
+  border: 1px solid #dce0e0;
+  text-align: center;
+  margin-bottom: 60px;
+}
+@media (min-width: 992px) {
+  #hardBox {
+    display: block;
+  }
+  .hard-box-hidden {
+    display: none;
+  }
 }
 
 #picturesContainer {
