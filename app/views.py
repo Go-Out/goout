@@ -88,16 +88,15 @@ def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
 
   experience["id"] = experience_model.id
-  experience["description"] = json.loads(experience_model.description)
-  experience["availability"] = json.loads(experience_model.availability)
   experience["price"] = float(experience_model.price)
+  experience["availability"] = json.loads(experience_model.availability)
   experience["duration"] = experience_model.duration.seconds / 3600
-  experience["requirements"] = json.loads(experience_model.requirements)
+  experience["description"] = json.loads(experience_model.description)
+  experience["itinerary"] = json.loads(experience_model.itinerary)
   experience["included"] = json.loads(experience_model.included)
-  experience["additional"] = json.loads(experience_model.additional) 
-  experience["benefits"] = json.loads(experience_model.benefits)
+  experience["requirements"] = json.loads(experience_model.requirements)
   experience["gear"] = json.loads(experience_model.gear)
-
+  experience["additional"] = json.loads(experience_model.additional) 
   categories = []
   category_pks = experience["categories"]
   for category_pk in category_pks:

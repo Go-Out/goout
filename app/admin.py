@@ -10,14 +10,14 @@ class ExperienceForm(forms.ModelForm):
   def __init__(self, *args, **kwargs):
     super(ExperienceForm, self).__init__(*args, **kwargs)
     if self.instance.duration is not None:
-      self.initial['description'] = json_as_text(self.instance.description)
       self.initial['availability'] = json_as_text(self.instance.availability)
       self.initial['duration'] = self.instance.duration.seconds / 3600
-      self.initial['requirements'] = json_as_text(self.instance.requirements)
+      self.initial['description'] = json_as_text(self.instance.description)
+      self.initial['itinerary'] = json_as_text(self.instance.itinerary)
       self.initial['included'] = json_as_text(self.instance.included)
-      self.initial['additional'] = json_as_text(self.instance.additional)
-      self.initial['benefits'] = json_as_text(self.instance.benefits)
+      self.initial['requirements'] = json_as_text(self.instance.requirements)
       self.initial['gear'] = json_as_text(self.instance.gear)
+      self.initial['additional'] = json_as_text(self.instance.additional)
 
 class ExperienceAdmin(admin.ModelAdmin):
   list_display = ('name', 'price', 'location')
@@ -26,14 +26,14 @@ class ExperienceAdmin(admin.ModelAdmin):
   def save_model(self, request, obj, form, change):
     NEW_LINE_DELIMITER = "\r\n"
 
-    obj.description = text_as_json(obj.description, NEW_LINE_DELIMITER)
     obj.availability = text_as_json(obj.availability, NEW_LINE_DELIMITER)
     obj.duration = timedelta(hours=obj.duration.seconds)
-    obj.requirements = text_as_json(obj.requirements, NEW_LINE_DELIMITER)
+    obj.itinerary = text_as_json(obj.itinerary, NEW_LINE_DELIMITER)
+    obj.description = text_as_json(obj.description, NEW_LINE_DELIMITER)
     obj.included = text_as_json(obj.included, NEW_LINE_DELIMITER)
-    obj.additional = text_as_json(obj.additional, NEW_LINE_DELIMITER)
-    obj.benefits = text_as_json(obj.benefits, NEW_LINE_DELIMITER)
+    obj.requirements = text_as_json(obj.requirements, NEW_LINE_DELIMITER)
     obj.gear = text_as_json(obj.gear, NEW_LINE_DELIMITER)
+    obj.additional = text_as_json(obj.additional, NEW_LINE_DELIMITER)
     obj.save()
 
   def get_form(self, request, obj=None, **kwargs):
