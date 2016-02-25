@@ -4,6 +4,11 @@ $(function() {
     experienceElem.find("#experiencePrice").text("$ " + experience.price);
     experienceElem.find("#experienceNameLink").text(experience.name);
     experienceElem.find("#experienceLocationLink").text(experience.location);
+
+    experienceElem.find("#experienceMain").css({
+      "background": "url('" + experienceImg.replace("name", experience.name.replace(/ /g, "_")) + "') no-repeat center center",
+      "background-size": "cover"
+    });
   }
 
   var renderExperiences = function(data) {

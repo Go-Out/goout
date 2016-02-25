@@ -10,10 +10,12 @@
 {% block main_content %}
 
 <div class="top-banner">
-  <a class="fill" href="#experiences"></a>
-  <h2>!Haz memorias increíbles!</h2>
-  <h3>Experiencias de aventura en Jalisco</h3>
-  <button>Ver Experiencias</button>
+  <a class="banner-link fill" href="{% url 'detail' 265 %}"></a>
+  <div class="banner-content">
+    <p class="header">Nevado de Colima</p>
+    <p class="sub-header">Sábado 05 de Marzo</p>
+    <button class="call-to-action">Ver Experiencia</button>
+  </div>
 </div>
 
 <div id="experiences" class="container-fluid">
@@ -26,7 +28,8 @@
 <script>
   var experiencesUrl = "{% url 'experiences_json' %}";
   var experienceUrl = "{% url 'detail' experience_id=123 %}";
-  var experienceHtml = "{% static 'app/html/experience.html' %}";
+  var experienceHtml = "{% static 'app/html/experience.html' %}" + "?hola";
+  var experienceImg = "{% static 'app/images/name/main.jpg' %}";
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/index.js' %}"></script>
 
