@@ -6,17 +6,6 @@ $(function() {
     experienceElem.find("#experienceLocationLink").text(experience.location);
   }
 
-  var insertImageAsynchronously = function(experienceElem, experience) {
-    var img = new Image();
-    img.onload = function() {
-      experienceElem.find("#experienceMain").css({
-        "background": "url('" + img.src  + "') no-repeat center center",
-        "background-size": "cover"
-      }); 
-    };
-    img.src = experienceImg.replace("name", experience.name.replace(/ /g, "_"));
-  };
-
   var renderExperiences = function(data) {
     var experiencesContainer = $("#experiencesContainer");
     experiencesContainer.empty();
@@ -29,7 +18,7 @@ $(function() {
       var experienceElem = $("<div>");
       experienceElem.load(experienceHtml, function() {
         insertExperienceData(experienceElem, experience);
-        insertImageAsynchronously(experienceElem, experience);
+        insertImageAsynchronously(experienceImg, experienceElem.find("#experienceMain"), experience.name);
       });
       row.append(experienceElem);
 
