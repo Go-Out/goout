@@ -4,12 +4,18 @@ $(function() {
     experienceElem.find("#experiencePrice").text("$ " + experience.price);
     experienceElem.find("#experienceNameLink").text(experience.name);
     experienceElem.find("#experienceLocationLink").text(experience.location);
-
-    experienceElem.find("#experienceMain").css({
-      "background": "url('" + experienceImg.replace("name", experience.name.replace(/ /g, "_")) + "') no-repeat center center",
-      "background-size": "cover"
-    });
   }
+
+  var insertImageAsynchronously = function(experienceElem, experience) {
+    var img = new Image();
+    img.onload = function() {
+      experienceElem.find("#experienceMain").css({
+        "background": "url('" + img.src  + "') no-repeat center center",
+        "background-size": "cover"
+      }); 
+    };
+    img.src = experienceImg.replace("name", experience.name.replace(/ /g, "_"));
+  };
 
   var renderExperiences = function(data) {
     var experiencesContainer = $("#experiencesContainer");
@@ -23,6 +29,7 @@ $(function() {
       var experienceElem = $("<div>");
       experienceElem.load(experienceHtml, function() {
         insertExperienceData(experienceElem, experience);
+        insertImageAsynchronously(experienceElem, experience);
       });
       row.append(experienceElem);
 
