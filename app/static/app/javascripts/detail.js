@@ -25,4 +25,6 @@
     $("#picturesContainer").addClass("hidden");
     $("body").removeClass("no-overflow");
   });
+
+  insertImageAsynchronously(imgUrl, $("#mainPicture"), experienceName);
 })();

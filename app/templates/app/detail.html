@@ -7,9 +7,7 @@
 {% endblock %}
 
 {% block main_content %}
-<div id="mainPicture" class="top-banner">
-  
-</div>
+<div id="mainPicture" class="top-banner"></div>
 
 <div class="container">
   
@@ -157,5 +155,10 @@
   </div>
 </div>
 
+<script>
+  var imgUrl = "{% static 'app/images/name/main.jpg' %}" + "?hola";
+  var experienceName = "{{experience.name}}";
+</script>
+<script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
 {% endblock %}
