@@ -2,7 +2,10 @@
 .navbar {
   border-radius: 0;
   margin: 0;
-  color: #81807e;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 .nav>li>.navbar-element {
   position: relative;
@@ -23,9 +26,6 @@
 
 
 html, body { height: 100%; width: 100%; margin: 0; }
-body {
-  padding-top: 51px;
-}
 
 .footer {
   background: #eeeeee;
