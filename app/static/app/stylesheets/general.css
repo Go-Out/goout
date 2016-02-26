@@ -44,6 +44,6 @@ html, body { height: 100%; width: 100%; margin: 0; }
 .footer {
   background: #eeeeee;
   padding: 20px 0;
-  color: black;
+  color: #777;
   text-align: center;
 }
