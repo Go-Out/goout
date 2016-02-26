@@ -27,4 +27,42 @@
   });
 
   insertImageAsynchronously(imgUrl, $("#mainPicture"), experienceName);
+
+  var renderAvailability = function(available) {
+    var bookHtml = available ? "<p>Reservar</p><p class='booking-number'><strong>333 359 7080</strong></p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
+    $("#booking").html(bookHtml);
+    $("#bookingWide").html(bookHtml);
+  };
+
+  var getExperienceAvailability = function(date) {
+    $.ajax({
+      url: availabilityUrl.replace("123", experienceId) + "?date=" + dateToStr(new Date(date)),
+      method: "GET",
+      dataType: "json",
+      success: function(data) {
+        renderAvailability(data.available);
+      }
+    });
+  };
+
+  var dateInput = $("#datepicker");
+  var dateInputWide = $("#datepickerWide");
+  var datepickerOptions = {
+    dateFormat: dateFormat,
+    minDate: +1,
+    dayNames: dayNames,
+    monthNames: monthNames,
+    onSelect: function(date, inst) {
+      getExperienceAvailability(date);
+    }
+  };
+  dateInput.datepicker(datepickerOptions);
+  dateInputWide.datepicker(datepickerOptions);
+
+  var dateStr = getQueryValue("date");
+  var startDate = new Date(dateStr);
+  dateInput.datepicker("setDate", startDate);
+  dateInputWide.datepicker("setDate", startDate);
+
+  getExperienceAvailability(dateStr);
 })();

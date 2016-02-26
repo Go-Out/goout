@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.css' %}">
 {% endblock %}
 
 {% block main_content %}
@@ -22,7 +23,7 @@
           <div class="row box-row">
             <div class="col-xs-10 col-xs-offset-1">
               <p class="editables-header">Fecha</p>
-              <div class="editable">Sábado 20 Febrero 2016</div>
+              <input id="datepicker" class="editable" type="text" readonly>
             </div>
             <!-- <div class="col-xs-4">
             <p class="editables-header">Personas</p>
@@ -38,10 +39,7 @@
           <!-- <div class="box-row">
           <strong><a class="payment-link" href="{% url 'payment' experience.id %}">Reservar</a></strong>
         </div> -->
-          <div class="box-row booking">
-            <p>Reservar </p>
-            <p class="booking-number"><strong>333 359 7080</strong></p>
-          </div>
+          <div id="booking" class="box-row booking"></div>
           <!-- <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div> -->
         </div>
 
@@ -116,7 +114,7 @@
         <div class="row box-row">
           <div class="col-xs-10 col-xs-offset-1">
             <p class="editables-header">Fecha</p>
-            <div class="editable">Sábado 20 Febrero 2016</div>
+            <input id="datepickerWide" class="editable" type="text" readonly>
           </div>
           <!-- <div class="col-xs-4">
             <p class="editables-header">Personas</p>
@@ -132,10 +130,7 @@
         <!-- <div class="box-row">
           <strong><a class="payment-link" href="{% url 'payment' experience.id %}">Reservar</a></strong>
         </div> -->
-        <div class="box-row booking">
-          <p>Reservar </p>
-          <p class="booking-number"><strong>333 359 7080</strong></p>
-        </div>
+        <div id="bookingWide" class="box-row booking"></div>
         <!-- <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div> -->
       </div>
     </div>
@@ -155,9 +150,12 @@
   </div>
 </div>
 
+<script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>
   var imgUrl = "{% static 'app/images/name/main.jpg' %}" + "?hola";
   var experienceName = "{{experience.name}}";
+  var experienceId = "{{experience.id}}";
+  var availabilityUrl = "{% url 'experience_availability' experience_id=123 %}";
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>

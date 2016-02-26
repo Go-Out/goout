@@ -1,6 +1,7 @@
+var dateStr;
 $(function() {
   var insertExperienceData = function(experienceElem, experience) {
-    experienceElem.find("a").attr("href", experienceUrl.replace("123", experience.id));
+    experienceElem.find("a").attr("href", experienceUrl.replace("123", experience.id) + "?date=" + dateStr);
     experienceElem.find("#experiencePrice").text("$ " + experience.price);
     experienceElem.find("#experienceNameLink").text(experience.name);
     experienceElem.find("#experienceLocationLink").text(experience.location);
@@ -29,7 +30,7 @@ $(function() {
 
   var getExperiences = function(date) {
     $.ajax({
-      url: experiencesUrl + "?date=" + dateToStr(new Date(date)),
+      url: experiencesUrl + "?date=" + dateStr,
       method: "GET",
       dataType: "json",
       success: function(data) {
@@ -38,17 +39,15 @@ $(function() {
     });
   };
 
-  var dateToStr = function(date) {
-    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-  };
 
   var dateInput = $("#datepicker");
   dateInput.datepicker({
-    dateFormat: "DD dd MM yy",
+    dateFormat: dateFormat,
     minDate: +1,
-    dayNames: [ "Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado" ],
-    monthNames: [ "Enero","Febrero","Marzo","Abril","Mayo","Junio", "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre" ],
+    dayNames: dayNames,
+    monthNames: monthNames,
     onSelect: function(date, inst) {
+      dateStr = dateToStr(new Date(date));
       getExperiences(date);
     }
   });
@@ -57,6 +56,8 @@ $(function() {
   var startDate = new Date();
   startDate.setDate(today.getDate() + (6 - today.getDay()));
   dateInput.datepicker("setDate", startDate);
+
+  dateStr = dateToStr(startDate);
 
   getExperiences(startDate);
 });

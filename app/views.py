@@ -13,15 +13,12 @@ def index(request):
   return render(request, "app/index.html", context)
 
 def experiences_json(request):
-  days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-  date_str = request.GET.get('date').split("-")
-  d = date(int(date_str[0]), int(date_str[1]), int(date_str[2]))
-  day = days[d.weekday()]
+  day = getDateDay(request.GET.get('date'))
 
   experience_models = Experience.objects.all()
   experiences = map(experience_as_json, experience_models)
 
-  experiences = filter(lambda experience: day in experience["availability"] or not experience["availability"], experiences)
+  experiences = filter(lambda experience: isExperienceAvailable(experience, day), experiences)
 
   return JsonResponse(experiences, safe=False)
 
@@ -35,6 +32,15 @@ def json_detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
 
   return JsonResponse(experience_as_json(experience_model))
+
+def experience_availability(request, experience_id):
+  day = getDateDay(request.GET.get('date'))
+
+  experience_model = Experience.objects.get(pk=experience_id)
+  experience = experience_as_json(experience_model)
+
+  context = {'available': isExperienceAvailable(experience, day)}
+  return JsonResponse(context)
 
 def payment(request, experience_id):
   return render(request, "app/payment.html", {'experience_id': experience_id})
@@ -105,3 +111,12 @@ def experience_as_json(experience_model):
   experience["categories"] = categories
 
   return experience
+
+def isExperienceAvailable(experience, day):
+  return day in experience["availability"] or not experience["availability"]
+
+def getDateDay(date_str):
+  days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+  dates = date_str.split("-")
+  d = date(int(dates[0]), int(dates[1]), int(dates[2]))
+  return days[d.weekday()]
