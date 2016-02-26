@@ -156,7 +156,7 @@
   var experienceName = "{{experience.name}}";
   var experienceId = "{{experience.id}}";
   var availabilityUrl = "{% url 'experience_availability' experience_id=123 %}";
-</script>
+  var experienceUrl = "{% url 'detail' experience_id=123 %}";</script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
 {% endblock %}

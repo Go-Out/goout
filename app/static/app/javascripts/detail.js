@@ -35,12 +35,14 @@
   };
 
   var getExperienceAvailability = function(date) {
+    var dateStr = dateToStr(new Date(date));
     $.ajax({
-      url: availabilityUrl.replace("123", experienceId) + "?date=" + dateToStr(new Date(date)),
+      url: availabilityUrl.replace("123", experienceId) + "?date=" + dateStr,
       method: "GET",
       dataType: "json",
       success: function(data) {
         renderAvailability(data.available);
+        window.history.replaceState(data, "ExperienceAvailability", experienceUrl.replace("123", experienceId) + "?date=" + dateStr);
       }
     });
   };
