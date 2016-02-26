@@ -1,32 +1,46 @@
-/*** Bootstrap overriding ***/
+html, body { height: 100%; width: 100%; margin: 0; }
+
+/*** Header ***/
 .navbar {
-  border-radius: 0;
-  margin: 0;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 2;
+  height: 70px;
+  padding: 15px 0;
+  color: #fff;
 }
-.nav>li>.navbar-element {
-  position: relative;
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.navbar li {
+  float: left;
+}
+.navbar li * {
   display: block;
-  padding: 10px 15px;
+  text-align: center;
+  line-height: 40px;
 }
-.navbar-nav>li>.navbar-element {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 20px;
+.navbar-left {
+  float: left;
 }
-@media (min-width: 768px) {
-  .navbar-nav>li>.navbar-element {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
+.navbar-right {
+  float: right;
+}
+.logo {
+  height: 40px;
+}
+.book-number {
+  padding: 0 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
 }
 
 
-html, body { height: 100%; width: 100%; margin: 0; }
-
+/*** Footer ***/
 .footer {
   background: #eeeeee;
   padding: 20px 0;
