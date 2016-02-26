@@ -24,6 +24,7 @@
   font-size: 13px;
   background-color: #fff;
   text-align: center;
+  cursor: pointer;
 }
 .payment-link {
   color: inherit;
