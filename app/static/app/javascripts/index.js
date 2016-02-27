@@ -8,7 +8,7 @@ $(function() {
   }
 
   var renderExperiences = function(data) {
-    var experiencesContainer = $("#experiences");
+    var experiencesContainer = $("#experiencesContainer");
     experiencesContainer.empty();
 
     var row = $("<div class='row'></div>");
@@ -28,13 +28,17 @@ $(function() {
     });
   };
 
-  var getExperiences = function(date) {
+  var getExperiences = function(date, first) {
     $.ajax({
       url: experiencesUrl + "?date=" + dateStr,
       method: "GET",
       dataType: "json",
       success: function(data) {
         renderExperiences(data);
+        if(!first)
+          window.setTimeout(function() {
+            $(window).scrollTop($("#experiences").offset().top);
+          }, 500);
       }
     });
   };
@@ -48,7 +52,7 @@ $(function() {
     monthNames: monthNames,
     onSelect: function(date, inst) {
       dateStr = dateToStr(new Date(date));
-      getExperiences(date);
+      getExperiences(date, false);
     }
   });
 
@@ -59,5 +63,5 @@ $(function() {
 
   dateStr = dateToStr(startDate);
 
-  getExperiences(startDate);
+  getExperiences(startDate, true);
 });
