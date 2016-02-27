@@ -11,7 +11,6 @@
 
 <div class="top-banner">
   <a class="banner-link fill" href="{% url 'detail' 265 %}?date=2016-3-5"></a>
-  <div class="banner-background fill"></div>
   <div class="banner-content">
     <p class="header">Nevado de Colima</p>
     <p class="sub-header">Sábado 05 de Marzo</p>
@@ -19,11 +18,22 @@
   </div>
 </div>
 
-<div id="experiences" class="container-fluid">
-  <input type="text" id="datepicker" readonly>
+<div class="navbar navbar-exp">
+  <div class="container-fluid">
+    <ul class="navbar-left">
+      <li><span class="navbar-title">Experiencias</span></li>
+    </ul>
 
-  <div id="experiencesContainer"></div>
+    <ul class="navbar-right">
+      <li>
+        <p class="date-header">Escoge una fecha</p>
+        <input type="text" id="datepicker" readonly>
+      </li>
+    </ul>
+  </div>
 </div>
+
+<div id="experiences" class="container-fluid"></div>
 
 <script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>

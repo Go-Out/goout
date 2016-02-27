@@ -1,14 +1,6 @@
 html, body { height: 100%; width: 100%; margin: 0; }
-
-/*** Header ***/
 .navbar {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-  height: 70px;
   padding: 15px 0;
-  color: #fff;
 }
 .navbar ul {
   list-style-type: none;
@@ -22,13 +14,25 @@ html, body { height: 100%; width: 100%; margin: 0; }
 .navbar li * {
   display: block;
   text-align: center;
-  line-height: 40px;
 }
 .navbar-left {
   float: left;
 }
 .navbar-right {
   float: right;
+}
+
+/*** Header ***/
+.navbar-main {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  color: #fff;
+  height: 70px;
+}
+.navbar-main li * {
+  line-height: 40px;
 }
 .logo {
   height: 40px;

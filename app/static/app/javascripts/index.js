@@ -8,7 +8,7 @@ $(function() {
   }
 
   var renderExperiences = function(data) {
-    var experiencesContainer = $("#experiencesContainer");
+    var experiencesContainer = $("#experiences");
     experiencesContainer.empty();
 
     var row = $("<div class='row'></div>");

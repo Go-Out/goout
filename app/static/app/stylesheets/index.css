@@ -9,7 +9,6 @@
 .top-banner {
   background-color: #ddd;
   position: relative;
-  margin-bottom: 30px;
   background: url("../images/Alpinismo_(Day_Tour)/main.jpg") no-repeat center center;
   background-size: cover;
   height: 500px;
@@ -17,8 +16,6 @@
 }
 .banner-link {
   z-index: 1;
-}
-.banner-background {
 }
 .banner-content {
   text-align: center;
@@ -50,16 +47,29 @@
   font-weight: bold;
 }
 
+.navbar-exp {
+  background-color: #111;
+  margin-bottom: 50px;
+}
+.navbar-title {
+  color: #fff;
+  font-size: 24px;
+  line-height: 66px;
+}
+p.date-header {
+  font-size: 13px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  line-height: inherit;
+  color: #fff;
+}
 #datepicker {
   cursor: pointer;
-  background-color: transparent;
   padding: 9px 6px;
   border: 1px solid #c4c4c4;
   border-radius: 2px;
   outline: none;
-  font-size: 1.5em;
-
-  margin-bottom: 30px;
+  line-height: inherit;
 }
 
 .experience-col {

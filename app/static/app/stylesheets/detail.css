@@ -26,6 +26,9 @@
   text-align: center;
   cursor: pointer;
 }
+.fa-calendar {
+  font-size: 1.5em;
+}
 .payment-link {
   color: inherit;
   text-decoration: none;
