@@ -17,15 +17,6 @@
     });
   });
 
-  $("#mainPicture").click(function() {
-    $("#picturesContainer").removeClass("hidden");
-    $("body").addClass("no-overflow");
-  });
-  $("#picturesClose").click(function() {
-    $("#picturesContainer").addClass("hidden");
-    $("body").removeClass("no-overflow");
-  });
-
   insertImageAsynchronously(imgUrl, $("#mainPicture"), experienceName);
 
   var renderAvailability = function(available) {
