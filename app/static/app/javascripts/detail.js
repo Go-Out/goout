@@ -70,7 +70,6 @@
       "background": "url('" + imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", experienceImgs[i])  + "') no-repeat center center",
       "background-size": "cover"
     });
-    console.log(experienceImgs[i])
   });
   $("#controlRight").click(function() {
     i++;
@@ -80,10 +79,9 @@
       "background": "url('" + imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", experienceImgs[i])  + "') no-repeat center center",
       "background-size": "cover"
     });
-    console.log(experienceImgs[i])
   });
 
   $.each(experienceImgs, function(i, img) {
-    imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123.jpg", img)
+    loadImageAsynchronously(imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", img));
   });
 })();

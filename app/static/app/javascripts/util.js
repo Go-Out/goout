@@ -10,6 +10,7 @@ var insertImageAsynchronously = function(imgSrc, imgElem, experience) {
 };
 
 var loadImageAsynchronously = function(imgSrc) {
+  console.log(imgSrc);
   var img = new Image();
   img.src = imgSrc;
 };
