@@ -21,6 +21,7 @@ class Experience(models.Model):
   requirements = models.TextField(blank=True, help_text="Each one in a new line")
   gear = models.TextField(blank=True, help_text="Each one in a new line")
   additional = models.TextField(blank=True, help_text="Each one in a new line")
+  images = models.TextField(blank=True, editable=False)
   categories = models.ManyToManyField(Category)
 
   def __str__(self):

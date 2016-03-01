@@ -103,6 +103,7 @@ def experience_as_json(experience_model):
   experience["requirements"] = json.loads(experience_model.requirements)
   experience["gear"] = json.loads(experience_model.gear)
   experience["additional"] = json.loads(experience_model.additional) 
+  experience["images"] = json.loads(experience_model.images)
   categories = []
   category_pks = experience["categories"]
   for category_pk in category_pks:

@@ -5,10 +5,12 @@ from django.db import migrations
 from datetime import timedelta
 from django.core.exceptions import ObjectDoesNotExist
 from .. utils import text_as_json
+import os
 
 
 EXPERIENCES_FILE = "app/migrations/data/experiences_es.tsv"
 NEW_LINE_DELIMITER = "|"
+IMAGES_FOLDER = "app/static/app/images/"
 
 def insert_experiences(apps, schema_editor):
   experience_lines = read_lines_from_file(EXPERIENCES_FILE)[1:]
@@ -26,6 +28,8 @@ def insert_experiences(apps, schema_editor):
         category = Category(name=fields[9])
         category.save()
 
+      img_names = text_as_json(list_as_str(os.listdir(IMAGES_FOLDER + fields[0].replace(" ", "_"))), NEW_LINE_DELIMITER)
+
       experience = Experience(
           name=fields[0],
           price=float(fields[1]),
@@ -37,7 +41,8 @@ def insert_experiences(apps, schema_editor):
           included=text_as_json(fields[7], NEW_LINE_DELIMITER),
           additional=text_as_json(fields[8], NEW_LINE_DELIMITER),
           itinerary=text_as_json(fields[10], NEW_LINE_DELIMITER),
-          gear=text_as_json(fields[11], NEW_LINE_DELIMITER)
+          gear=text_as_json(fields[11], NEW_LINE_DELIMITER),
+          images=img_names
       )
       experience.save()
       experience.categories.add(category)
@@ -50,11 +55,19 @@ def read_lines_from_file(file_name):
   with open(file_name) as f:
     return f.readlines()
 
+def list_as_str(l):
+  s = ''
+  for item in l:
+    s += item + NEW_LINE_DELIMITER
+  if len(s) > 1:
+    s = s[0:len(s) - 1]
+  return s
+
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0012_auto_20160224_2228'),
+        ('app', '0014_experience_images'),
     ]
 
     operations = [
