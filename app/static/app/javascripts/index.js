@@ -1,5 +1,12 @@
 var dateStr;
 $(function() {
+  $(document).ready(function() {
+    if(window.location.href == "http://go-out.herokuapp.com/")
+      $("#bannerLink").attr("href", experienceUrl.replace("123", 67));
+    else
+      $("#bannerLink").attr("href", experienceUrl.replace("123", 265));
+  });
+
   var insertExperienceData = function(experienceElem, experience) {
     experienceElem.find("a").attr("href", experienceUrl.replace("123", experience.id) + "?date=" + dateStr);
     experienceElem.find("#experiencePrice").text("$ " + experience.price);
