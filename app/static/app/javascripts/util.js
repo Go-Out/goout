@@ -9,6 +9,11 @@ var insertImageAsynchronously = function(imgSrc, imgElem, experience) {
   img.src = imgSrc.replace("name", experience.replace(/ /g, "_"));
 };
 
+var loadImageAsynchronously = function(imgSrc) {
+  var img = new Image();
+  img.src = imgSrc;
+};
+
 var dateToStr = function(date) {
   return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 };

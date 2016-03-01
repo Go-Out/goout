@@ -17,8 +17,6 @@
     });
   });
 
-  insertImageAsynchronously(imgUrl, $("#mainPicture"), experienceName);
-
   var renderAvailability = function(available) {
     var bookHtml = available ? "<p>Reservar</p><p class='booking-number'><strong>333 359 7080</strong></p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
     $("#booking").html(bookHtml);
@@ -37,6 +35,9 @@
       }
     });
   };
+
+
+  insertImageAsynchronously(imgUrl.replace("123", "0.jpg"), $("#mainPicture"), experienceName);
 
   var dateInput = $("#datepicker");
   var dateInputWide = $("#datepickerWide");
@@ -58,4 +59,31 @@
   dateInputWide.datepicker("setDate", startDate);
 
   getExperienceAvailability(dateStr);
+
+  var i = 0;
+  var mainPicture = $("#mainPicture");
+  $("#controlLeft").click(function() {
+    i--;
+    if(i < 0)
+      i = experienceImgs.length - 1;
+    mainPicture.css({
+      "background": "url('" + imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", experienceImgs[i])  + "') no-repeat center center",
+      "background-size": "cover"
+    });
+    console.log(experienceImgs[i])
+  });
+  $("#controlRight").click(function() {
+    i++;
+    if(i == experienceImgs.length)
+      i = 0;
+    mainPicture.css({
+      "background": "url('" + imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", experienceImgs[i])  + "') no-repeat center center",
+      "background-size": "cover"
+    });
+    console.log(experienceImgs[i])
+  });
+
+  $.each(experienceImgs, function(i, img) {
+    imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123.jpg", img)
+  });
 })();

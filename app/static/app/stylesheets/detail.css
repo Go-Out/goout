@@ -3,6 +3,25 @@
   margin-bottom: 30px;
   height: 500px;
 }
+.top-banner .row {
+  height: 100%;
+}
+.col-control {
+  height: 100%;
+  text-align: center;
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
+.col-control:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.col-control i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .box-row {
   padding: 10px 20px;

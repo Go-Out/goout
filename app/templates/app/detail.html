@@ -8,7 +8,12 @@
 {% endblock %}
 
 {% block main_content %}
-<div id="mainPicture" class="top-banner"></div>
+<div id="mainPicture" class="top-banner container-fluid">
+  <div class="row">
+    <div id="controlLeft" class="col-xs-1 col-control"><i class="fa fa-angle-left fa-5x"></i></div>
+    <div id="controlRight" class="col-xs-1 col-xs-offset-10 col-control"><i class="fa fa-angle-right fa-5x"></i></div>
+  </div>
+</div>
 
 <div class="container">
   
@@ -141,11 +146,13 @@
 
 <script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>
-  var imgUrl = "{% static 'app/images/name/0.jpg' %}" + "?hola";
+  var imgUrl = "{% static 'app/images/name/123' %}" + "?hola";
   var experienceName = "{{experience.name}}";
   var experienceId = "{{experience.id}}";
   var availabilityUrl = "{% url 'experience_availability' experience_id=123 %}";
-  var experienceUrl = "{% url 'detail' experience_id=123 %}";</script>
+  var experienceUrl = "{% url 'detail' experience_id=123 %}";
+  var experienceImgs = JSON.parse("{{experience.images|escapejs}}");
+</script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
 {% endblock %}
