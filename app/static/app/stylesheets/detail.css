@@ -7,6 +7,10 @@ body {
   height: 500px;
   border-bottom: 1px solid #dce0e0;
 }
+.top-banner.container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .top-banner .row {
   height: 100%;
 }
