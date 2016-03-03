@@ -6,7 +6,7 @@
 
     $(window).scroll(function() {
       var windowpos = $(window).scrollTop();
-      if (windowpos >= (pos.top - 20)) {
+      if (windowpos >= (pos.top - 30)) {
         priceBox.addClass("stick");
         priceBox.css("width", initialWidth);
       }
