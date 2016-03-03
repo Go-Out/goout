@@ -2,6 +2,12 @@ html, body { height: 100%; width: 100%; margin: 0; }
 body {
   font-family: 'Raleway', sans-serif;
 }
+.container-fluid {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
 .navbar {
   padding: 15px 0;
 }
