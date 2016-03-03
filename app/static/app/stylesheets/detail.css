@@ -1,7 +1,11 @@
+body {
+  background-color: #eeeeee;
+}
+
 .top-banner {
   background-color: #ddd;
-  margin-bottom: 30px;
   height: 500px;
+  border-bottom: 1px solid #dce0e0;
 }
 .top-banner .row {
   height: 100%;
@@ -77,8 +81,16 @@
   font-size: 18px;
 }
 
+.main {
+  background-color: #fff;
+  padding: 30px;
+  border-right: 1px solid #dce0e0;
+  border-bottom: 1px solid #dce0e0;
+  border-left: 1px solid #dce0e0;
+}
 .section {
   border-top: 1px solid #dce0e0;
+  margin: 0;
 }
 .section-first {
   border-top: none;
@@ -86,21 +98,29 @@
 .section li {
   list-style-type: none;
 }
+.section p, .section ul {
+  margin: 15px 0;
+}
+.experience-name {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
 
 #hardBox {
   border: 1px solid #dce0e0;
   text-align: center;
   display: none;
+  background-color: #fff;
+  margin-top: 30px;
 }
 .stick {
   position:fixed;
   top: 0;
-  margin-top: 20px;
 }
 .hard-box-hidden {
   border: 1px solid #dce0e0;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 @media (min-width: 992px) {
   #hardBox {
