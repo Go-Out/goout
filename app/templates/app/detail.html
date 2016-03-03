@@ -83,21 +83,6 @@
         </div>
       {% endif %}
 
-      {% if experience.additional %}
-        <div class="row section">
-          <div class="col-md-2">
-            <p><strong>Adicional</strong></p>
-          </div>
-          <div class="col-md-10">
-            <ul>
-              {% for additional in experience.additional %}
-                <li>{{additional}}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      {% endif %}
-
       {% if experience.gear %}
         <div class="row section">
           <div class="col-md-2">
@@ -107,6 +92,21 @@
             <ul>
               {% for gear in experience.gear %}
                 <li>{{gear}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if experience.additional %}
+        <div class="row section">
+          <div class="col-md-2">
+            <p><strong>Adicional</strong></p>
+          </div>
+          <div class="col-md-10">
+            <ul>
+              {% for additional in experience.additional %}
+                <li>{{additional}}</li>
               {% endfor %}
             </ul>
           </div>
