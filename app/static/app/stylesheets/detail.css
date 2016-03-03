@@ -43,6 +43,7 @@
   background-color: #fff;
   text-align: center;
   cursor: pointer;
+  width: 170px;
 }
 .fa-calendar {
   font-size: 1.5em;

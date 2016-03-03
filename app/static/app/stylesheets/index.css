@@ -70,6 +70,7 @@ p.date-header {
   border-radius: 2px;
   outline: none;
   line-height: inherit;
+  width: 170px;
 }
 
 .experience-col {
