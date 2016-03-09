@@ -37,6 +37,9 @@ def experience_availability(request, experience_id):
 def about(request):
   return render(request, "app/about.html", {})
 
+def team_building(request):
+  return render(request, "app/team_building.html", {})
+
 
 def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]

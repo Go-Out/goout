@@ -1,0 +1,168 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+  <!-- Stylesheets go in here -->
+{% endblock %}
+
+{% block main_content %}
+<div class="top-banner">
+  <a id="bannerLink" class="banner-link fill"></a>
+  <div class="banner-content">
+    <p class="banner-header">Contáctanos para una consultoría gratis</p>
+    <button class="call-to-action">Contactar</button>
+  </div>
+</div>
+
+<div class="container why">
+  <h2 class="section-header">Por qué Go Out</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <p class="why-header">Hacer memorias debería ser fácil</p>
+      <p class="why-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices sollicitudin neque quis mollis. Donec suscipit elit et ipsum tincidunt molestie. Ut ut ante ac justo tincidunt auctor. Curabitur consequat.</p>
+    </div>
+
+    <div class="col-md-6">
+      <p class="why-header">Nos encanta explorar México</p>
+      <p class="why-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices sollicitudin neque quis mollis. Donec suscipit elit et ipsum tincidunt molestie. Ut ut ante ac justo tincidunt auctor. Curabitur consequat.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <p class="why-header">Cada fin de semana es una experiencia</p>
+      <p class="why-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices sollicitudin neque quis mollis. Donec suscipit elit et ipsum tincidunt molestie. Ut ut ante ac justo tincidunt auctor. Curabitur consequat.</p>
+    </div>
+
+    <div class="col-md-6">
+      <p class="why-header">Nosotros nos encargamos de todo</p>
+      <p class="why-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices sollicitudin neque quis mollis. Donec suscipit elit et ipsum tincidunt molestie. Ut ut ante ac justo tincidunt auctor. Curabitur consequat.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container experiences">
+  <h2 class="section-header">Team Building</h2>
+  <div class="row">
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Construcción de Bote</p>
+      </div>
+    </div>
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">La Telaraña</p>
+      </div>
+    </div>
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Pie Grande</p>
+      </div>
+    </div>
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Hielo Ciego</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Dedo del Gigante</p>
+      </div>
+    </div>
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Todos sobre la Marca</p>
+      </div>
+    </div>
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Saltando el Muro</p>
+      </div>
+    </div>
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Barra de Equilibrio</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-header">Eventos en Grupo</h2>
+  <div class="row">
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Gotcha</p>
+      </div>
+    </div>
+    <div class="col-md-3 experience-col">
+      <div class="experience"></div>
+      <div class="experience-description">
+        <p class="experience-name">Circuito de Tirolesas</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container customers">
+  <h2 class="section-header">Clientes</h2>
+  <div class="row">
+    <div class="col-md-2 customer"></div>
+    <div class="col-md-2 customer"></div>
+    <div class="col-md-2 customer"></div>
+    <div class="col-md-2 customer"></div>
+    <div class="col-md-2 customer"></div>
+    <div class="col-md-2 customer"></div>
+  </div>
+</div>
+
+<div class="container contact">
+  <h2 class="section-header">Consultoría Gratis</h2>
+  <h3 class="contact-phone">333 359 7080</h3>
+
+  <form class="contact-form">
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <label for="name">Nombre</label>
+          <input type="text" id="name">
+        </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input type="email" id="email">
+        </div>
+        <div>
+          <label for="phone">Teléfono</label>
+          <input type="number" id="phone">
+        </div>
+        <div>
+          <label for="participants"># Personas</label>
+          <input type="text" id="participants">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div>
+          <label for="date">Fecha</label>
+          <input type="text" id="date">
+        </div>
+        <div>
+          <label for="comments">Comentarios</label>
+          <textarea id="comments"></textarea>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
