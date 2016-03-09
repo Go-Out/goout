@@ -4,8 +4,8 @@
 
 .main {
   margin-top: 70px;
-  padding-top: 30px;
-  margin-bottom: 30px;
+  padding-top: 50px;
+  margin-bottom: 50px;
 }
 .title {
   font-size: 32px;
@@ -42,6 +42,7 @@
 }
 .founder-description {
   font-size: 16px;
+  margin: 0;
 }
 
 .contact-header {
