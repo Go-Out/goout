@@ -41,6 +41,9 @@ def experience_availability(request, experience_id):
   context = {'available': isExperienceAvailable(experience, day)}
   return JsonResponse(context)
 
+def about(request):
+  return render(request, "app/about.html", {})
+
 
 def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
