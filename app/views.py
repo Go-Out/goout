@@ -7,9 +7,7 @@ from datetime import date
 
 # Create your views here.
 def index(request):
-  experiences = Experience.objects.all()
-  context = {'experiences': experiences}
-  return render(request, "app/index.html", context)
+  return render(request, "app/index.html", {})
 
 def experiences_json(request):
   day = getDateDay(request.GET.get('date'))
@@ -26,11 +24,6 @@ def detail(request, experience_id):
 
   context = {'experience': experience_as_json(experience_model)}
   return render(request, "app/detail.html", context)
-
-def json_detail(request, experience_id):
-  experience_model = Experience.objects.get(pk=experience_id)
-
-  return JsonResponse(experience_as_json(experience_model))
 
 def experience_availability(request, experience_id):
   day = getDateDay(request.GET.get('date'))
