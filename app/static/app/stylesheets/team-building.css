@@ -1,0 +1,133 @@
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.top-banner {
+  background-color: #ddd;
+  position: relative;
+  height: 400px;
+  padding-top: 70px;
+}
+.banner-link {
+  z-index: 1;
+  cursor: pointer;
+}
+.banner-content {
+  text-align: center;
+  color: #fff;
+  padding: 45px;
+}
+.banner-header {
+  margin-top: 0;
+  font-size: 48px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-shadow: 1px 1px 20px #000;
+}
+.call-to-action {
+  background-color: #f39519;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 4px;
+  border: none;
+  padding: 9px 27px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.container {
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+.section-header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: normal;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+.section-row {
+  margin-bottom: 30px;
+}
+
+.why-header {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.experiences-container {
+  background-color: #eee;
+}
+.experiences-subheader {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.experience {
+  background-color: #ddd;
+  height: 250px;
+}
+.experience-description {
+  padding: 10px;
+  background-color: #fff;
+}
+.experience-name {
+  font-size: 16px;
+  margin: 0;
+}
+
+.customer-container {
+  background-color: #333;
+}
+.customers {
+  color: #fff;
+}
+.customer {
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  background-color: #ddd;
+  border-radius: 50%;
+}
+
+.contact-header {
+  margin-bottom: 8px;
+}
+.contact-phone {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.contact-form {
+  font-size: 16px;
+  text-align: center;
+}
+.form-section {
+  margin-bottom: 10px;
+}
+.contact-form label {
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
+}
+.contact-form input {
+  width: 250px;
+}
+.contact-form textarea {
+  width: 250px;
+}
+.contact-form button {
+  margin-top: 10px;
+}

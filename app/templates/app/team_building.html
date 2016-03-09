@@ -3,14 +3,14 @@
 {% load staticfiles %}
 
 {% block stylesheets %}
-  <!-- Stylesheets go in here -->
+<link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/team-building.css' %}" />
 {% endblock %}
 
 {% block main_content %}
 <div class="top-banner">
-  <a id="bannerLink" class="banner-link fill"></a>
+  <div id="bannerLink" class="banner-link fill"></div>
   <div class="banner-content">
-    <p class="banner-header">Contáctanos para una consultoría gratis</p>
+    <h1 class="banner-header">Contáctanos para una consultoría gratis</h1>
     <button class="call-to-action">Contactar</button>
   </div>
 </div>
@@ -18,7 +18,7 @@
 <div class="container why">
   <h2 class="section-header">Por qué Go Out</h2>
 
-  <div class="row">
+  <div class="row section-row">
     <div class="col-md-6">
       <p class="why-header">Hacer memorias debería ser fácil</p>
       <p class="why-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices sollicitudin neque quis mollis. Donec suscipit elit et ipsum tincidunt molestie. Ut ut ante ac justo tincidunt auctor. Curabitur consequat.</p>
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row section-row">
     <div class="col-md-6">
       <p class="why-header">Cada fin de semana es una experiencia</p>
       <p class="why-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices sollicitudin neque quis mollis. Donec suscipit elit et ipsum tincidunt molestie. Ut ut ante ac justo tincidunt auctor. Curabitur consequat.</p>
@@ -43,126 +43,132 @@
   </div>
 </div>
 
-<div class="container experiences">
-  <h2 class="section-header">Team Building</h2>
-  <div class="row">
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Construcción de Bote</p>
+<div class="experiences-container">
+  <div class="container experiences">
+    <h2 class="section-header">Experiencias</h2>
+    <h3 class="experiences-subheader">Team Building</h3>
+    <div class="row section-row">
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Construcción de Bote</p>
+        </div>
+      </div>
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">La Telaraña</p>
+        </div>
+      </div>
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Pie Grande</p>
+        </div>
+      </div>
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Hielo Ciego</p>
+        </div>
       </div>
     </div>
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">La Telaraña</p>
+    <div class="row section-row">
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Dedo del Gigante</p>
+        </div>
+      </div>
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Todos sobre la Marca</p>
+        </div>
+      </div>
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Saltando el Muro</p>
+        </div>
+      </div>
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Barra de Equilibrio</p>
+        </div>
       </div>
     </div>
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Pie Grande</p>
+  
+    <h3 class="experiences-subheader">Eventos en Grupo</h3>
+    <div class="row section-row">
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Gotcha</p>
+        </div>
       </div>
-    </div>
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Hielo Ciego</p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Dedo del Gigante</p>
-      </div>
-    </div>
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Todos sobre la Marca</p>
-      </div>
-    </div>
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Saltando el Muro</p>
-      </div>
-    </div>
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Barra de Equilibrio</p>
-      </div>
-    </div>
-  </div>
-
-  <h2 class="section-header">Eventos en Grupo</h2>
-  <div class="row">
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Gotcha</p>
-      </div>
-    </div>
-    <div class="col-md-3 experience-col">
-      <div class="experience"></div>
-      <div class="experience-description">
-        <p class="experience-name">Circuito de Tirolesas</p>
+      <div class="col-md-3 experience-col">
+        <div class="experience"></div>
+        <div class="experience-description">
+          <p class="experience-name">Circuito de Tirolesas</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container customers">
-  <h2 class="section-header">Clientes</h2>
-  <div class="row">
-    <div class="col-md-2 customer"></div>
-    <div class="col-md-2 customer"></div>
-    <div class="col-md-2 customer"></div>
-    <div class="col-md-2 customer"></div>
-    <div class="col-md-2 customer"></div>
-    <div class="col-md-2 customer"></div>
+<div class="customer-container">
+  <div class="container customers">
+    <h2 class="section-header">Clientes</h2>
+    <div class="row section-row">
+      <div class="col-md-2"><div class="customer"></div></div>
+      <div class="col-md-2"><div class="customer"></div></div>
+      <div class="col-md-2"><div class="customer"></div></div>
+      <div class="col-md-2"><div class="customer"></div></div>
+      <div class="col-md-2"><div class="customer"></div></div>
+      <div class="col-md-2"><div class="customer"></div></div>
+    </div>
   </div>
 </div>
 
 <div class="container contact">
-  <h2 class="section-header">Consultoría Gratis</h2>
+  <h2 class="section-header contact-header">Consultoría Gratis</h2>
   <h3 class="contact-phone">333 359 7080</h3>
 
   <form class="contact-form">
     <div class="row">
-      <div class="col-md-6">
-        <div>
-          <label for="name">Nombre</label>
+      <div class="col-md-4 col-md-offset-2">
+        <div class="form-section">
+          <label for="name">Nombre *</label>
           <input type="text" id="name">
         </div>
-        <div>
-          <label for="email">E-mail</label>
+        <div class="form-section">
+          <label for="email">E-mail *</label>
           <input type="email" id="email">
         </div>
-        <div>
-          <label for="phone">Teléfono</label>
-          <input type="number" id="phone">
+        <div class="form-section">
+          <label for="phone">Teléfono *</label>
+          <input type="text" id="phone">
         </div>
-        <div>
+        <div class="form-section">
           <label for="participants"># Personas</label>
           <input type="text" id="participants">
         </div>
       </div>
 
-      <div class="col-md-6">
-        <div>
+      <div class="col-md-4">
+        <div class="form-section">
           <label for="date">Fecha</label>
           <input type="text" id="date">
         </div>
-        <div>
+        <div class="form-section">
           <label for="comments">Comentarios</label>
-          <textarea id="comments"></textarea>
+          <textarea id="comments" rows="5"></textarea>
         </div>
       </div>
     </div>
+    <button type="submit" class="call-to-action">Enviar</button>   
   </form>
 </div>
 {% endblock %}
