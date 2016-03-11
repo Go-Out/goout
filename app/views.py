@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from .models import Experience, Category
 from django.core import serializers
 import json
 from datetime import date
+from django.views.decorators.http import require_http_methods
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -40,6 +42,9 @@ def about(request):
 def team_building(request):
   return render(request, "app/team_building.html", {})
 
+def consultancy(request):
+  send_mail("Consultoria Team Building", "Bonjour world!", "goout.com", ["lsgaleana@gmail.com"], fail_silently=False)
+  return HttpResponseRedirect('/')
 
 def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]

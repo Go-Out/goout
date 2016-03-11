@@ -10,4 +10,5 @@ urlpatterns = [
   url(r'^experiences/(?P<experience_id>[0-9]+)/availability$', views.experience_availability, name='experience_availability'),
   url(r'^about$', views.about, name='about'),
   url(r'^team-building$', views.team_building, name='team_building'),
+  url(r'^consultancy$', views.consultancy, name='consultancy'),
 ]
