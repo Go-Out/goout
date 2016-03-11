@@ -43,7 +43,7 @@ def team_building(request):
   return render(request, "app/team_building.html", {})
 
 def consultancy(request):
-  send_mail("Consultoria Team Building", "Bonjour world!", "goout.com", ["lsgaleana@gmail.com"], fail_silently=False)
+  send_mail("Bonjour!", "Bonjour ze Mike!", "love.com", ["michael@goout.mx"], fail_silently=False)
   return HttpResponseRedirect('/')
 
 def experience_as_json(experience_model):
