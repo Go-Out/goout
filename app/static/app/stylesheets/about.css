@@ -1,5 +1,11 @@
-.navbar {
+.navbar-main {
   background-color: #111;
+}
+.navbar-main a {
+  text-shadow: none;
+}
+.book-number {
+  background-color: transparent;
 }
 
 .main {

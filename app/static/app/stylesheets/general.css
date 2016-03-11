@@ -24,6 +24,10 @@ body {
   display: block;
   text-align: center;
 }
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+}
 .navbar-left {
   float: left;
 }
@@ -42,6 +46,17 @@ body {
 }
 .navbar-main li * {
   line-height: 40px;
+  font-weight: bold;
+}
+.navbar-main a {
+  padding: 0 20px;
+  text-shadow: 1px 1px 10px #000;
+}
+a.logo-link {
+  padding-left: 0;
+}
+a:hover.logo-link  {
+  background-color: transparent;
 }
 .logo {
   height: 40px;
