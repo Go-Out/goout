@@ -18,6 +18,10 @@
   margin-top: 0;
   margin-bottom: 30px;
 }
+#luisImage {
+  background: url("../images/luis.jpg") no-repeat center center;
+  background-size: contain;
+}
 .founder-image {
   height: 150px;
   width: 150px;
