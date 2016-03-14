@@ -9,6 +9,9 @@ class Category(models.Model):
   def __str__(self):
     return self.name
 
+  def __unicode__(self):
+    return self.name
+
 class Experience(models.Model):
   name = models.CharField(max_length=50)
   price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -25,4 +28,7 @@ class Experience(models.Model):
   categories = models.ManyToManyField(Category)
 
   def __str__(self):
+    return self.name
+
+  def __unicode__(self):
     return self.name
