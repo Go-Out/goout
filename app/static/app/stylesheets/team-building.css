@@ -109,10 +109,14 @@
 .contact-phone {
   font-size: 20px;
   margin-top: 0;
-  margin-bottom: 15px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 15px;
+}
+.contact-copy {
+  font-size: 16px;
   margin-bottom: 50px;
+  text-align: center;
 }
 .contact-form {
   font-size: 16px;
