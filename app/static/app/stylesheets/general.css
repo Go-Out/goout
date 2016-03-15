@@ -36,6 +36,9 @@ body {
 .navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>p {
   color: #fff;
 }
+.navbar-default .navbar-nav>li>a:visited {
+  color: #fff;
+}
 .navbar-default .navbar-nav>li>a:hover {
   color: #ddd;
 }
