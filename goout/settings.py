@@ -143,11 +143,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
-
-
-# Email
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'app44856154@heroku.com'
-EMAIL_HOST_PASSWORD = 'wduj3aag4049'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
