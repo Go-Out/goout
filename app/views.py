@@ -6,9 +6,13 @@ import json
 from datetime import date
 from django.views.decorators.http import require_http_methods
 from django.core.mail import send_mail
+import os
 
 # Create your views here.
 def index(request):
+
+  print os.environ['SENDGRID_USERNAME']
+
   return render(request, "app/index.html", {})
 
 def experiences_json(request):
