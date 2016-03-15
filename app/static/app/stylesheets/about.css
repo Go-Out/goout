@@ -1,17 +1,23 @@
-.navbar-main {
+.navbar-default {
   background-color: #111;
 }
-.navbar-main a {
+.navbar-default .navbar-nav>li>a {
   text-shadow: none;
 }
-.book-number {
+.navbar-default .navbar-collapse {
+  background-color: #111;
+}
+.navbar-nav>li>p.book-number {
   background-color: transparent;
 }
 
 .main {
   margin-top: 70px;
   padding-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+.main .col-md-4 {
+  margin-bottom: 30px;
 }
 .title {
   font-size: 32px;

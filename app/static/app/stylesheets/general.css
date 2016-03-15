@@ -48,6 +48,10 @@ body {
 .navbar-default .navbar-collapse {
   background-color: rgba(0, 0, 0, 0.3);
 }
+.navbar-toggle {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
 /* Button bar icons */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #fff;
