@@ -46,6 +46,9 @@ def about(request):
 def team_building(request):
   return render(request, "app/team_building.html", {})
 
+def terms(request):
+  return render(request, "app/terms_conditions.html", {})
+
 def consultancy(request):
   send_mail("Bonjour!", "Bonjour ze Mike!", "love.com", ["michael@goout.mx"], fail_silently=False)
   return HttpResponseRedirect('/')

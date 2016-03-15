@@ -1,0 +1,30 @@
+.navbar-default {
+  background-color: #111;
+}
+.navbar-default .navbar-nav>li>a {
+  text-shadow: none;
+}
+.navbar-default .navbar-collapse {
+  background-color: #111;
+}
+.navbar-nav>li>p.book-number {
+  background-color: transparent;
+}
+
+.container {
+  padding-top: 15px;
+}
+.title {
+  font-size: 32px;
+  margin-bottom: 25px;
+  margin-top: 0;
+  font-weight: normal;
+}
+.cupon {
+  margin-top: 70px;
+  padding-top: 50px;
+}
+.container p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
