@@ -2,41 +2,19 @@ html, body { height: 100%; width: 100%; margin: 0; }
 body {
   font-family: 'Raleway', sans-serif;
 }
+
+
+/*** Bootstrap ***/
 .container-fluid {
   padding-left: 30px;
   padding-right: 30px;
 }
 
 
+/*** Bootstrap Navbar ***/
+/* Navbar */
 .navbar {
-  padding: 15px 0;
-}
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.navbar li {
-  float: left;
-}
-.navbar li * {
-  display: block;
-  text-align: center;
-}
-.navbar a {
-  color: inherit;
-  text-decoration: none;
-}
-.navbar-left {
-  float: left;
-}
-.navbar-right {
-  float: right;
-}
-
-/*** Header ***/
-.navbar-main {
+  border-radius: 0;
   position: absolute;
   top: 0;
   width: 100%;
@@ -44,33 +22,62 @@ body {
   color: #fff;
   height: 70px;
 }
-.navbar-main li * {
-  line-height: 40px;
-  font-weight: bold;
-}
-.navbar-main a {
-  padding: 0 20px;
-  text-shadow: 1px 1px 10px #000;
-}
-.navbar-main a i {
-  font-weight: normal;
-}
-a.logo-link {
-  padding-left: 0;
-}
-a:hover.logo-link  {
+.navbar-default {
   background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: #fff;
 }
+/* Navbar when collapsed */
+.navbar-header {
+  height: 70px;
+}
+/* Navbar elements */
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>p {
+  color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+  color: #ddd;
+}
+.navbar-nav>li>p {
+  padding: 10px 15px;
+  line-height: 20px;
+  margin: 0;
+}
+/* Collapsed section */
+.navbar-default .navbar-collapse {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+/* Button bar icons */
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .navbar-nav>li>a, .navbar-nav>li>p {
+    line-height: 40px;
+  }
+  .navbar-default .navbar-nav>li>a {
+    text-shadow: 1px 1px 10px #000;
+  }
+  .navbar-default .navbar-collapse {
+    background-color: transparent;
+  }
+}
+/* Navbar */
 .logo {
   height: 40px;
 }
-.book-number {
-  padding: 0 20px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 2px;
-}
 .fa-2x {
   font-size: 1.4em;
+}
+@media (min-width: 768px) {
+  /* Book number */
+  .navbar-nav>li>p.book-number {
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    margin: 15px;
+  }
 }
 
 
