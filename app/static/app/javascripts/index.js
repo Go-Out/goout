@@ -1,12 +1,5 @@
 var dateStr;
 $(function() {
-  $(document).ready(function() {
-    if(window.location.href.indexOf("herokuapp") != -1)
-      $("#bannerLink").attr("href", experienceUrl.replace("123", 91) + "?date=2016-3-26");
-    else
-      $("#bannerLink").attr("href", experienceUrl.replace("123", 313) + "?date=2016-3-26");
-  });
-
   var insertExperienceData = function(experienceElem, experience) {
     experienceElem.find("a").attr("href", experienceUrl.replace("123", experience.id) + "?date=" + dateStr);
     experienceElem.find("#experiencePrice").text("$ " + experience.price);
