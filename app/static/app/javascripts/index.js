@@ -2,9 +2,9 @@ var dateStr;
 $(function() {
   $(document).ready(function() {
     if(window.location.href.indexOf("herokuapp") != -1)
-      $("#bannerLink").attr("href", experienceUrl.replace("123", 91) + "?date=2016-3-5");
+      $("#bannerLink").attr("href", experienceUrl.replace("123", 91) + "?date=2016-3-26");
     else
-      $("#bannerLink").attr("href", experienceUrl.replace("123", 313) + "?date=2016-3-5");
+      $("#bannerLink").attr("href", experienceUrl.replace("123", 313) + "?date=2016-3-26");
   });
 
   var insertExperienceData = function(experienceElem, experience) {
