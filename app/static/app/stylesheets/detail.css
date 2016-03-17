@@ -104,10 +104,18 @@ body {
 }
 .section p, .section ul {
   margin: 15px 0;
+  padding-left: 0;
 }
 .experience-name {
   font-size: 24px;
   margin-bottom: 30px;
+}
+.included-content {
+  margin: 15px 0;
+}
+.included-icon {
+  max-width: 30px;
+  max-height: 30px;
 }
 
 #hardBox {

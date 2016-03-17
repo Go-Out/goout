@@ -58,12 +58,18 @@
           <div class="col-md-2">
             <p><strong>Incluído</strong></p>
           </div>
-          <div class="col-md-10">
-            <ul>
-              {% for included in experience.included %}
-                <li>{{included}}</li>
-              {% endfor %}
-            </ul>
+          <div class="col-md-10 included-content">
+            {% for included in experience.included %}
+              {% if forloop.counter0|divisibleby:2 %}
+                <div class="row">
+              {% endif %}
+              <div class="col-md-6">
+                <img class="included-icon" src="{% static 'app/images/included/' %}{{included}}.png"> <span>{{included}}</span>
+              </div>
+              {% if forloop.counter|divisibleby:2 or forloop.last %}
+                </div>
+              {% endif %}
+            {% endfor %}
           </div>
         </div>
       {% endif %}
