@@ -108,7 +108,12 @@ body {
 }
 .experience-name {
   font-size: 24px;
+  margin-bottom: 6.25px;
+}
+p.experience-location {
   margin-bottom: 30px;
+  margin-top: 0;
+  color: #555;
 }
 .included-content {
   margin: 15px 0;
