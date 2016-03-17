@@ -27,11 +27,22 @@
 }
 .summary {
   font-size: 16px;
+  margin-bottom: 50px;
+}
+.summary p {
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 #luisImage {
   background: url("../images/luis.jpg") no-repeat center center;
+  background-size: contain;
+}
+#pierreImage {
+  background: url("../images/pierre.jpg") no-repeat center center;
+  background-size: contain;
+}
+#mikeImage {
+  background: url("../images/mike.jpg") no-repeat center center;
   background-size: contain;
 }
 .founder-image {
