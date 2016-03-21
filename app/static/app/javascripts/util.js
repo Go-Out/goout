@@ -1,4 +1,4 @@
-var insertImageAsynchronously = function(imgSrc, imgElem, experience) {
+var insertImageAsynchronously = function(imgSrc, imgElem) {
   var img = new Image();
   img.onload = function() {
     imgElem.css({
@@ -6,11 +6,10 @@ var insertImageAsynchronously = function(imgSrc, imgElem, experience) {
       "background-size": "cover"
     }); 
   };
-  img.src = imgSrc.replace("name", experience.replace(/ /g, "_"));
+  img.src = imgSrc;
 };
 
 var loadImageAsynchronously = function(imgSrc) {
-  console.log(imgSrc);
   var img = new Image();
   img.src = imgSrc;
 };

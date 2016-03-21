@@ -28,7 +28,10 @@ def experiences_json(request):
 def detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
 
-  context = {'experience': experience_as_json(experience_model)}
+  experience = experience_as_json(experience_model)
+  print experience['images_path']
+
+  context = {'experience': experience}
   return render(request, "app/detail.html", context)
 
 def experience_availability(request, experience_id):
@@ -66,7 +69,8 @@ def experience_as_json(experience_model):
   experience["requirements"] = json.loads(experience_model.requirements)
   experience["gear"] = json.loads(experience_model.gear)
   experience["additional"] = json.loads(experience_model.additional) 
-  experience["images"] = experience_model.images
+  experience["images"] = json.dumps(os.listdir(experience_model.images_path))
+  experience["images_path"] = experience_model.images_path[4:]
   categories = []
   category_pks = experience["categories"]
   for category_pk in category_pks:

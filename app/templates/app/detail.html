@@ -152,7 +152,7 @@
 
 <script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>
-  var imgUrl = "{% static 'app/images/name/123' %}" + "?hola";
+  var imgUrl = window.location.origin + "/{{experience.images_path}}";
   var experienceName = "{{experience.name}}";
   var experienceId = "{{experience.id}}";
   var availabilityUrl = "{% url 'experience_availability' experience_id=123 %}";

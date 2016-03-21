@@ -37,7 +37,7 @@
   };
 
 
-  insertImageAsynchronously(imgUrl.replace("123", "0.jpg"), $("#mainPicture"), experienceName);
+  insertImageAsynchronously(imgUrl + "/" + experienceImgs[0], $("#mainPicture"));
 
   var dateInput = $("#datepicker");
   var dateInputWide = $("#datepickerWide");
@@ -67,7 +67,7 @@
     if(i < 0)
       i = experienceImgs.length - 1;
     mainPicture.css({
-      "background": "url('" + imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", experienceImgs[i])  + "') no-repeat center center",
+      "background": "url('" + imgUrl + "/" +  experienceImgs[i]  + "') no-repeat center center",
       "background-size": "cover"
     });
   });
@@ -76,12 +76,12 @@
     if(i == experienceImgs.length)
       i = 0;
     mainPicture.css({
-      "background": "url('" + imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", experienceImgs[i])  + "') no-repeat center center",
+      "background": "url('" + imgUrl + "/" +  experienceImgs[i]  + "') no-repeat center center",
       "background-size": "cover"
     });
   });
 
   $.each(experienceImgs, function(i, img) {
-    loadImageAsynchronously(imgUrl.replace("name", experienceName.replace(/ /g, "_")).replace("123", img));
+    loadImageAsynchronously(imgUrl + "/" + img);
   });
 })();

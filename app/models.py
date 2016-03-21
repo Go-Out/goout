@@ -2,6 +2,9 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+
+IMAGES_FOLDER = "app/static/app/images/experiences/"
+
 # Create your models here.
 class Category(models.Model):
   name = models.CharField(max_length=30)
@@ -24,7 +27,7 @@ class Experience(models.Model):
   requirements = models.TextField(blank=True, help_text="Each one in a new line")
   gear = models.TextField(blank=True, help_text="Each one in a new line")
   additional = models.TextField(blank=True, help_text="Each one in a new line")
-  images = models.TextField(blank=True, editable=False)
+  images_path = models.FilePathField(path=IMAGES_FOLDER, allow_folders=True, allow_files=False, default=IMAGES_FOLDER + "default")
   categories = models.ManyToManyField(Category)
 
   def __str__(self):
