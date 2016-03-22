@@ -133,6 +133,7 @@ p.experience-location {
 .stick {
   position:fixed;
   top: 0;
+  -webkit-transform: translateZ(0);
 }
 .hard-box-hidden {
   border: 1px solid #dce0e0;

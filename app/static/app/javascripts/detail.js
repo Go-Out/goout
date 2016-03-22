@@ -1,12 +1,13 @@
 (function() {
   $(document).ready(function() {
     var priceBox = $("#hardBox");
-    var pos = priceBox.offset();
-    var initialWidth = priceBox.width();
+    var boxTop = priceBox.offset().top - 30;
+    var initialWidth = priceBox.width() + 2;
 
     $(window).scroll(function() {
-      var windowpos = $(window).scrollTop();
-      if (windowpos >= (pos.top - 30)) {
+      var scrollTop = $(window).scrollTop();
+
+      if (scrollTop >= boxTop) {
         priceBox.addClass("stick");
         priceBox.css("width", initialWidth);
       }
