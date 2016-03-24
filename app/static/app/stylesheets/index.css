@@ -9,18 +9,21 @@
 .top-banner {
   background-color: #ddd;
   position: relative;
-  background: url("../images/experiences/Nevado_de_Colima/0.jpg") no-repeat center center;
-  background-size: cover;
-  height: 500px;
   padding-top: 70px;
+  overflow: hidden;
+  height: 500px;
 }
-.banner-link {
-  z-index: 1;
+.video-hero {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: auto;
 }
 .banner-content {
   text-align: center;
   color: #fff;
   padding: 30px;
+  position: relative;
 }
 .header {
   margin-top: 0;
