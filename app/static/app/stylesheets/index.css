@@ -13,6 +13,9 @@
   overflow: hidden;
   height: 500px;
 }
+#bannerLink {
+  cursor: pointer;
+}
 .video-hero {
   position: absolute;
   top: -80px;
@@ -28,13 +31,13 @@
 .hero-content {
   text-align: center;
   color: #fff;
-  padding: 30px;
+  margin-top: 60px;
   position: relative;
 }
 .header {
   margin-top: 0;
   font-size: 48px;
-  margin-bottom: 6.25px;
+  margin-bottom: 25px;
   font-weight: 700;
   text-shadow: 1px 1px 20px #000;
 }

@@ -64,4 +64,11 @@ $(function() {
   dateStr = dateToStr(startDate);
 
   getExperiences(startDate, true);
+
+
+  $("#bannerLink").click(function() {
+    $("body").animate({
+      scrollTop: $("#experiences").offset().top
+    }, 500);
+  });
 });
