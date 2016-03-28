@@ -6,7 +6,7 @@
   right: 0;
 }
 
-.top-banner {
+.hero {
   background-color: #ddd;
   position: relative;
   padding-top: 70px;
@@ -15,11 +15,17 @@
 }
 .video-hero {
   position: absolute;
-  top: 0;
+  top: -80px;
   width: 100%;
   height: auto;
+  display: none;
 }
-.banner-content {
+@media (min-width: 1050px) {
+  .video-hero {
+    display: block;
+  }
+}
+.hero-content {
   text-align: center;
   color: #fff;
   padding: 30px;
