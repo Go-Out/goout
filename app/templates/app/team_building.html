@@ -157,36 +157,36 @@
   <h3 class="contact-phone">333 359 7080</h3>
   <p class="contact-copy">Podemos realizar cualquier cambio, idea o sugerencia según tus preferencias.</p>
 
-  <form class="contact-form" action="{% url 'consultancy' %}" method="POST">
+  <form class="contact-form" action="{% url 'consultancy' %}" method="POST" onsubmit="return validateForm(this);">
     {% csrf_token %}
     <div class="row">
       <div class="col-md-4 col-md-offset-2">
         <div class="form-section">
           <label for="name">Nombre *</label>
-          <input type="text" name="name">
+          <input type="text" id="name" name="name">
         </div>
         <div class="form-section">
           <label for="email">E-mail *</label>
-          <input type="email" name="email">
+          <input type="email" id="email" name="email">
         </div>
         <div class="form-section">
           <label for="phone">Teléfono *</label>
-          <input type="text" name="phone">
+          <input type="text" id="phone" name="phone">
         </div>
         <div class="form-section">
           <label for="participants"># Personas</label>
-          <input type="text" name="participants">
+          <input type="text" id="participants" name="participants">
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="form-section">
           <label for="date">Fecha</label>
-          <input type="text" name="date">
+          <input type="text" id="date" name="date">
         </div>
         <div class="form-section">
           <label for="comments">Comentarios</label>
-          <textarea name="comments" rows="5"></textarea>
+          <textarea id="comments" name="comments" rows="5"></textarea>
         </div>
       </div>
     </div>

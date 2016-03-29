@@ -5,7 +5,7 @@ from django.core import serializers
 import json
 from datetime import date
 from django.views.decorators.http import require_http_methods
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 import os
 
 # Create your views here.
@@ -49,14 +49,17 @@ def terms(request):
   return render(request, "app/terms_conditions.html", {})
 
 def consultancy(request):
-  message = request.POST.get('name') + "\n"
-  message += request.POST.get('email') + "\n"
-  message += request.POST.get('phone') + "\n"
-  message += request.POST.get('participants', '') + "\n"
-  message += request.POST.get('date', '') + "\n"
-  message += request.POST.get('comments', '') + "\n"
+  message = "<p>" + request.POST.get('name') + "</p>"
+  message += "<p>" +  request.POST.get('email') + "</p>"
+  message += "<p>" +  request.POST.get('phone') + "</p>"
+  message += "<p>" +  request.POST.get('participants', '') + "</p>"
+  message += "<p>" +  request.POST.get('date', '') + "</p>"
+  message += "<p>" +  request.POST.get('comments', '') + "</p>"
 
-  send_mail("Team Building Consultancy", message, "contact@goout.mx", ["contact@goout.mx"], fail_silently=False)
+  msg = EmailMessage("Team Building Consultancy", html_content, from_email, [to])
+  msg.content_subtype = "html"  # Main content is now text/html
+  msg.send()
+
   return HttpResponse(status=200)
 
 def experience_as_json(experience_model):

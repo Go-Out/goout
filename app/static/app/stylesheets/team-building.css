@@ -150,10 +150,14 @@
 }
 .contact-form input {
   width: 250px;
+  outline: none;
 }
 .contact-form textarea {
   width: 250px;
 }
 .contact-form button {
   margin-top: 10px;
+}
+.invalid {
+  border: solid 1px rgba(250, 0, 0, 0.5);
 }
