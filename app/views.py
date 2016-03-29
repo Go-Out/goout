@@ -56,8 +56,8 @@ def consultancy(request):
   message += "<p>" +  request.POST.get('date', '') + "</p>"
   message += "<p>" +  request.POST.get('comments', '') + "</p>"
 
-  msg = EmailMessage("Team Building Consultancy", html_content, from_email, [to])
-  msg.content_subtype = "html"  # Main content is now text/html
+  msg = EmailMessage("Team Building Consultancy", message, "contact@goout.mx", ["contact@goout.mx"])
+  msg.content_subtype = "html"
   msg.send()
 
   return HttpResponse(status=200)
