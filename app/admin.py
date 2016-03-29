@@ -20,7 +20,7 @@ class ExperienceForm(forms.ModelForm):
       self.initial['additional'] = json_as_text(self.instance.additional)
 
 class ExperienceAdmin(admin.ModelAdmin):
-  list_display = ('name', 'price', 'location')
+  list_display = ('name', 'price', 'location', 'active')
   form = ExperienceForm
 
   def save_model(self, request, obj, form, change):
