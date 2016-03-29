@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponse
 from .models import Experience, Category
 from django.core import serializers
 import json
@@ -10,9 +10,6 @@ import os
 
 # Create your views here.
 def index(request):
-
-  print os.environ['SENDGRID_USERNAME']
-
   return render(request, "app/index.html", {})
 
 def experiences_json(request):
@@ -29,7 +26,6 @@ def detail(request, experience_id):
   experience_model = Experience.objects.get(pk=experience_id)
 
   experience = experience_as_json(experience_model)
-  print experience['images_path']
 
   context = {'experience': experience}
   return render(request, "app/detail.html", context)
@@ -53,8 +49,15 @@ def terms(request):
   return render(request, "app/terms_conditions.html", {})
 
 def consultancy(request):
-  send_mail("Bonjour!", "Bonjour ze Mike!", "love.com", ["michael@goout.mx"], fail_silently=False)
-  return HttpResponseRedirect('/')
+  message = request.POST.get('name') + "\n"
+  message += request.POST.get('email') + "\n"
+  message += request.POST.get('phone') + "\n"
+  message += request.POST.get('participants', '') + "\n"
+  message += request.POST.get('date', '') + "\n"
+  message += request.POST.get('comments', '') + "\n"
+
+  send_mail("Team Building Consultancy", message, "contact@goout.mx", ["contact@goout.mx"], fail_silently=False)
+  return HttpResponse(status=200)
 
 def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
