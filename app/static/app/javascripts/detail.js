@@ -19,7 +19,7 @@
   });
 
   var renderAvailability = function(available) {
-    var bookHtml = available ? "<p>Reservar</p><p class='booking-number'><strong>333 359 7080</strong></p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
+    var bookHtml = available ? "<p>Reservar</p><p class='booking-number'><strong>333 359 7080</strong></p><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
     $("#booking").html(bookHtml);
     $("#bookingWide").html(bookHtml);
   };

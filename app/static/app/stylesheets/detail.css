@@ -84,6 +84,11 @@ body {
 .booking-number {
   font-size: 18px;
 }
+p.booking-recommendation {
+  margin-top: 6.25px;
+  font-size: 13px;
+  padding: 0 20%;
+}
 
 .main {
   background-color: #fff;
@@ -121,6 +126,9 @@ p.experience-location {
 .included-icon {
   max-width: 30px;
   max-height: 30px;
+}
+.last-addition {
+  margin-top: 10px;
 }
 
 #hardBox {

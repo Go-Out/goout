@@ -105,20 +105,19 @@
         </div>
       {% endif %}
 
-      {% if experience.additional %}
-        <div class="row section">
-          <div class="col-md-2">
-            <p><strong>Adicional</strong></p>
-          </div>
-          <div class="col-md-10">
-            <ul>
-              {% for additional in experience.additional %}
-                <li>{{additional}}</li>
-              {% endfor %}
-            </ul>
-          </div>
+      <div class="row section">
+        <div class="col-md-2">
+          <p><strong>Adicional</strong></p>
         </div>
-      {% endif %}
+        <div class="col-md-10">
+          <ul>
+            {% for additional in experience.additional %}
+              <li>{{additional}}</li>
+            {% endfor %}
+            <li class="last-addition">Ofrecemos transporte a precio preferencial en grupos mayores a 10 personas</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
       <div id="hardBox">
