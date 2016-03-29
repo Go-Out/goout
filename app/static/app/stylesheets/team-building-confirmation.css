@@ -1,0 +1,41 @@
+html, body {
+  height: auto;
+}
+
+.navbar-default {
+  background-color: #111;
+}
+.navbar-default .navbar-nav>li>a {
+  text-shadow: none;
+}
+.navbar-default .navbar-collapse {
+  background-color: #111;
+}
+.navbar-nav>li>p.book-number {
+  background-color: transparent;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 50px;
+  margin-top: 120px;
+  font-weight: normal;
+  text-align: center;
+}
+.subheader {
+  font-size: 20px;
+  text-align: center;
+}
+.link-container {
+  text-align: center;
+  padding-bottom: 100px;
+}
+.link {
+  text-align: center;
+  color: inherit;
+  font-size: 20px;
+  text-decoration: underline;
+}
+.link:hover {
+  color: inherit;
+}

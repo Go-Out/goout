@@ -60,7 +60,8 @@ def consultancy(request):
   msg.content_subtype = "html"
   msg.send()
 
-  return HttpResponse(status=200)
+  return render(request, "app/team_building_confirmation.html", {})
+
 
 def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]

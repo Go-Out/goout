@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/team-building-confirmation.css' %}" />
+{% endblock %}
+
+{% block main_content %}
+  <h1 class="title">Un experto de nuestro equipo se pondrá en contacto muy pronto.</h1>
+
+  <p class="subheader">Mientras tanto, ¿por qué no visitas nuestras experiencias?</p>
+  <p class="link-container">
+    <a class="link" href="{% url 'index' %}">Ver experiencias</a>
+  </p>
+{% endblock %}
