@@ -6,7 +6,7 @@
   right: 0;
 }
 
-.top-banner {
+.hero {
   background-color: #ddd;
   position: relative;
   height: 400px;
@@ -14,21 +14,31 @@
   background: url("../images/tb/cover.jpg") no-repeat;
   background-size: cover;
 }
-.banner-link {
-  z-index: 1;
+.hero-link {
   cursor: pointer;
 }
-.banner-content {
+.hero-content {
   text-align: center;
   color: #fff;
   padding: 45px;
 }
-.banner-header {
+.hero-header {
   margin-top: 0;
   font-size: 48px;
   margin-bottom: 25px;
   font-weight: 700;
   text-shadow: 1px 1px 20px #000;
+}
+.header-full {
+  display: none;
+}
+@media (min-width: 560px) {
+  .header-full {
+    display: block;
+  }
+  .header-mobile {
+    display: none;
+  }
 }
 .call-to-action {
   background-color: #f39519;
