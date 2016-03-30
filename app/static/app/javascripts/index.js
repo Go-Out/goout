@@ -77,8 +77,8 @@ $(function() {
     }
   });
   $("#gastro").click(function() {
-    if(!$("gastro").hasClass("selected")) {
-      $("gastro").addClass("selected");
+    if(!$("#gastro").hasClass("selected")) {
+      $("#gastro").addClass("selected");
       getExperiences("Gastronomía");
     }
   });
