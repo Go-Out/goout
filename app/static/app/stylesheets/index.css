@@ -7,11 +7,16 @@
 }
 
 .hero {
-  background-color: #ddd;
   position: relative;
   padding-top: 70px;
   overflow: hidden;
   height: 500px;
+}
+@media (max-width: 1050px) {
+  .hero {
+    background: url(../images/home_cta.jpg) no-repeat center center;
+    background-size: cover;
+  }
 }
 #bannerLink {
   cursor: pointer;
