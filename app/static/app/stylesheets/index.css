@@ -76,6 +76,12 @@
 }
 .navbar-exp li {
   float: left;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .navbar-exp li {
+    width: auto;
+  }
 }
 .navbar-exp-element {
   display: block;
