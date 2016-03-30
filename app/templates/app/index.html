@@ -22,9 +22,9 @@
   <div class="navbar-exp">
     <div class="container-fluid">
       <ul class="navbar-exp-left">
-        <li><span class="navbar-exp-element selected">Aventura 1 día</span></li>
-        <li><span class="navbar-exp-element">Aventura 2 días</span></li>
-        <li><span class="navbar-exp-element">Gastronomía</span></li>
+        <li><span id="adv1" class="navbar-exp-element selected">Aventura 1 día</span></li>
+        <li><span id="adv2" class="navbar-exp-element">Aventura 2 días</span></li>
+        <li><span id="gastro" class="navbar-exp-element">Gastronomía</span></li>
       </ul>
     </div>
   </div>
@@ -37,6 +37,7 @@
   var experiencesUrl = "{% url 'experiences_json' %}";
   var experienceUrl = "{% url 'detail' experience_id=123 %}";
   var experienceHtml = "{% static 'app/html/experience.html' %}" + "?hola";
+  var loader = "{% static 'app/images/ajax-loader.gif' %}";
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/index.js' %}"></script>

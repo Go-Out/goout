@@ -13,7 +13,9 @@ def index(request):
   return render(request, "app/index.html", {})
 
 def experiences_json(request):
-  experience_models = Experience.objects.filter(active=True)
+  category = request.GET.get('category').replace("_", " ");
+
+  experience_models = Experience.objects.filter(active=True, categories__name=category)
   experiences = map(experience_as_json, experience_models)
 
   return JsonResponse(experiences, safe=False)
