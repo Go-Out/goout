@@ -13,12 +13,8 @@ def index(request):
   return render(request, "app/index.html", {})
 
 def experiences_json(request):
-  day = getDateDay(request.GET.get('date'))
-
   experience_models = Experience.objects.filter(active=True)
   experiences = map(experience_as_json, experience_models)
-
-  experiences = filter(lambda experience: isExperienceAvailable(experience, day), experiences)
 
   return JsonResponse(experiences, safe=False)
 

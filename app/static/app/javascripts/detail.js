@@ -25,14 +25,14 @@
   };
 
   var getExperienceAvailability = function(date) {
-    var dateStr = dateToStr(new Date(date));
+    var dateStr = dateToStr(date);
     $.ajax({
       url: availabilityUrl.replace("123", experienceId) + "?date=" + dateStr,
       method: "GET",
       dataType: "json",
       success: function(data) {
         renderAvailability(data.available);
-        window.history.replaceState(data, "ExperienceAvailability", experienceUrl.replace("123", experienceId) + "?date=" + dateStr);
+        window.history.replaceState(data, "ExperienceAvailability", experienceUrl.replace("123", experienceId));
       }
     });
   };
@@ -48,18 +48,21 @@
     dayNames: dayNames,
     monthNames: monthNames,
     onSelect: function(date, inst) {
-      getExperienceAvailability(date);
+      var dateParts = date.split(" ");
+      var dateStr = dateParts[3] + "-" + (monthNames.indexOf(dateParts[2]) + 1) + "-" + dateParts[1];
+      getExperienceAvailability(new Date(dateStr));
     }
   };
   dateInput.datepicker(datepickerOptions);
   dateInputWide.datepicker(datepickerOptions);
 
-  var dateStr = getQueryValue("date");
-  var startDate = new Date(dateStr);
+  var today = new Date();
+  var startDate = new Date();
+  startDate.setDate(today.getDate() + (6 - today.getDay()));
   dateInput.datepicker("setDate", startDate);
   dateInputWide.datepicker("setDate", startDate);
 
-  getExperienceAvailability(dateStr);
+  getExperienceAvailability(startDate);
 
   var i = 0;
   var mainPicture = $("#mainPicture");
