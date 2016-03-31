@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Experience, Category
+from .. models import Experience, Category
 from django.core import serializers
 import json
 from datetime import date
