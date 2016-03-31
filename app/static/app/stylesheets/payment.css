@@ -1,0 +1,23 @@
+.navbar-default {
+  background-color: #111;
+}
+.navbar-default .navbar-nav>li>a {
+  text-shadow: none;
+}
+.navbar-default .navbar-collapse {
+  background-color: #111;
+}
+.navbar-nav>li>p.book-number {
+  background-color: transparent;
+}
+
+.main {
+  margin-top: 70px;
+  padding-top: 50px;
+}
+.title {
+  font-size: 32px;
+  margin-bottom: 25px;
+  margin-top: 0;
+  font-weight: normal;
+}

@@ -3,41 +3,57 @@
 {% load staticfiles %}
 
 {% block stylesheets %}
-  <!-- Stylesheets go in here -->
+<link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/payment.css' %}" />
 {% endblock %}
 
 {% block main_content %}
-<form action="{% url 'process_payment' experience.id %}" method="POST" id="card-form">
-  {% csrf_token %}
-  <span class="card-errors"></span>
-  <div class="form-row">
-    <label>
-      <span>Nombre del tarjetahabiente</span>
-      <input type="text" size="20" data-conekta="card[name]"/>
-    </label>
+<div class="container main">
+  <div class="row">
+    <div class="col-md-7">
+      <h1 class="title">Pago</h1>
+
+      <form action="{% url 'process_payment' experience.id %}" method="POST" id="card-form">
+        {% csrf_token %}
+
+        <span class="card-errors"></span>
+
+        <div>
+          <label for="card">Número de tarjeta</label>
+          <input type="text" name="card">
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <label>Fecha de expiración</label>
+            <input type="text" name="month">
+          </div>
+          <div class="col-xs-4">
+            <input type="text" name="year">
+          </div>
+          <div class="col-xs-4">
+            <label for="cvc">CVC</label>
+            <input type="text" name="cvc">
+          </div>
+        </div>
+        <div>
+          <label for="name">Nombre</label>
+          <input type="text" name="name">
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <label for="email">E-mail</label>
+            <input type="email" name="email">
+          </div>
+          <div class="col-xs-6">
+            <label for="phone">Teléfono</label>
+            <input type="tel" name="phone">
+          </div>
+        </div>
+        
+        <button type="submit">Pagar</button>
+      </form>
+    </div>
   </div>
-  <div class="form-row">
-    <label>
-      <span>Número de tarjeta de crédito</span>
-      <input type="text" size="20" data-conekta="card[number]"/>
-    </label>
-  </div>
-  <div class="form-row">
-    <label>
-      <span>CVC</span>
-      <input type="text" size="4" data-conekta="card[cvc]"/>
-    </label>
-  </div>
-  <div class="form-row">
-    <label>
-      <span>Fecha de expiración (MM/AAAA)</span>
-      <input type="text" size="2" data-conekta="card[exp_month]"/>
-    </label>
-    <span>/</span>
-    <input type="text" size="4" data-conekta="card[exp_year]"/>
-  </div>
-  <button type="submit">¡Pagar ahora!</button>
-</form>
+</div>
 
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 
