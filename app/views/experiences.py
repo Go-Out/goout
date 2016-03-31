@@ -1,16 +1,10 @@
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from .models import Experience, Category
 from django.core import serializers
 import json
 from datetime import date
-from django.views.decorators.http import require_http_methods
-from django.core.mail import EmailMessage
 import os
-
-# Create your views here.
-def index(request):
-  return render(request, "app/index.html", {})
 
 def experiences_json(request):
   category = request.GET.get('category').replace("_", " ");
@@ -36,29 +30,6 @@ def experience_availability(request, experience_id):
 
   context = {'available': isExperienceAvailable(experience, day)}
   return JsonResponse(context)
-
-def about(request):
-  return render(request, "app/about.html", {})
-
-def team_building(request):
-  return render(request, "app/team_building.html", {})
-
-def terms(request):
-  return render(request, "app/terms_conditions.html", {})
-
-def consultancy(request):
-  message = "<p>" + request.POST.get('name') + "</p>"
-  message += "<p>" +  request.POST.get('email') + "</p>"
-  message += "<p>" +  request.POST.get('phone') + "</p>"
-  message += "<p>" +  request.POST.get('participants', '') + "</p>"
-  message += "<p>" +  request.POST.get('date', '') + "</p>"
-  message += "<p>" +  request.POST.get('comments', '') + "</p>"
-
-  msg = EmailMessage("Team Building Consultancy", message, "contact@goout.mx", ["contact@goout.mx"])
-  msg.content_subtype = "html"
-  msg.send()
-
-  return render(request, "app/team_building_confirmation.html", {})
 
 
 def experience_as_json(experience_model):
