@@ -31,22 +31,9 @@
               <input id="datepicker" class="editable" type="text" readonly>
               <i class="fa fa-calendar"></i>
             </div>
-            <!-- <div class="col-xs-4">
-            <p class="editables-header">Personas</p>
-            <select class="editable">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div> -->
           </div>
-          <!-- <div class="box-row">
-          <strong><a class="payment-link" href="">Reservar</a></strong>
-        </div> -->
           <div id="booking" class="box-row booking"></div>
-          <!-- <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div> -->
+          <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div>
         </div>
 
         {% for paragraph in experience.description %}
@@ -128,22 +115,9 @@
             <input id="datepickerWide" class="editable" type="text" readonly>
             <i class="fa fa-calendar"></i>
           </div>
-          <!-- <div class="col-xs-4">
-            <p class="editables-header">Personas</p>
-            <select class="editable">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div> -->
         </div>
-        <!-- <div class="box-row">
-          <strong><a class="payment-link" href="">Reservar</a></strong>
-        </div> -->
         <div id="bookingWide" class="box-row booking"></div>
-        <!-- <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div> -->
+        <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div>
       </div>
     </div>
   </div>
@@ -152,11 +126,9 @@
 <script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>
   var imgUrl = window.location.origin + "/{{experience.images_path}}";
-  var experienceName = "{{experience.name}}";
-  var experienceId = "{{experience.id}}";
-  var availabilityUrl = "{% url 'experience_availability' experience_id=123 %}";
-  var experienceUrl = "{% url 'detail' experience_id=123 %}";
+  var availabilityUrl = "{% url 'experience_availability' experience.id %}";
   var experienceImgs = JSON.parse("{{experience.images|escapejs}}");
+  var payment = "{% url 'payment' experience.id %}";
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>

@@ -19,7 +19,7 @@
   });
 
   var renderAvailability = function(available) {
-    var bookHtml = available ? "<p>Reservar</p><p class='booking-number'><strong>333 359 7080</strong></p><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
+    var bookHtml = available ? "<a href='" + payment + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
     $("#booking").html(bookHtml);
     $("#bookingWide").html(bookHtml);
   };
@@ -27,12 +27,12 @@
   var getExperienceAvailability = function(date) {
     var dateStr = dateToStr(date);
     $.ajax({
-      url: availabilityUrl.replace("123", experienceId) + "?date=" + dateStr,
+      url: availabilityUrl + "?date=" + dateStr,
       method: "GET",
       dataType: "json",
       success: function(data) {
         renderAvailability(data.available);
-        window.history.replaceState(data, "ExperienceAvailability", experienceUrl.replace("123", experienceId));
+        window.history.replaceState(data, "ExperienceAvailability");
       }
     });
   };

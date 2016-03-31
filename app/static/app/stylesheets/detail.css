@@ -57,17 +57,18 @@ body {
   font-size: 1.5em;
 }
 .payment-link {
-  color: inherit;
+  background-color: #f39519;
   text-decoration: none;
-  border: 1px solid #000;
-  border-radius: 2px;
-  padding: 10px;
-  display: block;
-  text-align: center;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  padding: 9px 27px;
   font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
 }
 .payment-link:hover {
-  color: inherit;
+  color: #fff;
   text-decoration: none;
 }
 .doubts {

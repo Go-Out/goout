@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block main_content %}
-<form action="{% url 'process_payment' experience_id %}" method="POST" id="card-form">
+<form action="{% url 'process_payment' experience.id %}" method="POST" id="card-form">
   {% csrf_token %}
   <span class="card-errors"></span>
   <div class="form-row">
