@@ -18,8 +18,8 @@
     });
   });
 
-  var renderAvailability = function(available) {
-    var bookHtml = available ? "<a href='" + payment + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
+  var renderAvailability = function(available, date) {
+    var bookHtml = available ? "<a id='bookLink' href='" + payment + "?date=" + date + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
     $("#booking").html(bookHtml);
     $("#bookingWide").html(bookHtml);
   };
@@ -31,7 +31,7 @@
       method: "GET",
       dataType: "json",
       success: function(data) {
-        renderAvailability(data.available);
+        renderAvailability(data.available, dateStr);
         window.history.replaceState(data, "ExperienceAvailability");
       }
     });
@@ -48,9 +48,7 @@
     dayNames: dayNames,
     monthNames: monthNames,
     onSelect: function(date, inst) {
-      var dateParts = date.split(" ");
-      var dateStr = dateParts[3] + "-" + (monthNames.indexOf(dateParts[2]) + 1) + "-" + dateParts[1];
-      getExperienceAvailability(new Date(dateStr));
+      getExperienceAvailability(new Date(reverseDate(date)));
     }
   };
   dateInput.datepicker(datepickerOptions);

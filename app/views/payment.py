@@ -1,16 +1,17 @@
 from .. models import Experience
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import conekta
 from . util import experience_as_json
 
 def payment(request, experience_id):
+  date = request.GET.get('date')
   experience_model = Experience.objects.get(pk=experience_id)
 
-  experience = experience_as_json(experience_model)
-
-  context = {'experience': experience}
-
-  return render(request, "app/payment.html", context)
+  if date:
+    experience = experience_as_json(experience_model)
+    return render(request, "app/payment.html", {'experience': experience})
+  else:
+    return redirect("detail", experience_model.id)
 
 def process_payment(request, experience_id):
   conekta.api_key = "key_fhT3iSqcYrPfsqpuggUZRQ"

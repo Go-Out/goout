@@ -18,6 +18,11 @@ var dateToStr = function(date) {
   return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 };
 
+var reverseDate = function(dateStr) {
+  var dateParts = dateStr.split(" ");
+  return dateParts[3] + "-" + (monthNames.indexOf(dateParts[2]) + 1) + "-" + dateParts[1];
+}
+
 var getQueryValue = function(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");

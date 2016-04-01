@@ -9,86 +9,91 @@
 {% block main_content %}
 <div class="container main">
   <div class="row">
-    <div class="col-md-7">
-      <h1 class="title">Pago</h1>
 
-      <form action="{% url 'process_payment' experience.id %}" method="POST" id="card-form">
-        {% csrf_token %}
+    <div class="col-md-5">
+      <div class="summary-panel">
+        <div class="summary-section">
+          <h1 class="summary-title">{{experience.name}}</h1>
+          <div class="summary-info">{{experience.location}}</div>
+        </div>
+        <div class="summary-section">
+          <div id="date" class="summary-info float-right"></div>
+          <div class="summary-info">Fecha</div>
+        </div>
+        <div class="summary-section price-section">
+          <div class="float-right">$ {{experience.price}}</div>
+          <div>Total</div>
+        </div>
+      </div>
 
-        <span class="card-errors"></span>
+      <div class="payment-explanation panel">
+        <h1 class="title">Cómo funciona</h1>
+      </div>
+    </div>
 
-        <div>
-          <label for="card">Número de tarjeta</label>
-          <input type="text" name="card">
+    <div class="col-md-6 col-md-offset-1">
+      <div class="panel">
+        <h1 class="title">Pago</h1>
+
+        <form action="{% url 'process_payment' experience.id %}" method="POST" id="card-form">
+          {% csrf_token %}
+
+          <span class="card-errors"></span>
+
+          <div class="row form-section">
+            <div class="col-md-6">
+              <label>Número de tarjeta</label>
+              <input type="text" data-conekta="card[number]">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <label>Fecha de expiración</label>
+            </div>
+            <div class="col-xs-3">
+              <label>CVC</label>
+            </div>
+          </div>
+          <div class="row form-section">
+            <div class="col-xs-3">
+              <input type="text" data-conekta="card[exp_month]" placeholder="MM" maxlength=2>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" data-conekta="card[exp_year]" placeholder="YYYY" maxlength="4">
+            </div>
+            <div class="col-xs-3">
+              <input type="text" data-conekta="card[cvc]">
+            </div>
+          </div>
+          <div class="row form-section">
+            <div class="col-xs-6">
+              <label for="name">Nombre</label>
+              <input type="text" name="name" data-conekta="card[name]">
+            </div>
+            <div class="col-xs-6">
+              <label for="city">Ciudad</label>
+              <input type="text" name="city">
+            </div>
+          </div>
+          <div class="row form-section">
+            <div class="col-xs-6">
+              <label for="email">E-mail</label>
+              <input type="email" name="email">
+            </div>
+            <div class="col-xs-6">
+              <label for="phone">Teléfono</label>
+              <input type="tel" name="phone">
+            </div>
+          </div>
+          
+          <button class="pay-button" type="submit">Pagar</button>
+        </form>
         </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <label>Fecha de expiración</label>
-            <input type="text" name="month">
-          </div>
-          <div class="col-xs-4">
-            <input type="text" name="year">
-          </div>
-          <div class="col-xs-4">
-            <label for="cvc">CVC</label>
-            <input type="text" name="cvc">
-          </div>
-        </div>
-        <div>
-          <label for="name">Nombre</label>
-          <input type="text" name="name">
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <label for="email">E-mail</label>
-            <input type="email" name="email">
-          </div>
-          <div class="col-xs-6">
-            <label for="phone">Teléfono</label>
-            <input type="tel" name="phone">
-          </div>
-        </div>
-        
-        <button type="submit">Pagar</button>
-      </form>
     </div>
   </div>
 </div>
 
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
-
-<script type="text/javascript">
-  Conekta.setPublishableKey('key_LyWdGMc3hsbMwMzV1Uqytag');
-
-  $(function () {
-    $("#card-form").submit(function(event) {
-      var $form = $(this);
-
-      // Previene hacer submit más de una vez
-      $form.find("button").prop("disabled", true);
-      Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
-
-      // Previene que la información de la forma sea enviada al servidor
-      return false;
-    });
-  });
-
-  var conektaSuccessResponseHandler = function(token) {
-    var $form = $("#card-form");
-  
-    /* Inserta el token_id en la forma para que se envíe al servidor */
-    $form.append($("<input type='hidden' name='conektaTokenId'>").val(token.id));
-  
-    /* and submit */
-    $form.get(0).submit();
-  };
-
-  var conektaErrorResponseHandler = function(response) {
-    var $form = $("#card-form");
-  
-    /* Muestra los errores en la forma */
-    $form.find(".card-errors").text(response.message);
-    $form.find("button").prop("disabled", false);
-  };
-</script>
+<script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
+<script type="text/javascript" src="{% static 'app/javascripts/payment.js' %}"></script>
 {% endblock %}

@@ -11,13 +11,83 @@
   background-color: transparent;
 }
 
+body {
+  background-color: #eeeeee;
+}
+
 .main {
   margin-top: 70px;
   padding-top: 50px;
 }
+.panel {
+  background-color: #fff;
+  padding: 20px 25px;
+  border: 1px solid #dce0e0;
+}
+
+.summary-panel {
+  border: 1px solid #dce0e0;
+  background-color: #fff;
+  padding: 0 25px;
+}
+.summary-section {
+  border-bottom: 1px solid #dce0e0;
+  padding: 20px 0;
+}
+.summary-title {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+}
+.summary-info {
+  font-size: 16px;
+}
+.float-right {
+  float: right;
+}
+.price-section {
+  font-size: 24px;
+  border-bottom: none;
+}
+
 .title {
   font-size: 32px;
   margin-bottom: 25px;
   margin-top: 0;
   font-weight: normal;
+}
+label {
+  display: block;
+  font-size: 14px;
+  padding-bottom: 8px;
+  line-height: normal;
+  margin: 0;
+}
+#card-form input {
+  height: 50px;
+  display: block;
+  padding: 8px 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+  background-color: #fff;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+}
+.form-section {
+  margin-bottom: 25px;
+}
+.pay-button{
+  background-color: #f39519;
+  color: #fff;
+  border-radius: 2px;
+  border: none;
+  padding: 9px 27px;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.payment-explanation {
+  margin-top: 50px;
 }
