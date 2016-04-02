@@ -39,11 +39,17 @@
           {% csrf_token %}
 
           <span class="card-errors"></span>
-
-          <div class="row form-section">
+          <div class="row">
             <div class="col-md-6">
               <label>Número de tarjeta</label>
+            </div>
+          </div>
+          <div class="row form-section">
+            <div class="col-md-6">
               <input type="text" data-conekta="card[number]">
+            </div>
+            <div class="col-md-6">
+              <img src="http://payments.intuit.com/payments/landing_pages/LB/default.jsp?c=VMA&l=H&s=2&b=FFFFFF">
             </div>
           </div>
           <div class="row">
