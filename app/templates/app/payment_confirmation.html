@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/payment-confirmation.css' %}" / >
+{% endblock %}
+
+{% block main_content %}
+  <div class="container general">
+    {% if charge.status == "paid" %}
+      <h1 class="title">!Tu pago ha sido procesado exitosamente!</h1>
+      <div class="subheader">Recibirás un correo de confirmación a la dirección {{email}}</div>
+    {% else %}
+       <h1 class="title">Ha habido un problema con tu pago</h1>
+      <div class="subheader">Por favor comunícate con nosotros</div>     
+    {% endif %}
+
+    <div class="doubts">¿Dudas?</div>
+    <div class="subheader">333 359 7080</div>
+  </div>
+
+  {% if charge.status == "paid" %}
+    <div class="container payment-info">
+      <h1 class="title">Qué incluye tu boleto</div>
+    </div>
+  {% endif %}
+{% endblock %}

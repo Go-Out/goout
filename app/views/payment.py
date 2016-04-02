@@ -56,4 +56,5 @@ def process_payment(request, experience_id):
       }
     }
   })
-  return render(request, "app/payment_result.html", {'charge': charge})
+
+  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': request.POST.get('email')})
