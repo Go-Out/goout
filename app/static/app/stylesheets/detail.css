@@ -55,6 +55,9 @@ body {
   text-align: center;
   width: 100%;
 }
+#datepicker, #datepickerWide {
+  cursor: pointer;
+}
 .payment-link {
   background-color: #f39519;
   text-decoration: none;

@@ -10,8 +10,8 @@
 {% block main_content %}
 <div id="mainPicture" class="top-banner container-fluid">
   <div class="row">
-    <div id="controlLeft" class="col-xs-1 col-control"><i class="fa fa-angle-left fa-5x"></i></div>
-    <div id="controlRight" class="col-xs-1 col-xs-offset-10 col-control"><i class="fa fa-angle-right fa-5x"></i></div>
+    <div id="controlLeft" class="col-xs-2 col-control"><i class="fa fa-angle-left fa-5x"></i></div>
+    <div id="controlRight" class="col-xs-2 col-xs-offset-8 col-control"><i class="fa fa-angle-right fa-5x"></i></div>
   </div>
 </div>
 
@@ -26,10 +26,13 @@
         <div class="hard-box-hidden">
           <div class="price box-row">$ {{experience.price}}</div>
           <div class="row box-row">
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-8">
               <p class="editables-header">Fecha</p>
               <input id="datepicker" class="editable" type="text" readonly>
-              <i class="fa fa-calendar"></i>
+            </div>
+            <div class="col-xs-4">
+              <p class="editables-header">Personas</p>
+              <input class="editable" maxlength="2" value="1" size="2">
             </div>
           </div>
           <div id="booking" class="box-row booking"></div>
