@@ -86,4 +86,11 @@
   $.each(experienceImgs, function(i, img) {
     loadImageAsynchronously(imgUrl + "/" + img);
   });
+
+  $("#participants").change(function() {
+    $("#price").text("$ " + (price * parseInt($("#participants").val())));
+  });
+  $("#participantsWide").change(function() {
+    $("#priceWide").text("$ " + (price * parseInt($("#participantsWide").val())));
+  });
 })();
