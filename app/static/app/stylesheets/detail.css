@@ -32,11 +32,14 @@ body {
 }
 
 .box-row {
-  padding: 10px 20px;
+  padding: 20px;
 }
 .price {
   font-size: 24px;
   border-bottom: 1px solid #dce0e0;
+  text-align: center;
+  background-color: #111;
+  color: #fff;
 }
 .editables-header {
   margin-top: 0;
@@ -50,11 +53,7 @@ body {
   font-size: 13px;
   background-color: #fff;
   text-align: center;
-  cursor: pointer;
-  width: 170px;
-}
-.fa-calendar {
-  font-size: 1.5em;
+  width: 100%;
 }
 .payment-link {
   background-color: #f39519;
@@ -65,7 +64,8 @@ body {
   padding: 9px 27px;
   font-size: 16px;
   font-weight: bold;
-  display: inline-block;
+  display: block;
+  text-align: center;
 }
 .payment-link:hover {
   color: #fff;
@@ -88,7 +88,7 @@ body {
 p.booking-recommendation {
   margin-top: 6.25px;
   font-size: 13px;
-  padding: 0 20%;
+  text-align: center;
 }
 
 .main {
@@ -134,7 +134,6 @@ p.experience-location {
 
 #hardBox {
   border: 1px solid #dce0e0;
-  text-align: center;
   display: none;
   background-color: #fff;
   margin-top: 30px;
