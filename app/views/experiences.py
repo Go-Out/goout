@@ -45,7 +45,7 @@ def experience_as_json(experience_model):
   experience["requirements"] = json.loads(experience_model.requirements)
   experience["gear"] = json.loads(experience_model.gear)
   experience["additional"] = json.loads(experience_model.additional) 
-  experience["images"] = json.dumps(os.listdir(experience_model.images_path))
+  experience["images"] = json.dumps(sorted(os.listdir(experience_model.images_path)))
   experience["images_path"] = experience_model.images_path[4:]
   categories = []
   category_pks = experience["categories"]
