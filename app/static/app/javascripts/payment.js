@@ -4,9 +4,15 @@ $(function () {
   $("#card-form").submit(function(event) {
     var $form = $(this);
 
-    // Previene hacer submit más de una vez
-    $form.find("button").prop("disabled", true);
-    Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+    $form.find(".card-errors").text("");
+
+    if(validateForm($form)) {
+      // Previene hacer submit más de una vez
+      $form.find("button").prop("disabled", true);
+      Conekta.token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+    }
+    else
+      $form.find(".card-errors").text("Hay campos vacíos");
 
     // Previene que la información de la forma sea enviada al servidor
     return false;
@@ -17,6 +23,17 @@ $(function () {
   var people = getQueryValue("people")
   $("#people").text(people);
   $("#price").text("$ " + (parseInt(people) * price));
+
+  var validateForm = function(form) {
+    var valid = true;
+    $.each(form.find("input"), function(i, child) {
+      if(!child.value) {
+        $(child).addClass("invalid")
+        valid = false;
+      }
+    });
+    return valid;
+  };
 });
 
 var conektaSuccessResponseHandler = function(token) {
