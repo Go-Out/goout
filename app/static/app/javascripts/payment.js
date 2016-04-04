@@ -14,6 +14,9 @@ $(function () {
 
   var dateObj = new Date(getQueryValue("date"));
   $("#date").text(dayNames[dateObj.getDay()] + " " + monthNames[dateObj.getMonth()] + " " + dateObj.getFullYear());
+  var people = getQueryValue("people")
+  $("#people").text(people);
+  $("#price").text("$ " + (parseInt(people) * price));
 });
 
 var conektaSuccessResponseHandler = function(token) {

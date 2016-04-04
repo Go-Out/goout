@@ -5,9 +5,10 @@ from . util import experience_as_json
 
 def payment(request, experience_id):
   date = request.GET.get('date')
+  people = request.GET.get('people')
   experience_model = Experience.objects.get(pk=experience_id)
 
-  if date:
+  if date and people and people.isdigit():
     experience = experience_as_json(experience_model)
     return render(request, "app/payment.html", {'experience': experience})
   else:

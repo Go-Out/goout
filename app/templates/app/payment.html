@@ -16,12 +16,16 @@
           <h1 class="summary-title">{{experience.name}}</h1>
           <div class="summary-info">{{experience.location}}</div>
         </div>
-        <div class="summary-section">
+        <div class="summary-section date-section">
           <div id="date" class="summary-info float-right"></div>
           <div class="summary-info">Fecha</div>
         </div>
+        <div class="summary-section">
+          <div id="people" class="summary-info float-right"></div>
+          <div class="summary-info">No. de Personas</div>
+        </div>
         <div class="summary-section price-section">
-          <div class="float-right">$ {{experience.price}}</div>
+          <div id="price" class="float-right"></div>
           <div>Total</div>
         </div>
       </div>
@@ -110,6 +114,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  var price = {{experience.price}};
+</script>
 
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>

@@ -1,4 +1,7 @@
 (function() {
+  var people = 1;
+  var dateStr;
+
   $(document).ready(function() {
     var priceBox = $("#hardBox");
     var boxTop = priceBox.offset().top - 30;
@@ -19,13 +22,13 @@
   });
 
   var renderAvailability = function(available, date) {
-    var bookHtml = available ? "<a id='bookLink' href='" + payment + "?date=" + date + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
+    var bookHtml = available ? "<a href='" + payment + "?date=" + date + "&people=" + people + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
     $("#booking").html(bookHtml);
     $("#bookingWide").html(bookHtml);
   };
 
   var getExperienceAvailability = function(date) {
-    var dateStr = dateToStr(date);
+    dateStr = dateToStr(date);
     $.ajax({
       url: availabilityUrl + "?date=" + dateStr,
       method: "GET",
@@ -88,9 +91,13 @@
   });
 
   $("#participants").change(function() {
-    $("#price").text("$ " + (price * parseInt($("#participants").val())));
+    people = parseInt($("#participants").val())
+    $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
+    $("#price").text("$ " + (people * price));
   });
   $("#participantsWide").change(function() {
-    $("#priceWide").text("$ " + (price * parseInt($("#participantsWide").val())));
+    people = parseInt($("#participantsWide").val())
+    $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
+    $("#priceWide").text("$ " + (people * price));
   });
 })();

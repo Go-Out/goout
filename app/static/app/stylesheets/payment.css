@@ -45,6 +45,10 @@ body {
 .float-right {
   float: right;
 }
+.date-section {
+  border-bottom: none;
+  padding-bottom: 0;
+}
 .price-section {
   font-size: 24px;
   border-bottom: none;
