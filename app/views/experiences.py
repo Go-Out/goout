@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from .. models import Experience, Category
 from datetime import date
 from . util import experience_as_json
+from django.core import serializers
+import json
+import os
 
 def experiences_json(request):
   category = request.GET.get('category').replace("_", " ");

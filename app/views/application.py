@@ -26,3 +26,6 @@ def consultancy(request):
   msg.send()
 
   return render(request, "app/team_building_confirmation.html", {})
+
+def email(request):
+  return render(request, "app/email.html", {})

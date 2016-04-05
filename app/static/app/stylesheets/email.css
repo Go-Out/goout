@@ -1,0 +1,56 @@
+.navbar-default {
+  background-color: #111;
+}
+.navbar-default .navbar-nav>li>a {
+  text-shadow: none;
+}
+.navbar-default .navbar-collapse {
+  background-color: #111;
+}
+.navbar-nav>li>p.book-number {
+  background-color: transparent;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
+.summary-panel {
+  border: 1px solid #dce0e0;
+  background-color: #fff;
+  padding: 0 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 600px;
+}
+.summary-section {
+  border-bottom: 1px solid #dce0e0;
+  padding: 20px 0;
+}
+.logo {
+  height: 34px;
+  margin-bottom: 20px;
+}
+.summary-title {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+}
+.summary-info {
+  font-size: 16px;
+}
+.float-right {
+  float: right;
+}
+.code-section {
+  font-size: 24px;
+}
+.no-border-section {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.price-section {
+  font-size: 24px;
+  border-bottom: none;
+}
