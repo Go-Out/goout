@@ -2,6 +2,8 @@ from .. models import Experience
 from django.shortcuts import render, redirect
 import conekta
 from . util import experience_as_json
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.core.mail import EmailMessage
 
 def payment(request, experience_id):
   date = request.GET.get('date')
@@ -58,4 +60,15 @@ def process_payment(request, experience_id):
     }
   })
 
+  if charge.status == 'paid':
+    send_email()
+
   return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': request.POST.get('email')})
+
+
+def send_email():
+  email_template = open("app/static/app/html/email.html").read()
+
+  msg = EmailMessage("Test", email_template, "contact@goout.mx", ["lsgaleana@gmail.com"])
+  msg.content_subtype = "html"
+  msg.send()
