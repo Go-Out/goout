@@ -68,11 +68,16 @@
   background-color: #111;
   margin-bottom: 50px;
 }
+.navbar-exp {
+  text-align: center;
+}
 .navbar-exp ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
 }
 .navbar-exp li {
   float: left;

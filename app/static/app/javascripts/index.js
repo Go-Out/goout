@@ -51,7 +51,7 @@ $(function() {
     });
   };
 
-  getExperiences("Aventura 1 día");
+  getExperiences("Aventura 2 días");
 
 
   $("#bannerLink").click(function() {
@@ -73,13 +73,13 @@ $(function() {
   $("#adv2").click(function() {
     if(!$("#adv2").hasClass("selected")) {
       $("#adv2").addClass("selected");
-      getExperiences("Aventura 2 día");
+      getExperiences("Aventura 2 días");
     }
   });
-  $("#gastro").click(function() {
+  /*$("#gastro").click(function() {
     if(!$("#gastro").hasClass("selected")) {
       $("#gastro").addClass("selected");
       getExperiences("Gastronomía");
     }
-  });
+    });*/
 });
