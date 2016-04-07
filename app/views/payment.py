@@ -60,15 +60,31 @@ def process_payment(request, experience_id):
     }
   })
 
-  if charge.status == 'paid':
-    send_email()
+  birth = request.POST.get("birthDate") + "-" + request.POST.get("birthMonth") + "-" + request.POST.get("birthYear")
+  name = request.POST.get("name")
+  email = request.POST.get("email")
+  phone = request.POST.get("phone")
+  date = request.POST.get("date")
+  people = request.POST.get("people")
+  price = request.POST.get("price")
+  experience = request.POST.get("experience")
+  location = request.POST.get("location")
 
-  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': request.POST.get('email')})
+  if charge.status == "paid":
+    send_user_email(name, email, experience, location, date, people, price)
+
+  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email})
 
 
-def send_email():
-  email_template = open("app/static/app/html/email.html").read()
+def send_user_email(name, email, experience, location, date, people, price):
+  email_template = open("app/static/app/html/email.html").read().decode("utf-8")
+  email_template.replace("$name", name)
+  email_template.replace("$experience", experience)
+  email_template.replace("$location", location)
+  email_template.replace("$date", date)
+  email_template.replace("$people", people)
+  email_template.replace("$price", price)
 
-  msg = EmailMessage("Test", email_template, "contact@goout.mx", ["lsgaleana@gmail.com"])
+  msg = EmailMessage(experience + " confirmation", email_template, "contact@goout.mx", [email])
   msg.content_subtype = "html"
   msg.send()

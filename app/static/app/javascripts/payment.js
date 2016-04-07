@@ -41,6 +41,11 @@ var conektaSuccessResponseHandler = function(token) {
 
   /* Inserta el token_id en la forma para que se envíe al servidor */
   $form.append($("<input type='hidden' name='conektaTokenId'>").val(token.id));
+  $form.append($("<input type='hidden' name='date'>").val($("#date").text()));
+  $form.append($("<input type='hidden' name='people'>").val($("#people").text()));
+  $form.append($("<input type='hidden' name='price'>").val($("#price").text()));
+  $form.append($("<input type='hidden' name='experience'>").val($("#experience").text()));
+  $form.append($("<input type='hidden' name='location'>").val($("#location").text()));
 
   /* and submit */
   $form.get(0).submit();

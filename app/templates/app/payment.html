@@ -13,8 +13,8 @@
     <div class="col-md-5">
       <div class="summary-panel">
         <div class="summary-section">
-          <h1 class="summary-title">{{experience.name}}</h1>
-          <div class="summary-info">{{experience.location}}</div>
+          <h1 id="experience" class="summary-title">{{experience.name}}</h1>
+          <div id="location" class="summary-info">{{experience.location}}</div>
         </div>
         <div class="summary-section date-section">
           <div id="date" class="summary-info float-right"></div>
@@ -88,13 +88,13 @@
           </div>
           <div class="row form-section">
             <div class="col-xs-3">
-              <input type="text" placeholder="DD" maxlength=2>
+              <input name="birthDate" type="text" placeholder="DD" maxlength=2>
             </div>
             <div class="col-xs-3">
-              <input type="text" placeholder="MM" maxlength="2">
+              <input name="birthMonth" type="text" placeholder="MM" maxlength="2">
             </div>
             <div class="col-xs-3">
-              <input type="text" placeholder="YYYY" maxlength="4">
+              <input name="birthYear" type="text" placeholder="YYYY" maxlength="4">
             </div>
           </div>
           <div class="row form-section">
