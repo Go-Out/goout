@@ -2,7 +2,21 @@ body {
   background-color: #eeeeee;
 }
 
+.navbar-default {
+  background-color: #111;
+}
+.navbar-default .navbar-nav>li>a {
+  text-shadow: none;
+}
+.navbar-default .navbar-collapse {
+  background-color: #111;
+}
+.navbar-nav>li>p.book-number {
+  background-color: transparent;
+}
+
 .top-banner {
+  margin-top: 70px;
   background-color: #ddd;
   height: 500px;
   border-bottom: 1px solid #dce0e0;
