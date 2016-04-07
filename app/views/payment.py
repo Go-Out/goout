@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 from .. models import Experience
 from django.shortcuts import render, redirect
 import conekta
