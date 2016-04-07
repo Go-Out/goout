@@ -78,12 +78,13 @@ def process_payment(request, experience_id):
 
 def send_user_email(name, email, experience, location, date, people, price):
   email_template = open("app/static/app/html/email.html").read().decode("utf-8")
-  email_template.replace("$name", name)
-  email_template.replace("$experience", experience)
-  email_template.replace("$location", location)
-  email_template.replace("$date", date)
-  email_template.replace("$people", people)
-  email_template.replace("$price", price)
+  email_template = email_template.replace("$name", name)
+  email_template = email_template.replace("$experience", experience)
+  email_template = email_template.replace("$location", location)
+  email_template = email_template.replace("$date", date)
+  email_template = email_template.replace("$people", people)
+  email_template = email_template.replace("$price", price)
+  print email_template
 
   msg = EmailMessage(experience + " confirmation", email_template, "contact@goout.mx", [email])
   msg.content_subtype = "html"
