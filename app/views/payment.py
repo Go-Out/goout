@@ -74,6 +74,7 @@ def process_payment(request, experience_id):
 
   if charge.status == "paid":
     send_user_email(name, email, experience, location, date, people, price)
+    send_user_email(name, email, experience, location, date, people, price, phone, birth)
 
   return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email})
 
@@ -87,6 +88,22 @@ def send_user_email(name, email, experience, location, date, people, price):
   email_template = email_template.replace("$people", people)
   email_template = email_template.replace("$price", price)
 
-  msg = EmailMessage("Confirmación de " + experience, email_template, "GoOut <contact@goout.mx>", [email])
+  msg = EmailMessage("Confirmación de ".decode("utf-8") + experience, email_template, "GoOut <contact@goout.mx>", [email])
+  msg.content_subtype = "html"
+  msg.send()
+
+def send_user_us(name, email, experience, location, date, people, price, phone, birth):
+  email_template = open("app/static/app/html/email_us.html").read().decode("utf-8")
+  email_template = email_template.replace("$name", name)
+  email_template = email_template.replace("$experience", experience)
+  email_template = email_template.replace("$location", location)
+  email_template = email_template.replace("$date", date)
+  email_template = email_template.replace("$people", people)
+  email_template = email_template.replace("$price", price)
+  email_template = email_template.replace("$email", email)
+  email_template = email_template.replace("$phone", phone)
+  email_template = email_template.replace("$birth", birth)
+
+  msg = EmailMessage("Compra de " + experience, email_template, "GoOut <order@goout.mx>", ["order@goout.mx"])
   msg.content_subtype = "html"
   msg.send()
