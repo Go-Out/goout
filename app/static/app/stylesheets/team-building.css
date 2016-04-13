@@ -14,7 +14,7 @@
   background: url("../images/tb/cover.jpg") no-repeat;
   background-size: cover;
 }
-.hero-link {
+.cta-link {
   cursor: pointer;
 }
 .hero-content {
