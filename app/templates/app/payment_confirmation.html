@@ -18,11 +18,17 @@
 
     <div class="doubts">¿Dudas?</div>
     <div class="subheader">333 359 7080</div>
+    <div class="email subheader">contact@goout.mx</div>
   </div>
 
   {% if charge.status == "paid" %}
     <div class="container payment-info">
-      <h1 class="title">Qué incluye tu boleto</div>
+      <h1 class="title">Siguientes pasos</h1>
+      <ul>
+        <li>1. Tu boleto incluye un código de reservación e información de la experiencia</li>
+        <li>2. Muestra este boleto y el código de reservación al momento de realizar la experiencia</li>
+        <li>3. Si tienes alguna duda, ponte en contacto con nosotros</li>
+      </ul>
     </div>
   {% endif %}
 {% endblock %}

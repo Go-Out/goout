@@ -35,8 +35,20 @@ html, body {
   margin-top: 30px;
   margin-bottom: 4px;
 }
+.email {
+  margin-top: 4px;
+}
 
 .payment-info {
   margin-top: 50px;
-
+  text-align: center;
+}
+.payment-info ul {
+  padding-left: 0;
+  margin: 0;
+  font-size: 20px;
+  list-style-type: none;
+}
+.payment-info li {
+  margin-bottom: 8px;
 }
