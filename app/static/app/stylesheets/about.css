@@ -11,9 +11,22 @@
   background-color: transparent;
 }
 
-.main {
+.why {
   margin-top: 70px;
   padding-top: 50px;
+}
+.why ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+.why li {
+  margin-bottom: 15px;
+}
+
+.main {
   margin-bottom: 20px;
 }
 .main .col-md-4 {
