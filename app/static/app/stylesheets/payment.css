@@ -54,6 +54,17 @@ body {
   border-bottom: none;
 }
 
+
+.sub-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.payment-content {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
 .title {
   font-size: 32px;
   margin-bottom: 25px;
