@@ -18,7 +18,7 @@ class Category(models.Model):
 
 class Experience(models.Model):
   name = models.CharField(max_length=50)
-  price = models.DecimalField(max_digits=6, decimal_places=2)
+  price = models.DecimalField(max_digits=8, decimal_places=2)
   location = models.CharField(max_length=250)
   availability = models.TextField(blank=True, help_text="Each day in a new line")
   duration = models.DurationField(default=timedelta(), help_text="Number of hours")
