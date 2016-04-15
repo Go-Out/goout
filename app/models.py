@@ -31,6 +31,7 @@ class Experience(models.Model):
   images_path = models.FilePathField(path=IMAGES_FOLDER, allow_folders=True, allow_files=False, default=IMAGES_FOLDER + "default")
   categories = models.ManyToManyField(Category)
   active = models.BooleanField(default=True)
+  people = models.IntegerField(default=1)
 
   def __str__(self):
     return self.name
