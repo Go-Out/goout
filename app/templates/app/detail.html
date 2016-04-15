@@ -1,6 +1,7 @@
 {% extends "app/base.html" %}
 
 {% load staticfiles %}
+{% load filters %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
@@ -24,7 +25,7 @@
         <p class="experience-location">{{experience.location}}</p>
 
         <div class="hard-box-hidden">
-          <div id="price" class="price box-row">$ {{experience.price}}</div>
+          <div class="price box-row">$ {{experience.price|by:experience.people}}</div>
           <div class="row box-row">
             <div class="col-xs-8">
               <p class="editables-header">Fecha</p>
@@ -122,7 +123,7 @@
     </div>
     <div class="col-md-4">
       <div id="hardBox">
-        <div id="priceWide" class="price box-row">$ {{experience.price}}</div>
+        <div class="price box-row">$ {{experience.price|by:experience.people}}</div>
         <div class="row box-row">
           <div class="col-xs-8">
             <p class="editables-header">Fecha</p>

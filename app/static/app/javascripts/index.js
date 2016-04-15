@@ -1,7 +1,7 @@
 $(function() {
   var insertExperienceData = function(experienceElem, experience) {
     experienceElem.find("a").attr("href", experienceUrl.replace("123", experience.id));
-    experienceElem.find("#experiencePrice").text("$ " + experience.price);
+    experienceElem.find("#experiencePrice").text("$ " + (experience.price / experience.people));
     experienceElem.find("#experienceNameLink").text(experience.name);
     experienceElem.find("#experienceLocationLink").text(experience.location);
   }
