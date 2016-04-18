@@ -25,7 +25,7 @@
         <p class="experience-location">{{experience.location}}</p>
 
         <div class="hard-box-hidden">
-          <div id="price" class="price box-row">$ {{experience.price|by:experience.people}}</div>
+          <div id="price" class="price box-row">$ {{experience.price}}</div>
           <div class="row box-row">
             <div class="col-xs-8">
               <p class="editables-header">Fecha</p>
@@ -125,7 +125,7 @@
     </div>
     <div class="col-md-4">
       <div id="hardBox">
-        <div id="priceWide" class="price box-row">$ {{experience.price|by:experience.people}}</div>
+        <div id="priceWide" class="price box-row">$ {{experience.price}}</div>
         <div class="row box-row">
           <div class="col-xs-8">
             <p class="editables-header">Fecha</p>
@@ -162,7 +162,8 @@
   var availabilityUrl = "{% url 'experience_availability' experience.id %}";
   var experienceImgs = JSON.parse("{{experience.images|escapejs}}");
   var payment = "{% url 'payment' experience.id %}";
-  var price = {{experience.price}};
+  var price = {{experience.price|by:experience.people}};
+  var people = {{experience.people}};
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
