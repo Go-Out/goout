@@ -25,15 +25,15 @@
         <p class="experience-location">{{experience.location}}</p>
 
         <div class="hard-box-hidden">
-          <div id="price" class="price box-row">$ {{experience.price|times:experience.people}}</div>
+          <div class="price box-row">$ {{experience.price|times:experience.people}}</div>
           <div class="row box-row">
             <div class="col-xs-8">
               <p class="editables-header">Fecha</p>
-              <input id="datepicker" class="editable" type="text" readonly>
+              <input class="datepicker editable" type="text" readonly>
             </div>
             <div class="col-xs-4">
               <p class="editables-header">Personas</p>
-              <select id="participants" class="editable">
+              <select class="participants editable">
                 <option selected>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -49,7 +49,7 @@
               </select>
             </div>
           </div>
-          <div id="booking" class="box-row booking"></div>
+          <div class="box-row booking"></div>
           <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div>
         </div>
 
@@ -125,15 +125,15 @@
     </div>
     <div class="col-md-4">
       <div id="hardBox">
-        <div id="priceWide" class="price box-row">$ {{experience.price|times:experience.people}}</div>
+        <div class="price box-row">$ {{experience.price|times:experience.people}}</div>
         <div class="row box-row">
           <div class="col-xs-8">
             <p class="editables-header">Fecha</p>
-            <input id="datepickerWide" class="editable" type="text" readonly>
+            <input class="datepicker editable" type="text" readonly>
           </div>
           <div class="col-xs-4">
             <p class="editables-header">Personas</p>
-            <select id="participantsWide" class="editable">
+            <select class="participants editable">
               <option selected>1</option>
               <option>2</option>
               <option>3</option>
@@ -149,7 +149,7 @@
             </select>
           </div>
         </div>
-        <div id="bookingWide" class="box-row booking"></div>
+        <div class="box-row booking"></div>
         <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div>
       </div>
     </div>
