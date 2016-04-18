@@ -21,9 +21,8 @@
   });
 
   var renderAvailability = function(available, date) {
-    var bookHtml = available ? "<a href='" + payment + "?date=" + date + "&people=" + people + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-number'><strong>No disponible</strong></p>";
-    $("#booking").html(bookHtml);
-    $("#bookingWide").html(bookHtml);
+    var bookHtml = available ? "<a href='" + payment + "?date=" + date + "&people=" + people + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-unavailable'><strong>No disponible</strong></p>";
+    $(".booking").html(bookHtml);
   };
 
   var getExperienceAvailability = function(date) {
@@ -42,8 +41,7 @@
 
   insertImageAsynchronously(imgUrl + "/" + experienceImgs[0], $("#mainPicture"));
 
-  var dateInput = $("#datepicker");
-  var dateInputWide = $("#datepickerWide");
+  var dateInput = $(".datepicker");
   var datepickerOptions = {
     dateFormat: dateFormat,
     minDate: +1,
@@ -54,13 +52,11 @@
     }
   };
   dateInput.datepicker(datepickerOptions);
-  dateInputWide.datepicker(datepickerOptions);
 
   var today = new Date();
   var startDate = new Date();
   startDate.setDate(today.getDate() + (6 - today.getDay()));
   dateInput.datepicker("setDate", startDate);
-  dateInputWide.datepicker("setDate", startDate);
 
   getExperienceAvailability(startDate);
 
@@ -89,16 +85,10 @@
     loadImageAsynchronously(imgUrl + "/" + img);
   });
 
-  $("#participants").val(people);
-  $("#participantsWide").val(people);
-  $("#participants").change(function() {
-    people = parseInt($("#participants").val())
+  $(".participants").val(people);
+  $(".participants").change(function() {
+    people = parseInt($(this).val())
     $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
-    $("#price").text("$ " + (people * price).toFixed(1));
-  });
-  $("#participantsWide").change(function() {
-    people = parseInt($("#participantsWide").val())
-    $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
-    $("#priceWide").text("$ " + (people * price).toFixed(1));
+    $(".price").text("$ " + (people * price).toFixed(1));
   });
 })();

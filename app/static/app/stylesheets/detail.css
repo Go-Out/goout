@@ -97,8 +97,9 @@ body {
 .booking p {
   margin: 0;
 }
-.booking-number {
+.booking-unavailable {
   font-size: 18px;
+  text-align: center;
 }
 p.booking-recommendation {
   margin-top: 6.25px;
