@@ -1,5 +1,4 @@
 (function() {
-  var people = 1;
   var dateStr;
 
   $(document).ready(function() {
@@ -90,14 +89,16 @@
     loadImageAsynchronously(imgUrl + "/" + img);
   });
 
+  $("#participants").val(people);
+  $("#participantsWide").val(people);
   $("#participants").change(function() {
     people = parseInt($("#participants").val())
     $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
-    $("#price").text("$ " + (people * price));
+    $("#price").text("$ " + (people * price).toFixed(1));
   });
   $("#participantsWide").change(function() {
     people = parseInt($("#participantsWide").val())
     $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
-    $("#priceWide").text("$ " + (people * price));
+    $("#priceWide").text("$ " + (people * price).toFixed(1));
   });
 })();
