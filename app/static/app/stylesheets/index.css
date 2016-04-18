@@ -123,6 +123,9 @@
   position: absolute;
   bottom: 40px;
 }
+.per-person {
+  font-size: 14px;
+}
 .experience-description {
   padding: 10px;
   position: relative;

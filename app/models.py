@@ -18,7 +18,9 @@ class Category(models.Model):
 
 class Experience(models.Model):
   name = models.CharField(max_length=50)
-  price = models.DecimalField(max_digits=8, decimal_places=2)
+  subheader = models.CharField(max_length=250, blank=True)
+  price = models.DecimalField(max_digits=6, decimal_places=2)
+  people = models.IntegerField(default=1)
   location = models.CharField(max_length=250)
   availability = models.TextField(blank=True, help_text="Each day in a new line")
   duration = models.DurationField(default=timedelta(), help_text="Number of hours")
@@ -31,7 +33,6 @@ class Experience(models.Model):
   images_path = models.FilePathField(path=IMAGES_FOLDER, allow_folders=True, allow_files=False, default=IMAGES_FOLDER + "default")
   categories = models.ManyToManyField(Category)
   active = models.BooleanField(default=True)
-  people = models.IntegerField(default=1)
 
   def __str__(self):
     return self.name

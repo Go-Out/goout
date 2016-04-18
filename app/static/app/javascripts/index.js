@@ -4,6 +4,7 @@ $(function() {
     experienceElem.find("#experiencePrice").text("$ " + experience.price.toFixed(1));
     experienceElem.find("#experienceNameLink").text(experience.name);
     experienceElem.find("#experienceLocationLink").text(experience.location);
+    experienceElem.find("#experienceSubheader").text(experience.subheader);
   }
 
   var renderExperiences = function(data) {
