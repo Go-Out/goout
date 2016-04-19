@@ -113,6 +113,7 @@
   var payment = "{% url 'payment' experience.id %}";
   var price = {{experience.price}};
   var people = {{experience.people}};
+  var noExperiences = "{{experience.subheader}}".split("|").length
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
