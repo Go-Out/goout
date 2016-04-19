@@ -1,5 +1,4 @@
 venv
 *.pyc
 staticfiles
-local_settings.py
 app/static/app/images/experiences/backup/*
