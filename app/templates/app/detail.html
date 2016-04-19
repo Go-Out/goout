@@ -1,7 +1,6 @@
 {% extends "app/base.html" %}
 
 {% load staticfiles %}
-{% load filters %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
@@ -25,32 +24,7 @@
         <p class="experience-location">{{experience.location}}</p>
 
         <div class="hard-box-hidden">
-          <div class="price box-row">$ {{experience.price|times:experience.people}}</div>
-          <div class="row box-row">
-            <div class="col-xs-8">
-              <p class="editables-header">Fecha</p>
-              <input class="datepicker editable" type="text" readonly>
-            </div>
-            <div class="col-xs-4">
-              <p class="editables-header">Personas</p>
-              <select class="participants editable">
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-              </select>
-            </div>
-          </div>
-          <div class="box-row booking"></div>
-          <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div>
+          {% include "app/hard_box.html" %}
         </div>
 
         {% for paragraph in experience.description %}
@@ -125,32 +99,7 @@
     </div>
     <div class="col-md-4">
       <div id="hardBox">
-        <div class="price box-row">$ {{experience.price|times:experience.people}}</div>
-        <div class="row box-row">
-          <div class="col-xs-8">
-            <p class="editables-header">Fecha</p>
-            <input class="datepicker editable" type="text" readonly>
-          </div>
-          <div class="col-xs-4">
-            <p class="editables-header">Personas</p>
-            <select class="participants editable">
-              <option selected>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-              <option>12</option>
-            </select>
-          </div>
-        </div>
-        <div class="box-row booking"></div>
-        <div class="box-row doubts"><strong>¿Dudas?</strong> 333 359 7080</div>
+        {% include "app/hard_box.html" %}
       </div>
     </div>
   </div>
@@ -164,6 +113,7 @@
   var payment = "{% url 'payment' experience.id %}";
   var price = {{experience.price}};
   var people = {{experience.people}};
+  var noExperiences = "{{experience.subheader}}".split("|").length
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
