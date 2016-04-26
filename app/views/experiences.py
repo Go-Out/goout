@@ -59,9 +59,9 @@ def experience_as_json(experience_model):
   experience_prices = []
   experience_pks = experience["experiences"]
   for experience_pk in experience_pks:
-    experience_price = Experience.objects.get(pk=experience_pk).price
+    experience_price = str(Experience.objects.get(pk=experience_pk).price)
     experience_prices.append(experience_price)
-  experience["experience_prices"] = experience_prices
+  experience["experience_prices"] = json.dumps(experience_prices)
 
   return experience
 
