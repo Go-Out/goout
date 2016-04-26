@@ -47,13 +47,16 @@ body {
 .float-right {
   float: right;
 }
-.date-section {
+.no-border {
   border-bottom: none;
   padding-bottom: 0;
 }
 .price-section {
   font-size: 24px;
   border-bottom: none;
+}
+#price, #pricePerPerson {
+ font-family: 'Open Sans', sans-serif;
 }
 
 .payment-explanation {

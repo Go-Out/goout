@@ -1,5 +1,7 @@
 Conekta.setPublishableKey('key_LyWdGMc3hsbMwMzV1Uqytag');
 
+var people = getQueryValue("people");
+
 $(function () {
   $("#card-form").submit(function(event) {
     var $form = $(this);
@@ -20,9 +22,9 @@ $(function () {
 
   var dateObj = new Date(getQueryValue("date"));
   $("#date").text(dayNames[dateObj.getDay()] + " " + monthNames[dateObj.getMonth()] + " " + dateObj.getFullYear());
-  var people = getQueryValue("people")
   $("#people").text(people);
-  $("#price").text("$ " + (parseInt(people) * price));
+  $("#price").text("$ " + formatNumber(getPrice()));
+  $("#pricePerPerson").text("$ " + formatNumber(getPrice() / people));
 
   var validateForm = function(form) {
     var valid = true;

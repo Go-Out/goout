@@ -14,6 +14,7 @@ def payment(request, experience_id):
 
   if date and people and people.isdigit():
     experience = experience_as_json(experience_model)
+    print experience
     return render(request, "app/payment.html", {'experience': experience})
   else:
     return redirect("detail", experience_model.id)

@@ -5,6 +5,7 @@
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.css' %}">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block main_content %}
@@ -113,8 +114,9 @@
   var payment = "{% url 'payment' experience.id %}";
   var price = {{experience.price}};
   var people = {{experience.people}};
-  var noExperiences = "{{experience.subheader}}".split("|").length
+  var experiencePrices = $.map(JSON.parse("{{experience.experience_prices|escapejs}}"), function(price, i) { return parseFloat(price); });
 </script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
+<script type="text/javascript" src="{% static 'app/javascripts/price-util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/detail.js' %}"></script>
 {% endblock %}

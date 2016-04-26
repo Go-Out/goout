@@ -85,30 +85,28 @@
     loadImageAsynchronously(imgUrl + "/" + img);
   });
 
+  var updatePrice = function() {
+    var  finalPrice = getPrice();
+    var discount = getDiscount();
 
-  var getPrice = function() {
-    var total = price * people;
-    return (total - (total * (0.73 * (people - 1) + 1.14 * (noExperiences - 1)) / 100)).toFixed(1);
+    $(".price").text("$ " + formatNumber(finalPrice));
+
+    if(discount > 0) {
+      $(".discount-row").show();
+      $(".discount").text("$ " + formatNumber(discount));
+    }
+    else
+      $(".discount-row").hide();
+
+    $(".price-per-person").text("$ " + formatNumber(finalPrice / people));
   };
 
-  var getHuttPrice = function() {
-    if(noExperiences < 1)
-      return 0;
-    if(people < 5)
-      return 1450;
-    if(people < 9)
-      return 2700;
-    if(people <= 10)
-      return 2959;
-    return 3900;
-  };
-
-  $(".price").text("$ " + getPrice());
+  updatePrice();
 
   $(".participants").val(people);
   $(".participants").change(function() {
     people = parseInt($(this).val())
     $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
-    $(".price").text("$ " + getPrice());
+    updatePrice();
   });
 })();
