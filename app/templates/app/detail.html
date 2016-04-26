@@ -112,6 +112,7 @@
   var availabilityUrl = "{% url 'experience_availability' experience.id %}";
   var experienceImgs = JSON.parse("{{experience.images|escapejs}}");
   var payment = "{% url 'payment' experience.id %}";
+  var price = {{experience.price}};
   var people = {{experience.people}};
   var experiencePrices = $.map(JSON.parse("{{experience.experience_prices|escapejs}}"), function(price, i) { return parseFloat(price); });
 </script>

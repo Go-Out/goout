@@ -127,12 +127,12 @@
 </div>
 
 <script>
-  var people = {{experience.people}};
+  var price = {{experience.price}};
   var experiencePrices = $.map(JSON.parse("{{experience.experience_prices|escapejs}}"), function(price, i) { return parseFloat(price); });
 </script>
 
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
-<script type="text/javascript" src="{% static 'app/javascripts/price-util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/payment.js' %}"></script>
+<script type="text/javascript" src="{% static 'app/javascripts/price-util.js' %}"></script>
 {% endblock %}
