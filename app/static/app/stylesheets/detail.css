@@ -76,6 +76,10 @@ body {
 .per-person-row {
   border-bottom: 1px solid #dce0e0;
 }
+.price, .discount, .price-per-person {
+  font-family: 'Open Sans', sans-serif;
+  text-align: right;
+}
 .payment-link {
   background-color: #f39519;
   text-decoration: none;

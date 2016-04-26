@@ -124,16 +124,16 @@
     var  finalPrice = getPrice();
     var discount = getDiscount();
 
-    $(".price").text("$ " + finalPrice);
+    $(".price").text("$ " + formatNumber(finalPrice));
 
     if(discount > 0) {
       $(".discount-row").show();
-      $(".discount").text("$ " + getDiscount());
+      $(".discount").text("$ " + formatNumber(discount));
     }
     else
       $(".discount-row").hide();
 
-    $(".price-per-person").text("$ " + (finalPrice / people).toFixed(2));
+    $(".price-per-person").text("$ " + formatNumber((finalPrice / people).toFixed(2)));
   };
 
   updatePrice();
