@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/payment.css' %}" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block main_content %}
@@ -16,13 +17,17 @@
           <h1 id="experience" class="summary-title">{{experience.name}}</h1>
           <div id="location" class="summary-info">{{experience.location}}</div>
         </div>
-        <div class="summary-section date-section">
+        <div class="summary-section no-border">
           <div id="date" class="summary-info float-right"></div>
           <div class="summary-info">Fecha</div>
         </div>
-        <div class="summary-section">
+        <div class="summary-section no-border">
           <div id="people" class="summary-info float-right"></div>
           <div class="summary-info">No. de Personas</div>
+        </div>
+        <div class="summary-section">
+          <div id="pricePerPerson" class="summary-info float-right"></div>
+          <div class="summary-info">Precio x persona</div>
         </div>
         <div class="summary-section price-section">
           <div id="price" class="float-right"></div>
@@ -122,10 +127,12 @@
 </div>
 
 <script>
-  var price = {{experience.price}};
+  var people = {{experience.people}};
+  var experiencePrices = $.map(JSON.parse("{{experience.experience_prices|escapejs}}"), function(price, i) { return parseFloat(price); });
 </script>
 
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/util.js' %}"></script>
+<script type="text/javascript" src="{% static 'app/javascripts/price-util.js' %}"></script>
 <script type="text/javascript" src="{% static 'app/javascripts/payment.js' %}"></script>
 {% endblock %}

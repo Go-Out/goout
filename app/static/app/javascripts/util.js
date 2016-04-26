@@ -37,7 +37,3 @@ var getQueryValue = function(variable) {
 var dateFormat = "DD dd MM yy";
 var dayNames = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 var monthNames = ["Enero","Febrero","Marzo","Abril","Mayo","Junio", "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-
-var formatNumber = function(n) {
-  return n.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-}

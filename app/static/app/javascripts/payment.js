@@ -22,7 +22,8 @@ $(function () {
   $("#date").text(dayNames[dateObj.getDay()] + " " + monthNames[dateObj.getMonth()] + " " + dateObj.getFullYear());
   var people = getQueryValue("people")
   $("#people").text(people);
-  $("#price").text("$ " + (parseInt(people) * price));
+  $("#price").text("$ " + formatNumber(getPrice()));
+  $("#pricePerPerson").text("$ " + formatNumber(getPrice() / people));
 
   var validateForm = function(form) {
     var valid = true;
