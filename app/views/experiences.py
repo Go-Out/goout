@@ -48,12 +48,20 @@ def experience_as_json(experience_model):
   experience["additional"] = json.loads(experience_model.additional) 
   experience["images"] = json.dumps(sorted(os.listdir(experience_model.images_path)))
   experience["images_path"] = experience_model.images_path[4:]
+
   categories = []
   category_pks = experience["categories"]
   for category_pk in category_pks:
     category = Category.objects.get(pk=category_pk).name
     categories.append(category)
   experience["categories"] = categories
+
+  experience_prices = []
+  experience_pks = experience["experiences"]
+  for experience_pk in experience_pks:
+    experience_price = Experience.objects.get(pk=experience_pk).price
+    experience_prices.append(experience_price)
+  experience["experience_prices"] = experience_prices
 
   return experience
 
