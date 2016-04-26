@@ -108,12 +108,26 @@
     return 3900;
   };
 
+  var getDiscount = function() {
+    if(experiencePrices.length > 0) {
+      var experiencesPrice = 0;
+      for(var i = 0; i < experiencePrices.length; i++)
+        experiencesPrice += experiencePrices[i] * people;
+      var total = getHuttPrice() + experiencesPrice;
+      return (total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100).toFixed(1);
+    }
+    else
+      return price;
+  };
+
   $(".price").text("$ " + getPrice());
+  $(".discount").text("$ " + getDiscount());
 
   $(".participants").val(people);
   $(".participants").change(function() {
     people = parseInt($(this).val())
     $(".payment-link").attr("href", payment + "?date=" + dateStr + "&people=" + people);
     $(".price").text("$ " + getPrice());
+    $(".discount").text("$ " + getDiscount());
   });
 })();
