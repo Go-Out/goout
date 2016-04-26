@@ -92,7 +92,7 @@
       for(var i = 0; i < experiencePrices.length; i++)
         experiencesPrice += experiencePrices[i] * people;
       var total = getHuttPrice() + experiencesPrice;
-      return (total - (total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100)).toFixed(1);
+      return (total - (total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100)).toFixed(2);
     }
     else
       return price;
@@ -114,21 +114,26 @@
       for(var i = 0; i < experiencePrices.length; i++)
         experiencesPrice += experiencePrices[i] * people;
       var total = getHuttPrice() + experiencesPrice;
-      return (total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100).toFixed(1);
+      return (total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100).toFixed(2);
     }
     else
       return 0;
   };
 
   var updatePrice = function() {
-    $(".price").text("$ " + getPrice());
+    var  finalPrice = getPrice();
     var discount = getDiscount();
+
+    $(".price").text("$ " + finalPrice);
+
     if(discount > 0) {
       $(".discount-row").show();
       $(".discount").text("$ " + getDiscount());
     }
     else
       $(".discount-row").hide();
+
+    $(".price-per-person").text("$ " + (finalPrice / people).toFixed(2));
   };
 
   updatePrice();

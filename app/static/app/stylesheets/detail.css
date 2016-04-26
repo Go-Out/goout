@@ -49,19 +49,14 @@ body {
   padding: 20px;
 }
 .price-row {
-  font-size: 16px;
+  font-size: 24px;
   background-color: #111;
   color: #fff;
 }
 .discount-row {
-  font-size: 16px;
-  background-color: #f39519;
-  color: #fff;
-}
-.price, .discount {
   font-size: 24px;
-  text-align: right;
-  margin-right: -15px;
+  background-color: #18850E;
+  color: #fff;
 }
 .editables-header {
   margin-top: 0;
@@ -77,6 +72,9 @@ body {
   text-align: center;
   width: 100%;
   cursor: pointer;
+}
+.per-person-row {
+  border-bottom: 1px solid #dce0e0;
 }
 .payment-link {
   background-color: #f39519;
