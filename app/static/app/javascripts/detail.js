@@ -55,7 +55,7 @@
 
   var today = new Date();
   var startDate = new Date();
-  startDate.setDate(today.getDate() + (6 - today.getDay()));
+  startDate.setDate(today.getDate() + 1);
   dateInput.datepicker("setDate", startDate);
 
   getExperienceAvailability(startDate);
