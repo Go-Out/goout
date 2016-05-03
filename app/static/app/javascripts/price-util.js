@@ -9,7 +9,7 @@ var getExperiencesPrice = function() {
     return price * people;
 }
 
-var getPrice = function() {
+var getRealPrice = function() {
   var total = getHuttPrice() + getExperiencesPrice();
   return total - (total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100);
 };
@@ -28,7 +28,11 @@ var getHuttPrice = function() {
 
 var getDiscount = function() {
   var total = getHuttPrice() + getExperiencesPrice();
-  return total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100;
+  return total - getPrice();
+};
+
+var getPrice = function() {
+  return Math.ceil(getRealPrice() / people) * people;
 };
 
 var formatNumber = function(n) {
