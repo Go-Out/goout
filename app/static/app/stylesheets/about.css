@@ -47,22 +47,21 @@
   margin-bottom: 15px;
 }
 #luisImage {
-  background: url("../images/luis.jpg") no-repeat center center;
+  background: url("../images/luis.png") no-repeat center center;
   background-size: contain;
 }
 #pierreImage {
-  background: url("../images/pierre.jpg") no-repeat center center;
+  background: url("../images/pierre.png") no-repeat center center;
   background-size: contain;
 }
 #mikeImage {
-  background: url("../images/mike.jpg") no-repeat center center;
+  background: url("../images/mike.png") no-repeat center center;
   background-size: contain;
 }
 .founder-image {
   height: 150px;
   width: 150px;
   margin: 0 auto;
-  border-radius: 50%;
   background-color: #777;
   margin-bottom: 15px;
 }
