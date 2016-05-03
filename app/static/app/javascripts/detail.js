@@ -21,7 +21,7 @@
   });
 
   var renderAvailability = function(available, date) {
-    var bookHtml = available ? "<a href='" + payment + "?date=" + date + "&people=" + people + "' class='payment-link'>Reservar</a><p class='booking-recommendation'>1 semana de antipación (recomendado)</p>" : "<p class='booking-unavailable'><strong>No disponible</strong></p>";
+    var bookHtml = available ? "<a href='" + payment + "?date=" + date + "&people=" + people + "' class='payment-link'>Reservar</a>" : "<p class='booking-unavailable'><strong>No disponible</strong></p>";
     $(".booking").html(bookHtml);
   };
 
