@@ -40,3 +40,13 @@ class Experience(models.Model):
 
   def __unicode__(self):
     return self.name
+
+class Code(models.Model):
+  code = models.CharField(max_length=6)
+  available = models.BooleanField(default=True, editable=False)
+
+  def __str__(self):
+    return self.name
+
+  def __unicode__(self):
+    return self.name
