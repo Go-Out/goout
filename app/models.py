@@ -46,7 +46,7 @@ class Code(models.Model):
   available = models.BooleanField(default=True, editable=False)
 
   def __str__(self):
-    return self.name
+    return self.code
 
   def __unicode__(self):
-    return self.name
+    return self.code

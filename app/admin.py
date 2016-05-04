@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Experience, Category
+from .models import Experience, Category, Code
 from datetime import timedelta
 from django import forms
 from .utils import text_as_json, json_as_text
@@ -39,5 +39,10 @@ class ExperienceAdmin(admin.ModelAdmin):
   def get_form(self, request, obj=None, **kwargs):
     return super(ExperienceAdmin, self).get_form(request, obj, **kwargs)
 
+
+class CodeAdmin(admin.ModelAdmin):
+  list_display = ('code', 'available')
+
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(Category)
+admin.site.register(Code, CodeAdmin)
