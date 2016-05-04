@@ -22,8 +22,10 @@
     <div class="col-md-8 main">
       <div class="section section-first">
         <div class="experience-name">{{experience.name}}</div>
-        <p class="experience-location">{{experience.location}}</p>
-
+        <p class="experience-info">
+          <span>{{experience.location}}</span>
+          <span class="experience-duration">Duración: {{experience.duration}} horas</span>
+        </p>
         <div class="hard-box-hidden">
           {% include "app/hard_box.html" %}
         </div>

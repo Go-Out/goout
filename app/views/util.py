@@ -9,7 +9,7 @@ def experience_as_json(experience_model):
   experience["id"] = experience_model.id
   experience["price"] = float(experience_model.price)
   experience["availability"] = json.loads(experience_model.availability)
-  experience["duration"] = experience_model.duration.seconds / 3600
+  experience["duration"] = experience_model.duration.seconds / 3600 if experience_model.duration.seconds else experience_model.duration.days * 24
   experience["description"] = json.loads(experience_model.description)
   experience["itinerary"] = json.loads(experience_model.itinerary)
   experience["included"] = json.loads(experience_model.included)

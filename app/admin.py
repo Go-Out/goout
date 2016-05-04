@@ -11,7 +11,7 @@ class ExperienceForm(forms.ModelForm):
     super(ExperienceForm, self).__init__(*args, **kwargs)
     if self.instance.duration is not None:
       self.initial['availability'] = json_as_text(self.instance.availability)
-      self.initial['duration'] = self.instance.duration.seconds / 3600
+      self.initial['duration'] = self.instance.duration.seconds / 3600 if self.instance.duration.seconds else self.instance.duration.days * 24
       self.initial['description'] = json_as_text(self.instance.description)
       self.initial['itinerary'] = json_as_text(self.instance.itinerary)
       self.initial['included'] = json_as_text(self.instance.included)
