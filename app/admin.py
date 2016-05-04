@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Experience, Category
+from .models import Experience, Category, Code
 from datetime import timedelta
 from django import forms
 from .utils import text_as_json, json_as_text
@@ -11,7 +11,7 @@ class ExperienceForm(forms.ModelForm):
     super(ExperienceForm, self).__init__(*args, **kwargs)
     if self.instance.duration is not None:
       self.initial['availability'] = json_as_text(self.instance.availability)
-      self.initial['duration'] = self.instance.duration.seconds / 3600
+      self.initial['duration'] = self.instance.duration.seconds / 3600 if self.instance.duration.seconds else self.instance.duration.days * 24
       self.initial['description'] = json_as_text(self.instance.description)
       self.initial['itinerary'] = json_as_text(self.instance.itinerary)
       self.initial['included'] = json_as_text(self.instance.included)
@@ -39,5 +39,10 @@ class ExperienceAdmin(admin.ModelAdmin):
   def get_form(self, request, obj=None, **kwargs):
     return super(ExperienceAdmin, self).get_form(request, obj, **kwargs)
 
+
+class CodeAdmin(admin.ModelAdmin):
+  list_display = ('code', 'available')
+
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(Category)
+admin.site.register(Code, CodeAdmin)

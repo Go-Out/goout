@@ -137,10 +137,13 @@ body {
   font-size: 24px;
   margin-bottom: 6.25px;
 }
-p.experience-location {
+p.experience-info {
   margin-bottom: 30px;
   margin-top: 0;
   color: #555;
+}
+.experience-duration {
+  margin-left: 30px;
 }
 .included-content {
   margin: 15px 0;
@@ -151,6 +154,13 @@ p.experience-location {
 }
 .last-addition {
   margin-top: 10px;
+}
+.video-wrapper {
+  padding: 15px 0;
+  text-align: center;
+}
+.experience-video {
+  width: 80%;
 }
 
 #hardBox {
