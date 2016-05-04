@@ -100,6 +100,12 @@
           </ul>
         </div>
       </div>
+
+      {% if experience.video %}
+        <div class="video-wrapper">
+          <iframe class="experience-video" src="{{experience.video}}" width="640" height="480"></iframe>
+        </div>
+      {% endif %}
     </div>
     <div class="col-md-4">
       <div id="hardBox">

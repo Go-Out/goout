@@ -155,6 +155,13 @@ p.experience-info {
 .last-addition {
   margin-top: 10px;
 }
+.video-wrapper {
+  padding: 15px 0;
+  text-align: center;
+}
+.experience-video {
+  width: 80%;
+}
 
 #hardBox {
   border: 1px solid #dce0e0;

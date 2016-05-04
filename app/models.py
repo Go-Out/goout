@@ -31,6 +31,7 @@ class Experience(models.Model):
   gear = models.TextField(blank=True, help_text="Each one in a new line")
   additional = models.TextField(blank=True, help_text="Each one in a new line")
   images_path = models.FilePathField(path=IMAGES_FOLDER, allow_folders=True, allow_files=False, default=IMAGES_FOLDER + "default")
+  video = models.CharField(blank=True, max_length=1000)
   categories = models.ManyToManyField(Category)
   experiences = models.ManyToManyField("self", blank=True)
 
