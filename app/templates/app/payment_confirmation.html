@@ -10,6 +10,7 @@
   <div class="container general">
     {% if charge.status == "paid" %}
       <h1 class="title">!Tu pago ha sido procesado exitosamente!</h1>
+      <div class="subheader code">El código de tu compra es {{code}}</div>
       <div class="subheader">Recibirás un correo de confirmación a la dirección {{email}}</div>
     {% else %}
        <h1 class="title">Ha habido un problema con tu pago</h1>
