@@ -1,4 +1,4 @@
-Conekta.setPublishableKey('key_LyWdGMc3hsbMwMzV1Uqytag');
+Conekta.setPublishableKey('key_XXr82hJStxcJb4EnkzbMrzA');
 
 var people = getQueryValue("people");
 
@@ -45,7 +45,7 @@ var conektaSuccessResponseHandler = function(token) {
   $form.append($("<input type='hidden' name='conektaTokenId'>").val(token.id));
   $form.append($("<input type='hidden' name='date'>").val($("#date").text()));
   $form.append($("<input type='hidden' name='people'>").val($("#people").text()));
-  $form.append($("<input type='hidden' name='price'>").val($("#price").text()));
+  $form.append($("<input type='hidden' name='price'>").val(getPrice()));
   $form.append($("<input type='hidden' name='experience'>").val($("#experience").text()));
   $form.append($("<input type='hidden' name='location'>").val($("#location").text()));
 
@@ -59,4 +59,15 @@ var conektaErrorResponseHandler = function(response) {
   /* Muestra los errores en la forma */
   $form.find(".card-errors").text(response.message);
   $form.find("button").prop("disabled", false);
+};
+
+var isTest = function() {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for(var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    if(pair[0] == "test")
+      return true;
+  }
+  return false;
 };

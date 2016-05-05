@@ -6,6 +6,7 @@ import conekta
 from . util import experience_as_json
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.mail import EmailMessage
+import os
 
 def payment(request, experience_id):
   date = request.GET.get('date')
@@ -20,49 +21,9 @@ def payment(request, experience_id):
     return redirect("detail", experience_model.id)
 
 def process_payment(request, experience_id):
-  conekta.api_key = "key_fhT3iSqcYrPfsqpuggUZRQ"
-  charge = conekta.Charge.create({
-    "description":"Stogies",
-    "amount": 20000,
-    "currency":"MXN",
-    "reference_id":"9839-wolf_pack",
-    "card": "tok_test_visa_4242",
-    "details": {
-      "name": "Arnulfo Quimare",
-      "phone": "403-342-0642",
-      "email": "logan@x-men.org",
-      "customer": {
-        "logged_in": "true",
-        "successful_purchases": 14,
-        "created_at": 1379784950,
-        "updated_at": 1379784950,
-        "offline_payments": 4,
-        "score": 9
-      },
-      "line_items": [{
-        "name": "Box of Cohiba S1s",
-        "description": "Imported From Mex.",
-        "unit_price": 20000,
-        "quantity": 1,
-        "sku": "cohb_s1",
-        "category": "food"
-      }],
-      "billing_address": {
-        "street1":"77 Mystery Lane",
-        "street2": "Suite 124",
-        "street3": "null",
-        "city": "Darlington",
-        "state":"NJ",
-        "zip": "10192",
-        "country": "Mexico",
-        "tax_id": "xmn671212drx",
-        "company_name":"X-Men Inc.",
-        "phone": "77-777-7777",
-        "email": "purshasing@x-men.org"
-      }
-    }
-  })
+  conekta.api_key = os.environ['CONEKTA_KEY']
 
+  token = request.POST.get("conektaTokenId")
   birth = request.POST.get("birthDate") + "-" + request.POST.get("birthMonth") + "-" + request.POST.get("birthYear")
   name = request.POST.get("name")
   email = request.POST.get("email")
@@ -73,6 +34,41 @@ def process_payment(request, experience_id):
   experience = request.POST.get("experience")
   location = request.POST.get("location")
   code = None
+
+  charge = conekta.Charge.create({
+    "description": experience,
+    "amount": 300,
+    "currency": "MXN",
+    "reference_id": email,
+    "card": token,
+    "details": {
+      "name": name,
+      "phone": phone,
+      "email": email,
+      "customer": {},
+      "line_items": [{
+        "name": experience,
+        "description": experience,
+        "unit_price": int(price) / int(people),
+        "quantity": 1,
+        "sku": "",
+        "category": "experience"
+      }],
+      "billing_address": {
+        "street1": "null",
+        "street2": "null",
+        "street3": "null",
+        "city": "null",
+        "state": "null",
+        "zip": "null",
+        "country": "null",
+        "tax_id": "null",
+        "company_name":"null",
+        "phone": "null",
+        "email": "null"
+      }
+    }
+  })
 
   if charge.status == "paid":
     code = Code.objects.filter(available=True)[:1][0].code
@@ -89,7 +85,7 @@ def send_user_email(name, email, experience, location, date, people, price, code
   email_template = email_template.replace("$location", location)
   email_template = email_template.replace("$date", date)
   email_template = email_template.replace("$people", people)
-  email_template = email_template.replace("$price", price)
+  email_template = email_template.replace("$price", "$" + price)
   email_template = email_template.replace("$code", code)
 
   msg = EmailMessage("Confirmación de ".decode("utf-8") + experience, email_template, "GoOut <contact@goout.mx>", [email])
