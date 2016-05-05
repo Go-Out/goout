@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from .. models import Experience
+from .. models import Experience, Code
 from django.shortcuts import render, redirect
 import conekta
 from . util import experience_as_json
@@ -72,15 +72,17 @@ def process_payment(request, experience_id):
   price = request.POST.get("price")
   experience = request.POST.get("experience")
   location = request.POST.get("location")
+  code = None
 
   if charge.status == "paid":
-    send_user_email(name, email, experience, location, date, people, price)
-    send_our_email(name, email, experience, location, date, people, price, phone, birth)
+    code = Code.objects.filter(available=True)[:1][0].code
+    send_user_email(name, email, experience, location, date, people, price, code)
+    send_our_email(name, email, experience, location, date, people, price, phone, birth, code)
 
-  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email})
+  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email, 'code': code})
 
 
-def send_user_email(name, email, experience, location, date, people, price):
+def send_user_email(name, email, experience, location, date, people, price, code):
   email_template = open("app/static/app/html/email.html").read().decode("utf-8")
   email_template = email_template.replace("$name", name)
   email_template = email_template.replace("$experience", experience)
@@ -88,12 +90,13 @@ def send_user_email(name, email, experience, location, date, people, price):
   email_template = email_template.replace("$date", date)
   email_template = email_template.replace("$people", people)
   email_template = email_template.replace("$price", price)
+  email_template = email_template.replace("$code", code)
 
   msg = EmailMessage("Confirmación de ".decode("utf-8") + experience, email_template, "GoOut <contact@goout.mx>", [email])
   msg.content_subtype = "html"
   msg.send()
 
-def send_our_email(name, email, experience, location, date, people, price, phone, birth):
+def send_our_email(name, email, experience, location, date, people, price, phone, birth, code):
   email_template = open("app/static/app/html/email_us.html").read().decode("utf-8")
   email_template = email_template.replace("$name", name)
   email_template = email_template.replace("$experience", experience)
@@ -104,6 +107,7 @@ def send_our_email(name, email, experience, location, date, people, price, phone
   email_template = email_template.replace("$email", email)
   email_template = email_template.replace("$phone", phone)
   email_template = email_template.replace("$birth", birth)
+  email_template = email_template.replace("$code", code)
 
   msg = EmailMessage("Compra de " + experience, email_template, "GoOut <order@goout.mx>", ["order@goout.mx"])
   msg.content_subtype = "html"

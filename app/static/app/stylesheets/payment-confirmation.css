@@ -28,6 +28,9 @@ html, body {
 .subheader {
   font-size: 20px;
 }
+.code {
+  margin-bottom: 4px;
+}
 
 .doubts {
   font-size: 20px;
