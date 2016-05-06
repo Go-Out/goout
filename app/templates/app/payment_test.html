@@ -14,23 +14,23 @@
     <div class="col-md-5">
       <div class="summary-panel">
         <div class="summary-section">
-          <h1 id="experience" class="summary-title">{{experience.name}}</h1>
-          <div id="location" class="summary-info">{{experience.location}}</div>
+          <h1 id="experience" class="summary-title">Test</h1>
+          <div id="location" class="summary-info">Test</div>
         </div>
         <div class="summary-section no-border">
-          <div id="date" class="summary-info float-right"></div>
+          <div id="date" class="summary-info float-right">Test</div>
           <div class="summary-info">Fecha</div>
         </div>
         <div class="summary-section no-border">
-          <div id="people" class="summary-info float-right"></div>
+          <div id="people" class="summary-info float-right">1</div>
           <div class="summary-info">No. de Personas</div>
         </div>
         <div class="summary-section">
-          <div id="pricePerPerson" class="summary-info float-right"></div>
+          <div id="pricePerPerson" class="summary-info float-right">3.00</div>
           <div class="summary-info">Precio x persona</div>
         </div>
         <div class="summary-section price-section">
-          <div id="price" class="float-right"></div>
+          <div id="price" class="float-right">3.00</div>
           <div>Total</div>
         </div>
       </div>
@@ -52,7 +52,7 @@
       <div class="panel">
         <h1 class="title">Pago</h1>
 
-        <form action="{% url 'process_payment' %}" method="POST" id="card-form">
+        <form action="{% url 'process_test' %}" method="POST" id="card-form">
           {% csrf_token %}
 
           <span class="card-errors"></span>
@@ -127,8 +127,8 @@
 </div>
 
 <script>
-  var price = {{experience.price}};
-  var experiencePrices = $.map(JSON.parse("{{experience.experience_prices|escapejs}}"), function(price, i) { return parseFloat(price); });
+  var price = 3;
+  var experiencePrices = [];
 </script>
 
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>

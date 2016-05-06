@@ -1,6 +1,9 @@
 Conekta.setPublishableKey('key_XXr82hJStxcJb4EnkzbMrzA');
 
-var people = getQueryValue("people");
+if(window.location.pathname != "/payment_test")
+  var people = getQueryValue("people");
+else
+  var people = 1;
 
 $(function () {
   $("#card-form").submit(function(event) {
@@ -20,11 +23,14 @@ $(function () {
     return false;
   });
 
-  var dateObj = new Date(getQueryValue("date"));
-  $("#date").text(dayNames[dateObj.getDay()] + " " + monthNames[dateObj.getMonth()] + " " + dateObj.getFullYear());
-  $("#people").text(people);
-  $("#price").text("$ " + formatNumber(getPrice()));
-  $("#pricePerPerson").text("$ " + formatNumber(getPrice() / people));
+  if(window.location.pathname != "/payment_test") {
+    console.log("hey");
+    var dateObj = new Date(getQueryValue("date"));
+    $("#date").text(dayNames[dateObj.getDay()] + " " + monthNames[dateObj.getMonth()] + " " + dateObj.getFullYear());
+    $("#people").text(people);
+    $("#price").text("$ " + formatNumber(getPrice()));
+    $("#pricePerPerson").text("$ " + formatNumber(getPrice() / people));
+  }
 
   var validateForm = function(form) {
     var valid = true;

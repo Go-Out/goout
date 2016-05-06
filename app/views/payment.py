@@ -15,12 +15,11 @@ def payment(request, experience_id):
 
   if date and people and people.isdigit():
     experience = experience_as_json(experience_model)
-    print experience
     return render(request, "app/payment.html", {'experience': experience})
   else:
     return redirect("detail", experience_model.id)
 
-def process_payment(request, experience_id):
+def process_payment(request):
   conekta.api_key = os.environ['CONEKTA_KEY']
 
   token = request.POST.get("conektaTokenId")
@@ -35,9 +34,53 @@ def process_payment(request, experience_id):
   location = request.POST.get("location")
   code = None
 
-  charge = conekta.Charge.create({
+  if not token:
+    return redirect("index")
+
+  charge = process_charge(token, name, email, phone, int(price), int(people), experience)
+
+  if charge.status == "paid":
+    code = Code.objects.filter(available=True)[:1][0].code
+    send_user_email(name, email, experience, location, date, people, price, code)
+    send_our_email(name, email, experience, location, date, people, price, phone, birth, code)
+
+  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email, 'code': code})
+
+def test_payment(request):
+  return render(request, "app/payment_test.html", {})
+
+def process_test(request):
+  conekta.api_key = os.environ['CONEKTA_KEY']
+
+  token = request.POST.get("conektaTokenId")
+  birth = request.POST.get("birthDate") + "-" + request.POST.get("birthMonth") + "-" + request.POST.get("birthYear")
+  name = request.POST.get("name")
+  email = request.POST.get("email")
+  phone = request.POST.get("phone")
+  date = request.POST.get("date")
+  people = request.POST.get("people")
+  price = request.POST.get("price")
+  experience = request.POST.get("experience")
+  location = request.POST.get("location")
+  code = None
+
+  print price + " " + people
+
+  if not token:
+    return redirect("index")
+
+  charge = process_charge(token, name, email, phone, int(price), int(people), experience)
+
+  if charge.status == "paid":
+    code = Code.objects.filter(available=True)[:1][0].code
+
+  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email, 'code': code})
+
+
+def process_charge(token, name, email, phone, price, people, experience):
+  return conekta.Charge.create({
     "description": experience,
-    "amount": 300,
+    "amount": price * 100,
     "currency": "MXN",
     "reference_id": email,
     "card": token,
@@ -49,11 +92,11 @@ def process_payment(request, experience_id):
       "line_items": [{
         "name": experience,
         "description": experience,
-        "unit_price": int(price) / int(people),
+        "unit_price": price / people,
         "quantity": 1,
         "sku": "",
         "category": "experience"
-      }],
+        }],
       "billing_address": {
         "street1": "null",
         "street2": "null",
@@ -66,17 +109,9 @@ def process_payment(request, experience_id):
         "company_name":"null",
         "phone": "null",
         "email": "null"
+        }
       }
-    }
-  })
-
-  if charge.status == "paid":
-    code = Code.objects.filter(available=True)[:1][0].code
-    send_user_email(name, email, experience, location, date, people, price, code)
-    send_our_email(name, email, experience, location, date, people, price, phone, birth, code)
-
-  return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email, 'code': code})
-
+    })
 
 def send_user_email(name, email, experience, location, date, people, price, code):
   email_template = open("app/static/app/html/email.html").read().decode("utf-8")
