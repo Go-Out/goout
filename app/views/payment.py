@@ -37,7 +37,7 @@ def process_payment(request):
   if not token:
     return redirect("index")
 
-  charge = process_charge(token, name, email, phone, int(price), int(people), experience)
+  charge = process_charge(token, name, email, phone, float(price), int(people), experience)
 
   if charge.status == "paid":
     code = Code.objects.filter(available=True)[:1][0].code
@@ -64,12 +64,10 @@ def process_test(request):
   location = request.POST.get("location")
   code = None
 
-  print price + " " + people
-
   if not token:
     return redirect("index")
 
-  charge = process_charge(token, name, email, phone, int(price), int(people), experience)
+  charge = process_charge(token, name, email, phone, float(price), int(people), experience)
 
   if charge.status == "paid":
     code = Code.objects.filter(available=True)[:1][0].code
