@@ -151,6 +151,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
 EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
 
+SECURE_SSL_REDIRECT = True
+
 
 # Local settings
 try:
