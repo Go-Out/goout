@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 import conekta
 from . util import experience_as_json
 from django.contrib.staticfiles.templatetags.staticfiles import static
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 import os
 
 def payment(request, experience_id):
@@ -76,40 +76,47 @@ def process_test(request):
 
 
 def process_charge(token, name, email, phone, price, people, experience):
-  return conekta.Charge.create({
-    "description": experience,
-    "amount": price * 100,
-    "currency": "MXN",
-    "reference_id": email,
-    "card": token,
-    "details": {
-      "name": name,
-      "phone": phone,
-      "email": email,
-      "customer": {},
-      "line_items": [{
-        "name": experience,
-        "description": experience,
-        "unit_price": price / people,
-        "quantity": 1,
-        "sku": "",
-        "category": "experience"
-        }],
-      "billing_address": {
-        "street1": "null",
-        "street2": "null",
-        "street3": "null",
-        "city": "null",
-        "state": "null",
-        "zip": "null",
-        "country": "null",
-        "tax_id": "null",
-        "company_name":"null",
-        "phone": "null",
-        "email": "null"
+  try:
+    charge = conekta.Charge.create({
+      "description": experience,
+      "amount": price * 100,
+      "currency": "MXN",
+      "reference_id": email,
+      "card": token,
+      "details": {
+        "name": name,
+        "phone": phone,
+        "email": email,
+        "customer": {},
+        "line_items": [{
+          "name": experience,
+          "description": experience,
+          "unit_price": price / people,
+          "quantity": 1,
+          "sku": "",
+          "category": "experience"
+          }],
+        "billing_address": {
+          "street1": "null",
+          "street2": "null",
+          "street3": "null",
+          "city": "null",
+          "state": "null",
+          "zip": "null",
+          "country": "null",
+          "tax_id": "null",
+          "company_name":"null",
+          "phone": "null",
+          "email": "null"
+          }
         }
-      }
-    })
+      })
+  except Exception as e:
+    charge = ChargeObject('Exception')
+    send_mail('Error en el pago', 'Error ' + str(e.message), 'contact@goout.mx', ['order@goout.mx'], fail_silently=True)
+
+  return charge
+
 
 def send_user_email(name, email, experience, location, date, people, price, code):
   email_template = open("app/static/app/html/email.html").read().decode("utf-8")
@@ -141,3 +148,8 @@ def send_our_email(name, email, experience, location, date, people, price, phone
   msg = EmailMessage("Compra de " + experience, email_template, "GoOut <order@goout.mx>", ["order@goout.mx"])
   msg.content_subtype = "html"
   msg.send()
+
+
+class ChargeObject:
+  def __init__(self, status):
+    self.status = status
