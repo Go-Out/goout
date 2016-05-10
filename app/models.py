@@ -19,6 +19,7 @@ class Category(models.Model):
 class Experience(models.Model):
   name = models.CharField(max_length=50)
   active = models.BooleanField(default=True)
+  subheader = models.CharField(max_length=250, blank=True)
   price = models.DecimalField(max_digits=6, decimal_places=2)
   people = models.IntegerField(default=1)
   location = models.CharField(max_length=250)
