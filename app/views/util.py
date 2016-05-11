@@ -2,6 +2,8 @@ from django.core import serializers
 import json
 import os
 from .. models import  Experience, Category
+import xmltodict
+import urllib2
 
 def experience_as_json(experience_model):
   experience = serializers.serialize("python", [experience_model,])[0]["fields"]
@@ -16,8 +18,7 @@ def experience_as_json(experience_model):
   experience["requirements"] = json.loads(experience_model.requirements)
   experience["gear"] = json.loads(experience_model.gear)
   experience["additional"] = json.loads(experience_model.additional) 
-  experience["images"] = json.dumps(sorted(os.listdir(experience_model.images_path)))
-  experience["images_path"] = experience_model.images_path[4:]
+  experience["images"] = json.dumps(get_images(experience_model.images_path))
 
   categories = []
   category_pks = experience["categories"]
@@ -34,3 +35,15 @@ def experience_as_json(experience_model):
   experience["experience_prices"] = json.dumps(experience_prices)
 
   return experience
+
+def get_images(folder):
+  folder = folder.replace("+", " ")
+
+  path = "https://s3-us-west-2.amazonaws.com/go-out"
+
+  images = []
+  for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
+    if folder in content["Key"]:
+      images.append(content["Key"].replace(" ", "+"))
+
+  return images

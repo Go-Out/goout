@@ -124,7 +124,7 @@
 
 <script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>
-  var imgUrl = window.location.origin + "/{{experience.images_path}}";
+  var imgUrl = "https://s3-us-west-2.amazonaws.com/go-out";
   var availabilityUrl = "{% url 'experience_availability' experience.id %}";
   var experienceImgs = JSON.parse("{{experience.images|escapejs}}");
   var payment = "{% url 'payment' experience.id %}";

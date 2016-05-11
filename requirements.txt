@@ -11,3 +11,4 @@ simplejson==3.8.1
 static3==0.6.1
 wheel==0.24.0
 whitenoise==2.0.6
+xmltodict==0.10.1
