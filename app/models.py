@@ -1,10 +1,10 @@
+# -*- coding: UTF-8 -*-
+
 from __future__ import unicode_literals
 
 from django.db import models
 from datetime import timedelta
 
-
-IMAGES_FOLDER = "app/static/app/images/experiences/"
 
 # Create your models here.
 class Category(models.Model):
@@ -17,6 +17,20 @@ class Category(models.Model):
     return self.name
 
 class Experience(models.Model):
+  image_paths = (
+    ("Amigo", "Amigo"),
+    ("Bici+Tequila", "Bici Tequila"),
+    ("Camino+Mágico+Tequila", "Camino Mágico Tequila"),
+    ("Cuatrimoto+hasta+la+piedra+bola", "Cuatrimoto hasta la piedra bola"),
+    ("Familia", "Familia"),
+    ("Nevado+de+Colima", "Nevado de Colima"),
+    ("Pareja+Adrenalina", "Pareja Adrenalina"),
+    ("Relajación", "Relajación"),
+    ("Tarzán", "Tarzán"),
+    ("Tirolesa", "Tirolesa"),
+    ("default", "default"),
+  )
+
   name = models.CharField(max_length=50)
   active = models.BooleanField(default=True)
   subheader = models.CharField(max_length=250, blank=True)
@@ -31,7 +45,7 @@ class Experience(models.Model):
   requirements = models.TextField(blank=True, help_text="Each one in a new line")
   gear = models.TextField(blank=True, help_text="Each one in a new line")
   additional = models.TextField(blank=True, help_text="Each one in a new line")
-  images_path = models.FilePathField(path=IMAGES_FOLDER, allow_folders=True, allow_files=False, default=IMAGES_FOLDER + "default")
+  images_path = models.CharField(default="default", choices=image_paths, max_length=100)
   video = models.CharField(blank=True, max_length=1000)
   categories = models.ManyToManyField(Category)
   experiences = models.ManyToManyField("self", blank=True)
