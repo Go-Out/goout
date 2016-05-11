@@ -1,6 +1,6 @@
 {% extends "app/base.html" %}
 
-{% load staticfiles %}
+{% load staticfiles filters %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/stylesheets/detail.css' %}" />
@@ -24,7 +24,11 @@
         <div class="experience-name">{{experience.name}}</div>
         <p class="experience-info">
           <span>{{experience.location}}</span>
-          <span class="experience-duration">Duración: {{experience.duration}} horas</span>
+          {% if experience.duration < 24 %}
+            <span class="experience-duration">Duración: {{experience.duration}} horas</span>
+          {% else %}
+            <span class="experience.duration">Duración: {{experience.duration|by:24}} days</span>
+          {% endif %}
         </p>
         <div class="hard-box-hidden">
           {% include "app/hard_box.html" %}
