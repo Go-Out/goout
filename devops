@@ -1,0 +1,2 @@
+heroku pg:backups capture --app go-out-staging
+heroku pg:backups restore $(heroku pg:backups public-url --app go-out-staging) DATABASE_URL --app go-out
