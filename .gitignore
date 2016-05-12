@@ -3,3 +3,4 @@ venv
 staticfiles
 app/static/app/images/experiences/backup/*
 local_settings.py
+devops
