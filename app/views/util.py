@@ -18,7 +18,6 @@ def experience_as_json(experience_model):
   experience["requirements"] = json.loads(experience_model.requirements)
   experience["gear"] = json.loads(experience_model.gear)
   experience["additional"] = json.loads(experience_model.additional) 
-  experience["images"] = json.dumps(get_images(experience_model.images_path))
 
   categories = []
   category_pks = experience["categories"]
@@ -36,14 +35,27 @@ def experience_as_json(experience_model):
 
   return experience
 
-def get_images(folder):
+def get_experience_images(folder):
   folder = folder.replace("+", " ")
 
-  path = "https://s3-us-west-2.amazonaws.com/go-out"
+  path = "http://dp95gqg0hgx2o.cloudfront.net/"
 
   images = []
   for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
     if folder in content["Key"]:
       images.append(content["Key"].replace(" ", "+"))
+
+  return images
+
+def get_experiences_images(folders):
+  path = "http://dp95gqg0hgx2o.cloudfront.net/"
+
+  images = []
+  for folder in folders:
+    folder = folder.replace("+", " ")
+    for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
+      if folder in content["Key"]:
+        images.append(content["Key"].replace(" ", "+"))
+        break
 
   return images
