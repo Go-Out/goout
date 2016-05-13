@@ -41,10 +41,12 @@ def process_payment(request):
 
   if charge.status == "paid":
     code_object = Code.objects.filter(available=True)[:1][0]
-    send_user_email(name, email, experience, location, date, people, price, code.code)
-    send_our_email(name, email, experience, location, date, people, price, phone, birth, code.code)
     code.available = False
     code.save()
+    code = code_object.code
+
+    send_user_email(name, email, experience, location, date, people, price, code)
+    send_our_email(name, email, experience, location, date, people, price, phone, birth, code)
 
   return render(request, "app/payment_confirmation.html", {'charge': charge, 'email': email, 'code': code})
 

@@ -42,6 +42,8 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 class CodeAdmin(admin.ModelAdmin):
   list_display = ('code', 'available')
+  ordering = ('available',)
+
 
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(Category)
