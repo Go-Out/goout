@@ -14,9 +14,10 @@
   <link rel="icon" href="{% static 'app/images/favicon.png' %}">
   {% block stylesheets %}
   {% endblock %}
+
+  {% include "app/analytics.html" %}
 </head>
 <body>
-
   {% include "app/header.html" %}
 
   <script type="text/javascript" src="{% static 'app/javascripts/jquery-2.2.0.min.js' %}" ></script>
