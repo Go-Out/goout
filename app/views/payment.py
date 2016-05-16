@@ -41,8 +41,8 @@ def process_payment(request):
 
   if charge.status == "paid":
     code_object = Code.objects.filter(available=True)[:1][0]
-    code.available = False
-    code.save()
+    code_object.available = False
+    code_object.save()
     code = code_object.code
 
     send_user_email(name, email, experience, location, date, people, price, code)
