@@ -40,7 +40,7 @@ def get_experience_images(folder):
 
   images = []
   for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
-    if folder in content["Key"]:
+    if folder in content["Key"] and int(content["Size"]) > 0:
       images.append(content["Key"].replace(" ", "+"))
 
   return images
@@ -51,7 +51,7 @@ def get_experiences_images(folders):
   images = []
   for folder in folders:
     for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
-      if folder in content["Key"]:
+      if folder in content["Key"] and int(content["Size"]) > 0:
         images.append(content["Key"].replace(" ", "+"))
         break
 
