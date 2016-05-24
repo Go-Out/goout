@@ -3,8 +3,21 @@ from .models import Experience, Category, Code
 from datetime import timedelta
 from django import forms
 from .utils import text_as_json, json_as_text
+import xmltodict
+import urllib2
 
 # Register your models here.
+
+def get_image_folders():
+  path = "http://dp95gqg0hgx2o.cloudfront.net/"
+
+  folders = []
+  for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
+    folder = content["Key"].split("/")[0]
+    if (folder, folder) not in folders:
+      folders.append((folder, folder))
+
+  return folders
 
 class ExperienceForm(forms.ModelForm):
   def __init__(self, *args, **kwargs):
@@ -18,6 +31,8 @@ class ExperienceForm(forms.ModelForm):
       self.initial['requirements'] = json_as_text(self.instance.requirements)
       self.initial['gear'] = json_as_text(self.instance.gear)
       self.initial['additional'] = json_as_text(self.instance.additional)
+    
+    self.fields['images_path'] = forms.ChoiceField(choices=get_image_folders())
 
 class ExperienceAdmin(admin.ModelAdmin):
   list_display = ('name', 'price', 'location', 'active')

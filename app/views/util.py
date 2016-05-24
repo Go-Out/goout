@@ -36,8 +36,6 @@ def experience_as_json(experience_model):
   return experience
 
 def get_experience_images(folder):
-  folder = folder.replace("+", " ")
-
   path = "http://dp95gqg0hgx2o.cloudfront.net/"
 
   images = []
@@ -52,7 +50,6 @@ def get_experiences_images(folders):
 
   images = []
   for folder in folders:
-    folder = folder.replace("+", " ")
     for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
       if folder in content["Key"]:
         images.append(content["Key"].replace(" ", "+"))
