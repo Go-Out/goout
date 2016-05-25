@@ -36,7 +36,7 @@ def experience_as_json(experience_model):
   return experience
 
 def get_experience_images(folder):
-  path = "http://dp95gqg0hgx2o.cloudfront.net/"
+  path = "https://s3-us-west-2.amazonaws.com/go-out"
 
   images = []
   for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
@@ -46,7 +46,7 @@ def get_experience_images(folder):
   return images
 
 def get_experiences_images(folders):
-  path = "http://dp95gqg0hgx2o.cloudfront.net/"
+  path = "https://s3-us-west-2.amazonaws.com/go-out"
 
   images = []
   for folder in folders:

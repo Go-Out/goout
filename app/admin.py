@@ -9,7 +9,7 @@ import urllib2
 # Register your models here.
 
 def get_image_folders():
-  path = "http://dp95gqg0hgx2o.cloudfront.net/"
+  path = "https://s3-us-west-2.amazonaws.com/go-out"
 
   folders = []
   for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:

@@ -20,7 +20,7 @@ $(function() {
         var experienceElem = $("<div>");
         experienceElem.load(experienceHtml, function() {
           insertExperienceData(experienceElem, experience);
-          insertImageAsynchronously("https://s3-us-west-2.amazonaws.com/go-out/" + JSON.parse(experience.images)[0], experienceElem.find("#experienceMain"));
+          insertImageAsynchronously("http://dp95gqg0hgx2o.cloudfront.net/" + JSON.parse(experience.images)[0], experienceElem.find("#experienceMain"));
         });
         row.append(experienceElem);
 
