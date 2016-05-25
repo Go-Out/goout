@@ -124,7 +124,7 @@
 
 <script type="text/javascript" src="{% static 'app/jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
 <script>
-  var imgUrl = "http://dp95gqg0hgx2o.cloudfront.net/";
+  var imgUrl = "https://dp95gqg0hgx2o.cloudfront.net";
   var availabilityUrl = "{% url 'experience_availability' experience.id %}";
   var experienceImgs = JSON.parse("{{experience.images|escapejs}}");
   var payment = "{% url 'payment' experience.id %}";
