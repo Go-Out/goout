@@ -145,6 +145,7 @@ STATICFILES_DIRS = (
 )
 
 
+# EMail env variables. Won't work in local
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

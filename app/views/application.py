@@ -13,6 +13,7 @@ def team_building(request):
 def terms(request):
   return render(request, "app/terms_conditions.html", {})
 
+# Forms a message and sends it
 def consultancy(request):
   message = "<p>" + request.POST.get('name') + "</p>"
   message += "<p>" +  request.POST.get('email') + "</p>"

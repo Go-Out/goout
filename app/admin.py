@@ -6,11 +6,11 @@ from .utils import text_as_json, json_as_text
 import xmltodict
 import urllib2
 
-# Register your models here.
-
+# Helper method to get an xml list of objects in the s3 repository
 def get_image_folders():
   path = "https://s3-us-west-2.amazonaws.com/go-out"
 
+  # Parses every xml tag to obtain the name of the folder
   folders = []
   for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
     folder = content["Key"].split("/")[0]
@@ -20,6 +20,8 @@ def get_image_folders():
   return folders
 
 class ExperienceForm(forms.ModelForm):
+
+  # Transforms the model back to display correctly in the admin page
   def __init__(self, *args, **kwargs):
     super(ExperienceForm, self).__init__(*args, **kwargs)
     if self.instance.duration is not None:
@@ -38,11 +40,12 @@ class ExperienceAdmin(admin.ModelAdmin):
   list_display = ('name', 'price', 'location', 'active')
   form = ExperienceForm
 
+  # Transforms the model before saving, to create jsons and the right duration
   def save_model(self, request, obj, form, change):
     NEW_LINE_DELIMITER = "\r\n"
 
     obj.availability = text_as_json(obj.availability, NEW_LINE_DELIMITER)
-    obj.duration = timedelta(hours=obj.duration.seconds)
+    obj.duration = timedelta(hours=obj.duration.seconds)  # Makes sure that the time is saved in hours
     obj.itinerary = text_as_json(obj.itinerary, NEW_LINE_DELIMITER)
     obj.description = text_as_json(obj.description, NEW_LINE_DELIMITER)
     obj.included = text_as_json(obj.included, NEW_LINE_DELIMITER)
