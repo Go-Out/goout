@@ -40,9 +40,10 @@ def experience_as_json(experience_model):
 # Returns all the images for a given experience images folder
 def get_experience_images(folder):
   path = "https://s3-us-west-2.amazonaws.com/go-out"
+  xml = urllib2.urlopen(path).read()
 
   images = []
-  for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
+  for content in xmltodict.parse(xml)["ListBucketResult"]["Contents"]:
     if folder in content["Key"] and int(content["Size"]) > 0:
       images.append(content["Key"].replace(" ", "+"))
 
@@ -51,10 +52,11 @@ def get_experience_images(folder):
 # Returns the first experience for the given images folders
 def get_experiences_images(folders):
   path = "https://s3-us-west-2.amazonaws.com/go-out"
+  xml = urllib2.urlopen(path).read()
 
   images = []
   for folder in folders:
-    for content in xmltodict.parse(urllib2.urlopen(path).read())["ListBucketResult"]["Contents"]:
+    for content in xmltodict.parse(xml)["ListBucketResult"]["Contents"]:
       if folder in content["Key"] and int(content["Size"]) > 0:
         images.append(content["Key"].replace(" ", "+"))
         break
