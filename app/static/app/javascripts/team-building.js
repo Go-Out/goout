@@ -1,3 +1,4 @@
+// Call to action controll
 (function() {
   $(".cta-link").click(function() {
     $("body").animate({
@@ -6,6 +7,7 @@
   });
 })();
 
+// Team building form validation
 var validateForm = function(form) {
   if(!form.name.value)
     form.name.className = "invalid";

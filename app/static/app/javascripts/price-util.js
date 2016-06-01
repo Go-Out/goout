@@ -1,3 +1,4 @@
+// Gets the price for all experiences
 var getExperiencesPrice = function() {
   if(experiencePrices.length > 0) {
     var experiencesPrice = 0;
@@ -9,11 +10,13 @@ var getExperiencesPrice = function() {
     return price * people;
 }
 
+// Subtracts the discount from the total price
 var getRealPrice = function() {
   var total = getHuttPrice() + getExperiencesPrice();
   return total - (total * (0.73 * (people - 1) + 1.14 * experiencePrices.length) / 100);
 };
 
+// Price for the hutt
 var getHuttPrice = function() {
   if(experiencePrices.length < 1)
     return 0;
@@ -26,11 +29,13 @@ var getHuttPrice = function() {
   return 3900;
 };
 
+// Gets the discount
 var getDiscount = function() {
   var total = getHuttPrice() + getExperiencesPrice();
   return total - getPrice();
 };
 
+// Gets the price to be displayed, rounding prices per person to avoid decimals
 var getPrice = function() {
   return Math.ceil(getRealPrice() / people) * people;
 };

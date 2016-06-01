@@ -1,4 +1,8 @@
 $(function() {
+
+/*** Initial operations ***/
+
+  // Takes the experience template and inserts values
   var insertExperienceData = function(experienceElem, experience) {
     experienceElem.find("a").attr("href", experienceUrl.replace("123", experience.id));
     experienceElem.find("#experiencePrice").text("$ " + experience.price);
@@ -7,6 +11,7 @@ $(function() {
     experienceElem.find("#experienceSubheader").text(experience.subheader);
   }
 
+  // Renders the experiences dynamycally
   var renderExperiences = function(data) {
     var experiencesContainer = $("#experiencesContainer");
     experiencesContainer.empty();
@@ -18,6 +23,7 @@ $(function() {
           experiencesContainer.append(row);
 
         var experienceElem = $("<div>");
+        // Loads the experience template
         experienceElem.load(experienceHtml, function() {
           insertExperienceData(experienceElem, experience);
           insertImageAsynchronously("https://dp95gqg0hgx2o.cloudfront.net/" + JSON.parse(experience.images)[0], experienceElem.find("#experienceMain"));
@@ -33,6 +39,7 @@ $(function() {
       experiencesContainer.append("<p class='no-results'>No hay experiencias disponibles</p>");
   };
 
+  // Gets the experiences
   var ajax;
   var getExperiences = function(category) {
     if(ajax)
@@ -55,13 +62,16 @@ $(function() {
   getExperiences("Aventura 2 días");
 
 
+/*** Controls ***/
+
+  // Handles click to the top banner
   $("#bannerLink").click(function() {
     $("body").animate({
       scrollTop: $("#experiences").offset().top
     }, 500);
   });
 
-
+  // Handles the middle menu
   $(".navbar-exp-element").click(function() {
     $(".navbar-exp-element").removeClass("selected");
   });

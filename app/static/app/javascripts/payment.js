@@ -1,10 +1,14 @@
+// Conekta public key
 Conekta.setPublishableKey('key_XXr82hJStxcJb4EnkzbMrzA');
 
+// Validation for the test payment
 if(window.location.pathname != "/payment_test")
   var people = getQueryValue("people");
 else
   var people = 1;
 
+/*** Except where noted below, this code was taken from the Conekta tutorial
+ * https://www.conekta.io/en/docs/tutorials/card-payments ***/
 $(function () {
   $("#card-form").submit(function(event) {
     var $form = $(this);
@@ -23,8 +27,8 @@ $(function () {
     return false;
   });
 
+  // GoOut: If this is not a test payment, set the right values
   if(window.location.pathname != "/payment_test") {
-    console.log("hey");
     var dateObj = new Date(getQueryValue("date"));
     $("#date").text(dayNames[dateObj.getDay()] + " " + monthNames[dateObj.getMonth()] + " " + dateObj.getFullYear());
     $("#people").text(people);
@@ -49,6 +53,7 @@ var conektaSuccessResponseHandler = function(token) {
 
   /* Inserta el token_id en la forma para que se envíe al servidor */
   $form.append($("<input type='hidden' name='conektaTokenId'>").val(token.id));
+  // GoOut: Fields to be sent to the server
   $form.append($("<input type='hidden' name='date'>").val($("#date").text()));
   $form.append($("<input type='hidden' name='people'>").val($("#people").text()));
   $form.append($("<input type='hidden' name='price'>").val(getPrice().toFixed(2)));
@@ -65,15 +70,4 @@ var conektaErrorResponseHandler = function(response) {
   /* Muestra los errores en la forma */
   $form.find(".card-errors").text(response.message);
   $form.find("button").prop("disabled", false);
-};
-
-var isTest = function() {
-  var query = window.location.search.substring(1);
-  var vars = query.split("&");
-  for(var i = 0; i < vars.length; i++) {
-    var pair = vars[i].split("=");
-    if(pair[0] == "test")
-      return true;
-  }
-  return false;
 };

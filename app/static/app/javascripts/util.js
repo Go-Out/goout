@@ -1,3 +1,4 @@
+// Inserts an image asynchronously, given the image url and the element where to put it
 var insertImageAsynchronously = function(imgSrc, imgElem) {
   var img = new Image();
   img.onload = function() {
@@ -9,6 +10,7 @@ var insertImageAsynchronously = function(imgSrc, imgElem) {
   img.src = imgSrc;
 };
 
+// Just loads an image asynchronously, without putting it anywhere
 var loadImageAsynchronously = function(imgSrc) {
   var img = new Image();
   img.src = imgSrc;
@@ -23,6 +25,7 @@ var reverseDate = function(dateStr) {
   return dateParts[3] + "-" + (monthNames.indexOf(dateParts[2]) + 1) + "-" + dateParts[1];
 }
 
+// Gets a quert parameter's value
 var getQueryValue = function(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");
